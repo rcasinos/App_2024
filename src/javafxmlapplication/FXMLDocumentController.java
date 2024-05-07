@@ -38,6 +38,7 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("Prueba de commit");
+        System.out.println("Prueba traspaso entre ramas");
     }    
     
 }
