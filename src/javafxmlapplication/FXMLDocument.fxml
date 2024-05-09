@@ -97,7 +97,7 @@
                   </Label>
                   <StackPane fx:id="visiblePassword" prefHeight="150.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="35.0" prefWidth="149.0" />
+                        <TextField fx:id="txtLabel" />
                         <PasswordField fx:id="pPassword" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="26.0" minWidth="150.0" prefHeight="26.0" prefWidth="350.0" promptText="Pepito1234" />
                      </children>
                   </StackPane>
@@ -108,7 +108,7 @@
                <children>
                   <ToggleButton fx:id="buttomVer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#verPassword" prefHeight="27.0" prefWidth="30.0">
                      <graphic>
-                        <ImageView fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageController" fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../icons/ojo%20cerrado.png" />
                            </image>
