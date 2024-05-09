@@ -17,8 +17,8 @@
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="600.0" style="-fx-background-color: white;" stylesheets="@../../../../../../../../ipc/JavaFX11_Sigup%20-%20copia/src/icons/Recursos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.FXMLSignUpController">
    <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="15.0" prefWidth="300.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="316.3333740234375" minWidth="10.0" prefWidth="296.66666666666674" />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -31,7 +31,7 @@
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="67.0" prefWidth="600.0" styleClass="estilo1" GridPane.columnSpan="2">
          <children>
-            <Text fill="WHITE" scaleX="3.0" scaleY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrate" textAlignment="CENTER" translateX="50.0">
+            <Text fill="WHITE" scaleX="3.0" scaleY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="                                  Registrate" textAlignment="CENTER" translateX="50.0" wrappingWidth="173.47566330432892">
                <font>
                   <Font name="Arial Rounded MT Bold" size="12.0" />
                </font>
@@ -141,7 +141,14 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="91.0" prefWidth="91.0" text="Button" />
+            <Button fx:id="perfilButtom" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#imagePerfilPressed" prefHeight="88.0" prefWidth="85.0">
+               <graphic>
+                  <ImageView fitHeight="85.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/perfil.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
          </children>
       </HBox>
    </children>
