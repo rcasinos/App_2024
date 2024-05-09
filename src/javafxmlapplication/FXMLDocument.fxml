@@ -54,10 +54,9 @@
                      <font>
                         <Font size="13.0" />
                      </font></Label>
-                  <TextField fx:id="eemail" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="26.0" minWidth="150.0" prefHeight="26.0" prefWidth="350.0" promptText="Ej. Pepe " />
+                  <TextField fx:id="nameUser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="26.0" minWidth="150.0" prefHeight="26.0" prefWidth="350.0" promptText="Ej. Pepe " />
                </children>
             </VBox>
-            <Label fx:id="lInconrrectEmail" text="Incorrect Email" textFill="#ca0505" visible="false" />
          </children>
          <GridPane.margin>
             <Insets top="10.0" />
@@ -74,8 +73,8 @@
                      <font>
                         <Font size="13.0" />
                      </font></Label>
-                  <PasswordField fx:id="ppassword" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="26.0" minWidth="150.0" prefHeight="26.0" prefWidth="350.0" promptText="Ej. Pepito" />
-                  <Label fx:id="labelErrorContraseña1" focusTraversable="false" prefHeight="31.0" prefWidth="150.0" text="Nombre de usuario ya existe" textFill="RED" />
+                  <PasswordField fx:id="nickName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="26.0" minWidth="150.0" prefHeight="26.0" prefWidth="350.0" promptText="Ej. Pepito" />
+                  <Label fx:id="errorNickName" focusTraversable="false" prefHeight="18.0" prefWidth="215.0" text="Nombre de usuario ya existe" textFill="RED" />
                </children>
             </VBox>
             <Label fx:id="lIncorrectPassword" prefHeight="17.0" prefWidth="458.0" text="Incorrect. It must be a combination of 8 to 15 numbers of letters, without blank spaces." textFill="#ca0505" visible="false" />
@@ -96,18 +95,18 @@
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <StackPane prefHeight="150.0" prefWidth="200.0">
+                  <StackPane fx:id="visiblePassword" prefHeight="150.0" prefWidth="200.0">
                      <children>
                         <Label prefHeight="35.0" prefWidth="149.0" />
-                        <PasswordField fx:id="ppassword2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="26.0" minWidth="150.0" prefHeight="26.0" prefWidth="350.0" promptText="Pepito1234" />
+                        <PasswordField fx:id="pPassword" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="26.0" minWidth="150.0" prefHeight="26.0" prefWidth="350.0" promptText="Pepito1234" />
                      </children>
                   </StackPane>
-                  <Label fx:id="labelErrorContraseña2" focusTraversable="false" prefHeight="17.0" prefWidth="187.0" text="Campo vacío " textFill="RED" />
+                  <Label fx:id="errorPassword" focusTraversable="false" prefHeight="17.0" prefWidth="187.0" text="Campo vacío " textFill="RED" />
                </children>
             </VBox>
             <VBox alignment="TOP_RIGHT" prefHeight="69.0" prefWidth="40.0">
                <children>
-                  <ToggleButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="27.0" prefWidth="30.0">
+                  <ToggleButton fx:id="buttomVer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#verPassword" prefHeight="27.0" prefWidth="30.0">
                      <graphic>
                         <ImageView fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -144,8 +143,8 @@
                      <font>
                         <Font size="13.0" />
                      </font></Label>
-                  <PasswordField fx:id="ppassword21" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="26.0" minWidth="150.0" prefHeight="26.0" prefWidth="350.0" promptText="nombre@dominio.org" />
-                  <Label fx:id="labelErrorContraseña3" focusTraversable="false" text="Campo vacío " textFill="RED" />
+                  <PasswordField fx:id="correoUser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="26.0" minWidth="150.0" prefHeight="26.0" prefWidth="350.0" promptText="nombre@dominio.org" />
+                  <Label fx:id="errorCorreo" focusTraversable="false" text="Campo vacío " textFill="RED" />
                </children>
             </VBox>
          </children>
@@ -167,7 +166,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="bAccept" minWidth="80.0" mnemonicParsing="false" onAction="#handleBAcceptOnAction" prefWidth="100.0" styleClass="estilo1" text="Accept" textFill="WHITE">
+            <Button fx:id="bAccept" minWidth="80.0" mnemonicParsing="false" onAction="#aceptoRegistro" prefWidth="100.0" styleClass="estilo1" text="Accept" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -188,7 +187,7 @@
          <children>
             <Button fx:id="perfilButtom" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#imagePerfilPressed" prefHeight="77.0" prefWidth="77.0">
                <graphic>
-                  <ImageView fitHeight="68.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="72.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/perfil.png" />
                      </image>
