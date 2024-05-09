@@ -45,7 +45,7 @@ public class FXMLSignUpController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        System.out.println("Prueba de proteccion a master");
     }    
 
     @FXML
