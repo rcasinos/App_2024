@@ -74,7 +74,7 @@ public class FXMLSignUpController implements Initializable {
         
         txtLabel.setVisible(!txtLabel.isVisible());
 	pPassword.setVisible(!pPassword.isVisible());
-	Image ver = new Image(new File("src/icons/ojo abierto.png").toURI().toString());
+	Image ver = new Image(new File("src/icons/ojo abierto black.png").toURI().toString());
 	Image nover = new Image(new File("src/icons/ojo cerrado.png").toURI().toString());
 	if(buttomVer.isSelected()) {
 	    imageController.setImage(ver);
