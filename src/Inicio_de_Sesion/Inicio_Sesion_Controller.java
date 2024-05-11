@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javafxmlapplication;
+package Inicio_de_Sesion;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,12 +17,13 @@ import javafx.scene.control.Label;
  *
  * @author jsoler
  */
-public class FXMLControllerLogIn implements Initializable {
-    
+public class Inicio_Sesion_Controller implements Initializable {
+
+    //=========================================================
+    // you must initialize here all related with the object 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("Prueba de commit");
-        System.out.println("Prueba traspaso entre ramas");
-       
+        // TODO
     }
+    
 }
