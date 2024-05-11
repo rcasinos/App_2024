@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="600.0" style="-fx-background-color: black;" stylesheets="@../../../../../../../../ipc/JavaFX11_Sigup%20-%20copia/src/icons/Recursos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.FXMLSignUpController">
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="600.0" style="-fx-background-color: black;" stylesheets="@../../../../../../../../ipc/JavaFX11_Sigup%20-%20copia/src/icons/Recursos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Registro.Registro_Controller">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="15.0" prefWidth="300.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="316.3333740234375" minWidth="10.0" prefWidth="296.66666666666674" />
