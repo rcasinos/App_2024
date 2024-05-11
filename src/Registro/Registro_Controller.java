@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package javafxmlapplication;
+package Registro;
 
 import java.io.File;
 import java.net.URL;
@@ -24,7 +24,7 @@ import javafx.scene.layout.StackPane;
  *
  * @author berjo
  */
-public class FXMLSignUpController implements Initializable {
+public class Registro_Controller implements Initializable {
 
     @FXML
     private Label lIncorrectPassword;
@@ -74,8 +74,8 @@ public class FXMLSignUpController implements Initializable {
         
         txtLabel.setVisible(!txtLabel.isVisible());
 	pPassword.setVisible(!pPassword.isVisible());
-	Image ver = new Image(new File("src/icons/ojo abierto black.png").toURI().toString());
-	Image nover = new Image(new File("src/icons/ojo cerrado.png").toURI().toString());
+	Image ver = new Image(new File("src/Iconos_App/ojo abierto black.png").toURI().toString());
+	Image nover = new Image(new File("src/Iconos_App/ojo cerrado.png").toURI().toString());
 	if(buttomVer.isSelected()) {
 	    imageController.setImage(ver);
 	} else {
