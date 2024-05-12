@@ -38,7 +38,7 @@ public class Pag_Principal_No_Logg_Controller implements Initializable {
 
     @FXML
     private void crear_cuenta_click(MouseEvent event) throws Exception {
-        System.out.println("Prueba de click");
+        
         // Cargar el FXML de la ventana emergente
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Registro/Prueba_registro.fxml"));
         Parent root = loader.load();
@@ -101,7 +101,34 @@ public class Pag_Principal_No_Logg_Controller implements Initializable {
     }
 
     @FXML
-    private void iniciar_sesion_click(MouseEvent event) {
+    private void iniciar_sesion_click(MouseEvent event) throws Exception {
+        
+        // Cargar el FXML de la ventana emergente
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Inicio_de_Sesion/Vista_Inicio_Sesion.fxml"));
+        Parent root = loader.load();
+
+        // Crear una nueva escena y un nuevo escenario para la ventana emergente
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+
+        // Se bloquea la ventana desde donde se lanza la nueva ventana
+        stage.initModality(Modality.APPLICATION_MODAL);
+
+        // Obtenemos la ventana como objeto para aplicarle opciones
+        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        
+        //Creamos un efecto de desenfoque
+        BoxBlur blur = new BoxBlur(10, 10, 1);
+
+        //Aplicamos el efecto de desenfoque
+        primaryStage.getScene().getRoot().setEffect(blur);
+        
+        // Mostrar la ventana emergente
+        stage.showAndWait();
+
+        // Restaurar la opacidad de la ventana principal cuando se cierre la ventana emergente
+        primaryStage.getScene().getRoot().setEffect(null);
     }
 
     

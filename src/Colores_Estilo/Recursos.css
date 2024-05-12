@@ -40,13 +40,35 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
 .boton_enfocado_crear_cuenta{
     -fx-background-color:#1B77E0;
-    -fx-background-radius: 20;
-
-        
+    -fx-background-radius: 20;        
 }
 .boton_desenfocado_crear_cuenta{
     -fx-background-color:#1E90FF;
-    -fx-background-radius: 20; 
+    -fx-background-radius: 20;    
+}
 
-        
+.textfield_registro{
+    -fx-background-color: #000000; 
+    -fx-border-color: #222222;
+    -fx-background-radius: 5px; 
+    -fx-border-radius: 5px; 
+    -fx-padding: 5px; 
+    -fx-border-width: 2px;
+    -fx-text-fill: #ffffff;
+}
+
+.boton_desenfocado_registro{
+    -fx-background-color:#000000;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20; 
+    -fx-border-color: #1E90FF; 
+    -fx-border-width: 2px; 
+}
+
+.boton_enfocado_registro{
+    -fx-background-color:#222222;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20; 
+    -fx-border-color: #FF0000; 
+    -fx-border-width: 2px; 
 }
