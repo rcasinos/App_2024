@@ -27,7 +27,7 @@ public class Pag_Principal_No_Logg_Controller implements Initializable {
     @FXML
     private Button boton_crear_cuenta;
     @FXML
-    private Button boton_inicio_sesion;
+    public Button boton_inicio_sesion;
 
     //=========================================================
     // you must initialize here all related with the object 
