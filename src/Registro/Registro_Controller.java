@@ -5,8 +5,12 @@
 package Registro;
 
 import java.io.File;
+import static java.lang.Boolean.FALSE;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,7 +21,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
+import javafx.stage.FileChooser;
 
 /**
  * FXML Controller class
@@ -25,75 +31,105 @@ import javafx.scene.layout.StackPane;
  * @author berjo
  */
 public class Registro_Controller implements Initializable {
-
+    
+    //creacion de variables boleanas (privadas)
+    private BooleanProperty validName;
+    private BooleanProperty validNickname;
+    private BooleanProperty validEmail;
+    private BooleanProperty validPassword;
+    private BooleanProperty validPicture;
+    
+    
+    //variables del .fxml
     @FXML
-    private Label lIncorrectPassword;
+    private Button boton_subir_foto;
     @FXML
-    private Label lpassDifferent;
+    private ImageView imagen_foto_perfil;
     @FXML
-    private Button bCancel;
-    @FXML
-    private Button bAccept;
-    @FXML
-    private TextField nameUser;
-    @FXML
-    private PasswordField nickName;
-    @FXML
-    private Label errorNickName;
-    @FXML
-    private StackPane visiblePassword;
-    @FXML
-    private PasswordField pPassword;
-    @FXML
-    private Label errorPassword;
-    @FXML
-    private ToggleButton buttomVer;
-    @FXML
-    private PasswordField correoUser;
-    @FXML
-    private Label errorCorreo;
-    @FXML
-    private Button perfilButtom;
-    @FXML
-    private ImageView imageController;
-    @FXML
-    private TextField txtLabel;
+    private Button boton_registro;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("Prueba de proteccion a master");
+        
+        //Iniciamos los atributos booleanos
+        validName = new SimpleBooleanProperty();
+        validEmail = new SimpleBooleanProperty();
+        validNickname = new SimpleBooleanProperty();
+        validPassword = new SimpleBooleanProperty();
+        validPicture = new SimpleBooleanProperty();
+        
+        //Los ponemos a falso
+        validName.setValue(FALSE);
+        validNickname.setValue(FALSE);
+        validEmail.setValue(FALSE);
+        validPassword.setValue(FALSE);
+        validPicture.setValue(FALSE);
+        
+        //Creamos envoltorio para el boton de registrarse y que solo se active cuando 
+        // todas las opciones esten bien puestas y correctas
+        boton_registro.disableProperty().bind(validName.not().or(validNickname.not().or(validEmail.not().or(validPassword.not().or(validPicture.not())))));
+        
+        
     }    
 
     @FXML
-    private void verPassword(ActionEvent event) {
-        //Se cambia ya la imagen de los ojos pero cuando desaparece la passwordField no se ve el textField con la contraseña
-        // no se si es que no se llega a escribir o me falta algo pero bueno ya lo veré
+    private void subir_foto_desenfoque(MouseEvent event) {
         
-        txtLabel.setVisible(!txtLabel.isVisible());
-	pPassword.setVisible(!pPassword.isVisible());
-	Image ver = new Image(new File("src/Iconos_App/ojo abierto black.png").toURI().toString());
-	Image nover = new Image(new File("src/Iconos_App/ojo cerrado.png").toURI().toString());
-	if(buttomVer.isSelected()) {
-	    imageController.setImage(ver);
-	} else {
-	    imageController.setImage(nover);
-	}
+        //Modificamos el estilo del boton al salir de el
+        boton_subir_foto.getStyleClass().remove("boton_enfocado_crear_cuenta");
+        boton_subir_foto.getStyleClass().add("boton_desenfocado_crear_cuenta");
     }
 
     @FXML
-    private void aceptoRegistro(ActionEvent event) {
+    private void subir_foto_enfoque(MouseEvent event) {
+       
+        //Modificamos el estilo del boton al entrar en el
+        boton_subir_foto.getStyleClass().remove("boton_desenfocado_crear_cuenta");
+        boton_subir_foto.getStyleClass().add("boton_enfocado_crear_cuenta");
     }
 
     @FXML
-    private void imagePerfilPressed(ActionEvent event) {
+    private void subir_foto_click(MouseEvent event) {
         
-        //Aqui cuando el user le de al boton apra poner una foto de usuario
-        // lo unico que habrá que hacer será dejarle poder poner una imagen en su perfil
-        //podrá poner una imagen suya desde sus archivos o elegir alguno de las que pongamos por defecto
-        
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Seleccionar foto de perfil");
+        // Configura los filtros de archivo para que solo muestre archivos de imagen
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Imágenes", "*.png", "*.jpg", "*.gif")
+        );
+
+        // Abre el diálogo de selección de archivos
+        List<File> files = fileChooser.showOpenMultipleDialog(boton_subir_foto.getScene().getWindow());
+        if (files != null) {
+            // Selecciona solo la primera imagen si se seleccionaron múltiples imágenes
+            File selectedFile = files.get(0);
+            // Carga la imagen seleccionada y la muestra en el ImageView
+            Image image = new Image(selectedFile.toURI().toString());
+            imagen_foto_perfil.setImage(image);
+        }
     }
+
+    @FXML
+    private void registro_desenfoque(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        boton_registro.getStyleClass().remove("boton_enfocado_registro");
+        boton_registro.getStyleClass().add(".boton_desenfocado_registro");
+    }
+
+    @FXML
+    private void registro_enfoque(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        boton_registro.getStyleClass().remove(".boton_desenfocado_registro");
+        boton_registro.getStyleClass().add("boton_enfocado_registro");
+    }
+
+    @FXML
+    private void registro_click(MouseEvent event) {
+    }
+}    
     
-}

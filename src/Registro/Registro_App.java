@@ -18,7 +18,7 @@ public class Registro_App extends Application {
     public void start(Stage stage) throws Exception {
         //======================================================================
         // 1- creación del grafo de escena a partir del fichero FXML
-        FXMLLoader loader= new  FXMLLoader(getClass().getResource("Vista_Registro.fxml"));
+        FXMLLoader loader= new  FXMLLoader(getClass().getResource("Prueba_registro.fxml"));
         Parent root = loader.load();
         //======================================================================
         // 2- creación de la escena con el nodo raiz del grafo de escena
