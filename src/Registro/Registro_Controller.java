@@ -5,9 +5,12 @@
 package Registro;
 
 import java.io.File;
+import static java.lang.Boolean.FALSE;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,7 +31,16 @@ import javafx.stage.FileChooser;
  * @author berjo
  */
 public class Registro_Controller implements Initializable {
-
+    
+    //creacion de variables boleanas (privadas)
+    private BooleanProperty validName;
+    private BooleanProperty validNickname;
+    private BooleanProperty validEmail;
+    private BooleanProperty validPassword;
+    private BooleanProperty validPicture;
+    
+    
+    //variables del .fxml
     @FXML
     private Button boton_subir_foto;
     @FXML
@@ -41,7 +53,26 @@ public class Registro_Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("He llegado a interfaz registro");
+        
+        //Iniciamos los atributos booleanos
+        validName = new SimpleBooleanProperty();
+        validEmail = new SimpleBooleanProperty();
+        validNickname = new SimpleBooleanProperty();
+        validPassword = new SimpleBooleanProperty();
+        validPicture = new SimpleBooleanProperty();
+        
+        //Los ponemos a falso
+        validName.setValue(FALSE);
+        validNickname.setValue(FALSE);
+        validEmail.setValue(FALSE);
+        validPassword.setValue(FALSE);
+        validPicture.setValue(FALSE);
+        
+        //Creamos envoltorio para el boton de registrarse y que solo se active cuando 
+        // todas las opciones esten bien puestas y correctas
+        boton_registro.disableProperty().bind(validName.not().or(validNickname.not().or(validEmail.not().or(validPassword.not().or(validPicture.not())))));
+        
+        
     }    
 
     @FXML
