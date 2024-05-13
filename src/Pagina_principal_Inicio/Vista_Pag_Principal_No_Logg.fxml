@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1800.0" styleClass="negrobackground" stylesheets="@../Colores_Estilo/Recursos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Pagina_principal_Inicio.Pag_Principal_No_Logg_Controller">
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1800.0" styleClass="negrobackground" stylesheets="@Estilos_pag_princp_no_logg.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Pagina_principal_Inicio.Pag_Principal_No_Logg_Controller">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -77,7 +77,7 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="91.0" prefWidth="855.0" GridPane.rowIndex="1">
                <children>
-                  <Button fx:id="boton_crear_cuenta" mnemonicParsing="false" onMouseClicked="#crear_cuenta_click" onMouseEntered="#crear_cuenta_enfoque" onMouseExited="#crear_cuenta_desenfoque" prefHeight="51.0" prefWidth="325.0" style="-fx-background-radius: 20;" styleClass="boton_desenfocado_crear_cuenta" stylesheets="@../Colores_Estilo/Recursos.css" text="Crear Cuenta" textAlignment="CENTER" textFill="WHITE">
+                  <Button fx:id="boton_crear_cuenta" mnemonicParsing="false" onMouseClicked="#crear_cuenta_click" onMouseEntered="#crear_cuenta_enfoque" onMouseExited="#crear_cuenta_desenfoque" prefHeight="51.0" prefWidth="325.0" style="-fx-background-radius: 20;" styleClass="boton_desenfocado_crear_cuenta" stylesheets="@Estilos_pag_princp_no_logg.css" text="Crear Cuenta" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI Symbol" size="19.0" />
                      </font>
@@ -117,7 +117,7 @@
             </HBox>
             <HBox prefHeight="221.0" prefWidth="854.0" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="boton_inicio_sesion" mnemonicParsing="false" onMouseClicked="#iniciar_sesion_click" onMouseEntered="#iniciar_sesion_enfoque" onMouseExited="#iniciar_sesion_desenfoque" prefHeight="51.0" prefWidth="325.0" style="-fx-border-radius: 20;" styleClass="boton_desenfocado_inicio_sesion" stylesheets="@../Colores_Estilo/Recursos.css" text="Iniciar Sesión" textAlignment="CENTER" textFill="DODGERBLUE">
+                  <Button fx:id="boton_inicio_sesion" mnemonicParsing="false" onMouseClicked="#iniciar_sesion_click" onMouseEntered="#iniciar_sesion_enfoque" onMouseExited="#iniciar_sesion_desenfoque" prefHeight="51.0" prefWidth="325.0" style="-fx-border-radius: 20;" styleClass="boton_desenfocado_inicio_sesion" stylesheets="@Estilos_pag_princp_no_logg.css" text="Iniciar Sesión" textAlignment="CENTER" textFill="DODGERBLUE">
                      <font>
                         <Font name="Segoe UI Symbol" size="19.0" />
                      </font>
@@ -126,13 +126,13 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Separator prefHeight="6.0" prefWidth="135.0" styleClass="blanco" stylesheets="@../Colores_Estilo/Recursos.css" />
+                  <Separator prefHeight="6.0" prefWidth="135.0" styleClass="separadores" stylesheets="@Estilos_pag_princp_no_logg.css" />
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="     O     ">
                      <font>
                         <Font name="Segoe UI Black" size="15.0" />
                      </font>
                   </Text>
-                  <Separator prefHeight="6.0" prefWidth="135.0" styleClass="blanco" stylesheets="@../Colores_Estilo/Recursos.css" />
+                  <Separator prefHeight="6.0" prefWidth="135.0" styleClass="separadores" stylesheets="@Estilos_pag_princp_no_logg.css" />
                </children>
             </HBox>
          </children>
