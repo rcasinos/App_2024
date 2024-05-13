@@ -18,69 +18,31 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-color:#ffffff
 }
 
-.boton_desenfocado_inicio_sesion{
-    -fx-background-color:#000000;
-    -fx-background-radius: 20;
-    -fx-border-radius: 20; 
-    -fx-border-color: #1E90FF; 
-    -fx-border-width: 1px; 
-}
-
-.boton_enfocado_inicio_sesion{
-    -fx-background-color:#222222;
-    -fx-background-radius: 20;
-    -fx-border-radius: 20; 
-    -fx-border-color: #1E90FF; 
-    -fx-border-width: 1px; 
-}
-
-.boton_enfocado_crear_cuenta{
+.boton_enfocado_main{
     -fx-background-color:#1B77E0;
     -fx-background-radius: 20;        
 }
-.boton_desenfocado_crear_cuenta{
+.boton_desenfocado_main{
     -fx-background-color:#1E90FF;
-    -fx-background-radius: 20;    
-}
-
-.textfield_registro{
-    -fx-background-color: #000000; 
-    -fx-border-color: #222222;
-    -fx-background-radius: 5px; 
-    -fx-border-radius: 5px; 
-    -fx-padding: 5px; 
-    -fx-border-width: 2px;
+    -fx-background-radius: 20;
     -fx-text-fill: #ffffff;
+    -fx-font-size: 16;    
 }
 
-.boton_desenfocado_registro{
-    -fx-background-color:#000000;
-    -fx-background-radius: 20;
-    -fx-border-radius: 20; 
-    -fx-border-color: #1E90FF; 
-    -fx-border-width: 2px; 
+.label_desenfocado_azul{
+    -fx-text-fill: #999999;
+    -fx-font-size: 20;
+    -fx-font-family: "Segoe UI Black";
+    
+}
+.label_enfocado_azul{
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 20;
+    -fx-font-family: "Segoe UI Black";
 }
 
-.boton_enfocado_registro{
-    -fx-background-color:#222222;
-    -fx-background-radius: 20;
-    -fx-border-radius: 20; 
-    -fx-border-color: #FF0000; 
-    -fx-border-width: 2px; 
-}
-
-.boton_desenfocado_siguiente{
-    -fx-background-color:#ffffff;
-    -fx-background-radius: 20;
-    -fx-text-fill: #000000;
-}
-
-.boton_contraseña_olvidada{
-    -fx-background-color:#1E90FF;
-    -fx-background-radius: 20;
-    -fx-border-radius: 20; 
-    -fx-border-color: #000000; 
-    -fx-border-width: 2px; 
-    -fx-text-fill: #000000;
-    -fx-font-size: 14;
+.label_seleccionado_azul{
+    -fx-text-fill: #1E90FF;
+    -fx-font-size: 23;
+    -fx-font-family: "Segoe UI Black";
 }

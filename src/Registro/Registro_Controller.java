@@ -13,7 +13,11 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -24,6 +28,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -70,25 +76,26 @@ public class Registro_Controller implements Initializable {
         
         //Creamos envoltorio para el boton de registrarse y que solo se active cuando 
         // todas las opciones esten bien puestas y correctas
-        boton_registro.disableProperty().bind(validName.not().or(validNickname.not().or(validEmail.not().or(validPassword.not().or(validPicture.not())))));
+        //boton_subir_foto1.disableProperty().bind(validName.not().or(validNickname.not().or(validEmail.not().or(validPassword.not().or(validPicture.not())))));
         
         
     }    
 
     @FXML
     private void subir_foto_desenfoque(MouseEvent event) {
+
         
-        //Modificamos el estilo del boton al salir de el
-        boton_subir_foto.getStyleClass().remove("boton_enfocado_crear_cuenta");
-        boton_subir_foto.getStyleClass().add("boton_desenfocado_crear_cuenta");
+        //Modificamos el estilo del boton al entrar en el
+        boton_subir_foto.getStyleClass().remove("boton_enfocado_subir_imagen");
+        boton_subir_foto.getStyleClass().add("boton_desenfocado_subir_imagen");
     }
 
     @FXML
-    private void subir_foto_enfoque(MouseEvent event) {
+    private void subir_foto_enfoque(MouseEvent event) {      
        
         //Modificamos el estilo del boton al entrar en el
-        boton_subir_foto.getStyleClass().remove("boton_desenfocado_crear_cuenta");
-        boton_subir_foto.getStyleClass().add("boton_enfocado_crear_cuenta");
+        boton_subir_foto.getStyleClass().remove("boton_desenfocado_subir_imagen");
+        boton_subir_foto.getStyleClass().add("boton_enfocado_subir_imagen");
     }
 
     @FXML
@@ -117,19 +124,37 @@ public class Registro_Controller implements Initializable {
         
         //Modificamos el estilo del boton al entrar en el
         boton_registro.getStyleClass().remove("boton_enfocado_registro");
-        boton_registro.getStyleClass().add(".boton_desenfocado_registro");
+        boton_registro.getStyleClass().add("boton_desenfocado_registro");
     }
 
     @FXML
     private void registro_enfoque(MouseEvent event) {
         
         //Modificamos el estilo del boton al entrar en el
-        boton_registro.getStyleClass().remove(".boton_desenfocado_registro");
+        boton_registro.getStyleClass().remove("boton_desenfocado_registro");
         boton_registro.getStyleClass().add("boton_enfocado_registro");
     }
 
     @FXML
-    private void registro_click(MouseEvent event) {
+    private void registro_click(MouseEvent event) throws Exception {
+        
+        // Cargar el FXML de la ventana emergente
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Vista_Logg.fxml"));
+        Parent root = loader.load();
+
+        // Crear una nueva escena y un nuevo escenario para la ventana emergente
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+
+        // Obtenemos la ventana como objeto para aplicarle opciones
+        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        
+        //cierro pestaña de inicio
+        primaryStage.close();
+        
+        // Mostrar la ventana emergente
+        stage.show();
+        }
     }
-}    
-    
+

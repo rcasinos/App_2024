@@ -125,7 +125,7 @@
             </VBox>
             <ImageView fitHeight="38.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
                <image>
-                  <Image url="@../Iconos_App/marca-de-verificacion.png" />
+                  <Image url="@../Iconos_App/si.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="38.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -207,7 +207,7 @@
             </GridPane>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="boton_registro" mnemonicParsing="false" onMouseClicked="#registro_click" onMouseEntered="#registro_enfoque" onMouseExited="#registro_desenfoque" prefHeight="53.0" prefWidth="233.0" styleClass="boton_desenfocado_registro" stylesheets="@Estilos_registro.css" text="Crear Cuenta 👽 ">
+                  <Button fx:id="boton_registro" mnemonicParsing="false" onMouseClicked="#registro_click" onMouseEntered="#registro_enfoque" onMouseExited="#registro_desenfoque" prefHeight="53.0" prefWidth="233.0" styleClass="boton_desenfocado_registro" stylesheets="@Estilos_registro.css" text="Crear Cuenta  ">
                      <font>
                         <Font name="Segoe UI Black" size="18.0" />
                      </font>

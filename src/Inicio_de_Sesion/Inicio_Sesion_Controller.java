@@ -25,7 +25,7 @@ import javafx.stage.Stage;
  *
  * @author jsoler
  */
-public class Inicio_Sesion_Controller implements Initializable {
+public class Inicio_Sesion_Controller implements Initializable{
 
     @FXML
     private Button boton_siguiente;
@@ -33,6 +33,8 @@ public class Inicio_Sesion_Controller implements Initializable {
     private Button boton_olvido_contrasena;
     @FXML
     private Label label_registrate;
+    
+
 
     //=========================================================
     // you must initialize here all related with the object 
@@ -58,7 +60,25 @@ public class Inicio_Sesion_Controller implements Initializable {
     }
 
     @FXML
-    private void siguiente_click(MouseEvent event) {
+    private void siguiente_click(MouseEvent event) throws Exception{
+        
+        // Cargar el FXML de la ventana emergente
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Vista_Logg.fxml"));
+        Parent root = loader.load();
+
+        // Crear una nueva escena y un nuevo escenario para la ventana emergente
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+
+        // Obtenemos la ventana como objeto para aplicarle opciones
+        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        
+        //cierro pestaña de inicio
+        primaryStage.close();
+        
+        // Mostrar la ventana emergente
+        stage.show();
     }
 
     @FXML
@@ -99,6 +119,7 @@ public class Inicio_Sesion_Controller implements Initializable {
 
     @FXML
     private void registrate_click(MouseEvent event) throws Exception{
+        
         // Cargar el FXML de la ventana emergente
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Registro/Prueba_registro.fxml"));
         Parent root = loader.load();
@@ -108,18 +129,14 @@ public class Inicio_Sesion_Controller implements Initializable {
         Stage stage = new Stage();
         stage.setScene(scene);
 
-        // Se bloquea la ventana desde donde se lanza la nueva ventana
-        stage.initModality(Modality.APPLICATION_MODAL);
-
         // Obtenemos la ventana como objeto para aplicarle opciones
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         
         //cierro pestaña de inicio
         primaryStage.close();
-        
+           
         // Mostrar la ventana emergente
-        stage.showAndWait();
-        
+        stage.show();    
         }
     }
     
