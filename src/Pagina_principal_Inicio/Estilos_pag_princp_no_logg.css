@@ -1,0 +1,50 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 12 mar 2024, 13:51:25
+    Author     : berjo
+*/
+.negrobackground{
+    -fx-background-color:#000000
+}
+
+.azul_estilo{
+    -fx-background-color:#1E90FF
+}
+
+.blanco_puro{
+    -fx-background-color:#ffffff
+}
+
+.separadores{
+    -fx-max-height: 1;
+    -fx-background-color: #ffffff;
+}
+
+.boton_desenfocado_inicio_sesion{
+    -fx-background-color:#000000;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20; 
+    -fx-border-color: #1E90FF; 
+    -fx-border-width: 1px; 
+}
+
+.boton_enfocado_inicio_sesion{
+    -fx-background-color:#222222;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20; 
+    -fx-border-color: #1E90FF; 
+    -fx-border-width: 1px; 
+}
+
+.boton_enfocado_crear_cuenta{
+    -fx-background-color:#1B77E0;
+    -fx-background-radius: 20;        
+}
+.boton_desenfocado_crear_cuenta{
+    -fx-background-color:#1E90FF;
+    -fx-background-radius: 20;    
+}
+
