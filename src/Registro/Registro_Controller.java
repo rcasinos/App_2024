@@ -150,8 +150,12 @@ public class Registro_Controller implements Initializable {
         // Obtenemos la ventana como objeto para aplicarle opciones
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         
-        //cierro pestaña de inicio
+        // cierro pestaña de inicio
         primaryStage.close();
+        
+        // Maximizamos y centramos
+        stage.setMaximized(true);
+        stage.centerOnScreen();
         
         // Mostrar la ventana emergente
         stage.show();

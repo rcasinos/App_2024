@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1800.0" styleClass="negrobackground" stylesheets="@Estilos_pag_princp_no_logg.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Pagina_principal_Inicio.Pag_Principal_No_Logg_Controller">
+<GridPane alignment="CENTER" prefHeight="1000.0" prefWidth="1800.0" styleClass="negrobackground" stylesheets="@Estilos_pag_princp_no_logg.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Pagina_principal_Inicio.Pag_Principal_No_Logg_Controller">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -114,6 +114,9 @@
                      </font>
                   </Text>
                </children>
+               <GridPane.margin>
+                  <Insets top="20.0" />
+               </GridPane.margin>
             </HBox>
             <HBox prefHeight="221.0" prefWidth="854.0" GridPane.rowIndex="2">
                <children>
@@ -123,6 +126,9 @@
                      </font>
                   </Button>
                </children>
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -134,18 +140,21 @@
                   </Text>
                   <Separator prefHeight="6.0" prefWidth="135.0" styleClass="separadores" stylesheets="@Estilos_pag_princp_no_logg.css" />
                </children>
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin>
             </HBox>
          </children>
       </GridPane>
       <GridPane GridPane.rowIndex="2">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="669.6000366210938" minWidth="10.0" prefWidth="669.6000366210938" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="395.199951171875" minWidth="10.0" prefWidth="130.39996337890625" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="72.66668701171875" minHeight="10.0" prefHeight="72.66668701171875" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="268.3333740234375" minHeight="10.0" prefHeight="232.3333740234375" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="222.0" minHeight="10.0" prefHeight="48.6666259765625" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="268.3333740234375" minHeight="10.0" prefHeight="143.8" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="222.0" minHeight="10.0" prefHeight="58.400000000000006" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="104.33331298828125" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>

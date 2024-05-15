@@ -9,10 +9,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 
 /**
  *
@@ -33,6 +37,8 @@ public class Logg_Controller implements Initializable {
     private Label boton_exportar;
     @FXML
     private Label boton_configuracion;
+    @FXML
+    private HBox contenedor_pantallas;
     
    
     //=========================================================

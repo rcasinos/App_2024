@@ -11,17 +11,17 @@ import javafx.scene.input.MouseEvent;
 
 //Import del lanzador
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.effect.BoxBlur;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
-/**
- *
- * @author jsoler
- */
+
 public class Pag_Principal_No_Logg_Controller implements Initializable {
 
     @FXML
@@ -50,7 +50,7 @@ public class Pag_Principal_No_Logg_Controller implements Initializable {
 
         // Se bloquea la ventana desde donde se lanza la nueva ventana
         stage.initModality(Modality.APPLICATION_MODAL);
-
+   
         // Obtenemos la ventana como objeto para aplicarle opciones
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         
@@ -59,10 +59,23 @@ public class Pag_Principal_No_Logg_Controller implements Initializable {
 
         //Aplicamos el efecto de desenfoque
         primaryStage.getScene().getRoot().setEffect(blur);
+               
+        //Centramos la ventana en el centro
+        stage.centerOnScreen();
+                
+        // Ajustar la altura de la ventana emergente al máximo posible
+        Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+        double windowHeight = bounds.getHeight(); // La altura de la ventana será la altura de la pantalla
+        stage.setHeight(windowHeight);
+
+        // Limitar el ancho de la ventana emergente
+        double maxWindowWidth = 800; // Ancho máximo deseado
+        double windowWidth = Math.min(bounds.getWidth(), maxWindowWidth); // El ancho es el mínimo entre el ancho máximo y el ancho de la pantalla
+        stage.setWidth(windowWidth);
         
         // Mostrar la ventana emergente
         stage.showAndWait();
-
+        
         // Restaurar la opacidad de la ventana principal cuando se cierre la ventana emergente
         primaryStage.getScene().getRoot().setEffect(null);
         
@@ -114,7 +127,7 @@ public class Pag_Principal_No_Logg_Controller implements Initializable {
 
         // Se bloquea la ventana desde donde se lanza la nueva ventana
         stage.initModality(Modality.APPLICATION_MODAL);
-
+   
         // Obtenemos la ventana como objeto para aplicarle opciones
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         
@@ -123,10 +136,23 @@ public class Pag_Principal_No_Logg_Controller implements Initializable {
 
         //Aplicamos el efecto de desenfoque
         primaryStage.getScene().getRoot().setEffect(blur);
+               
+        //Centramos la ventana en el centro
+        stage.centerOnScreen();
+                
+        // Ajustar la altura de la ventana emergente al máximo posible
+        Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+        double windowHeight = bounds.getHeight(); // La altura de la ventana será la altura de la pantalla
+        stage.setHeight(windowHeight);
+
+        // Limitar el ancho de la ventana emergente
+        double maxWindowWidth = 800; // Ancho máximo deseado
+        double windowWidth = Math.min(bounds.getWidth(), maxWindowWidth); // El ancho es el mínimo entre el ancho máximo y el ancho de la pantalla
+        stage.setWidth(windowWidth);
         
         // Mostrar la ventana emergente
         stage.showAndWait();
-
+        
         // Restaurar la opacidad de la ventana principal cuando se cierre la ventana emergente
         primaryStage.getScene().getRoot().setEffect(null);
     }
