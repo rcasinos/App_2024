@@ -1,5 +1,6 @@
 package Pagina_principal_Inicio;
         
+import javafx.geometry.Rectangle2D;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -16,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.effect.BoxBlur;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 /**
@@ -59,6 +61,16 @@ public class Pag_Principal_No_Logg_Controller implements Initializable {
 
         //Aplicamos el efecto de desenfoque
         primaryStage.getScene().getRoot().setEffect(blur);
+        
+        //Ajustar la altura de la ventana emergente al maximo posible
+        Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+        double windowHeight = bounds.getHeight();
+        stage.setWidth(windowHeight);
+        
+        //Limitar al ancho de la ventana emergente
+        double maxWindowWidth = 800;
+        double windowWidth = Math.min(bounds.getWidth(), maxWindowWidth);
+        stage.setWidth(windowWidth);
         
         // Mostrar la ventana emergente
         stage.showAndWait();
