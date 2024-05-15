@@ -62,12 +62,14 @@ public class Pag_Principal_No_Logg_Controller implements Initializable {
         //Aplicamos el efecto de desenfoque
         primaryStage.getScene().getRoot().setEffect(blur);
         
-        //Ajustar la altura de la ventana emergente al maximo posible
+        // Obtener dimensiones de la pantalla principal
         Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+
+        // Ajustar la altura de la ventana emergente al máximo posible
         double windowHeight = bounds.getHeight();
-        stage.setWidth(windowHeight);
-        
-        //Limitar al ancho de la ventana emergente
+        stage.setHeight(windowHeight);
+
+        // Limitar al ancho de la ventana emergente
         double maxWindowWidth = 800;
         double windowWidth = Math.min(bounds.getWidth(), maxWindowWidth);
         stage.setWidth(windowWidth);
@@ -136,12 +138,14 @@ public class Pag_Principal_No_Logg_Controller implements Initializable {
         //Aplicamos el efecto de desenfoque
         primaryStage.getScene().getRoot().setEffect(blur);
         
-        //Ajustar la altura de la ventana emergente al maximo posible
+        // Obtener dimensiones de la pantalla principal
         Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+
+        // Ajustar la altura de la ventana emergente al máximo posible
         double windowHeight = bounds.getHeight();
-        stage.setWidth(windowHeight);
-        
-        //Limitar al ancho de la ventana emergente
+        stage.setHeight(windowHeight);
+
+        // Limitar al ancho de la ventana emergente
         double maxWindowWidth = 800;
         double windowWidth = Math.min(bounds.getWidth(), maxWindowWidth);
         stage.setWidth(windowWidth);
