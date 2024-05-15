@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -10,6 +11,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -65,9 +67,10 @@
       </GridPane>
       <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="38.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="674.0" minWidth="10.0" prefWidth="661.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="38.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="186.6666488647461" minWidth="-Infinity" prefWidth="186.6666488647461" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="674.0" minWidth="10.0" prefWidth="381.6666259765625" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.0" minWidth="-Infinity" prefWidth="56.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="151.0" minWidth="10.0" prefWidth="111.33333333333337" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -93,19 +96,37 @@
                         <Font name="Segoe UI Emoji" size="14.0" />
                      </font>
                   </Text>
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                           <children>
+                              <TextField fx:id="txtUser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
+                              <PasswordField fx:id="pPasswordUser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
+                           </children>
+                        </StackPane>
+                     </children>
+                  </VBox>
                   <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña incorrecta" />
                </children>
             </VBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="boton_siguiente" mnemonicParsing="false" onMouseClicked="#siguiente_click" onMouseEntered="#siguiente_enfocado" onMouseExited="#siguiente_desenfocado" prefHeight="45.0" prefWidth="360.0" styleClass="boton_desenfocado_siguiente" stylesheets="@Estilos_Inicio_Sesion.css" text="Siguiente 🚀">
+                  <Button fx:id="boton_siguiente" mnemonicParsing="false" onAction="#iniciarSesion" onMouseClicked="#siguiente_click" onMouseEntered="#siguiente_enfocado" onMouseExited="#siguiente_desenfocado" prefHeight="45.0" prefWidth="360.0" styleClass="boton_desenfocado_siguiente" stylesheets="@Estilos_Inicio_Sesion.css" text="Siguiente 🚀">
                      <font>
                         <Font name="Segoe UI Black" size="24.0" />
                      </font>
                   </Button>
                </children>
             </HBox>
+            <Button fx:id="viewerPassword" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#viewPasswordUser" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: black; -fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #222222;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Iconos_App/ojo%20abierto%20black.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </GridPane>
       <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">

@@ -76,4 +76,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-text-fill: #ffffff;
 }
 
+.textfield_ver_contrasena{
+    -fx-background-color: #000000; 
+    -fx-border-color: #222222; 
+    -fx-background-radius: 20px;
+  
+}
 

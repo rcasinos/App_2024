@@ -5,6 +5,7 @@
  */
 package Inicio_de_Sesion;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -16,7 +17,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.BoxBlur;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -33,6 +37,12 @@ public class Inicio_Sesion_Controller implements Initializable{
     private Button boton_olvido_contrasena;
     @FXML
     private Label label_registrate;
+    @FXML
+    private TextField txtUser;
+    @FXML
+    private PasswordField pPasswordUser;
+    @FXML
+    private Button viewerPassword;
     
 
 
@@ -138,6 +148,23 @@ public class Inicio_Sesion_Controller implements Initializable{
         // Mostrar la ventana emergente
         stage.show();    
         }
+
+    @FXML
+    private void iniciarSesion(ActionEvent event) {
+        txtUser.setVisible(!txtUser.isVisible());
+	pPasswordUser.setVisible(!pPasswordUser.isVisible());
+	Image ver = new Image(new File("src/Iconos_App/ojo abierto black").toURI().toString());
+	Image nover = new Image(new File("src/Iconos_App/ojo cerrado").toURI().toString());
+	if(viewerPassword.isPressed()) {
+	   // ojo.setImage(ver);
+	} else {
+	    //ojo.setImage(nover);
+	}
+    }
+
+    @FXML
+    private void viewPasswordUser(ActionEvent event) {
+    }
     }
     
 
