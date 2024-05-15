@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="900.0" styleClass="negrobackground" stylesheets="@../Colores_Estilo/Recursos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Registro.Registro_Controller">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="900.0" styleClass="negrobackground" stylesheets="@Estilos_registro.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Registro.Registro_Controller">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="0.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="800.0" minWidth="10.0" prefWidth="746.0" />
@@ -88,7 +88,7 @@
                         <Font name="Segoe UI Emoji" size="14.0" />
                      </font>
                   </Text>
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="450.0" styleClass="textfield_registro" stylesheets="@../Colores_Estilo/Recursos.css" />
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="450.0" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
                   <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Como te llamas?" />
                </children>
                <GridPane.margin>
@@ -102,7 +102,7 @@
                         <Font name="Segoe UI Emoji" size="14.0" />
                      </font>
                   </Text>
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="450.0" promptText="No puede contener espacios" styleClass="textfield_registro" stylesheets="@../Colores_Estilo/Recursos.css" />
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="450.0" promptText="No puede contener espacios" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
                   <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Que apodo quieres tener?" />
                </children>
                <padding>
@@ -116,7 +116,7 @@
                         <Font name="Segoe UI Emoji" size="14.0" />
                      </font>
                   </Text>
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="450.0" promptText="Solo letras y numeros (Min 6 caracteres)" styleClass="textfield_registro" stylesheets="@../Colores_Estilo/Recursos.css" />
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="450.0" promptText="Solo letras y numeros (Min 6 caracteres)" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
                   <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe una contraseña" />
                </children>
                <padding>
@@ -125,7 +125,7 @@
             </VBox>
             <ImageView fitHeight="38.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
                <image>
-                  <Image url="@../Iconos_App/marca-de-verificacion.png" />
+                  <Image url="@../Iconos_App/si.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="38.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -159,7 +159,7 @@
                         <Font name="Segoe UI Emoji" size="14.0" />
                      </font>
                   </Text>
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="450.0" promptText="Nombre@dominio.org" styleClass="textfield_registro" stylesheets="@../Colores_Estilo/Recursos.css" />
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="450.0" promptText="Nombre@dominio.org" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
                   <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe tu correo electronico" />
                </children>
                <padding>
@@ -189,7 +189,7 @@
                               <Font name="Segoe UI Emoji" size="14.0" />
                            </font>
                         </Text>
-                        <Button fx:id="boton_subir_foto" mnemonicParsing="false" onMouseClicked="#subir_foto_click" onMouseEntered="#subir_foto_enfoque" onMouseExited="#subir_foto_desenfoque" prefHeight="30.0" prefWidth="82.0" styleClass="boton_desenfocado_crear_cuenta" stylesheets="@../Colores_Estilo/Recursos.css" text="Subir" textFill="WHITE">
+                        <Button fx:id="boton_subir_foto" mnemonicParsing="false" onMouseClicked="#subir_foto_click" onMouseEntered="#subir_foto_enfoque" onMouseExited="#subir_foto_desenfoque" prefHeight="30.0" prefWidth="82.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@Estilos_registro.css" text="Subir" textFill="WHITE">
                            <font>
                               <Font name="Segoe UI Black" size="11.0" />
                            </font></Button>
@@ -207,7 +207,7 @@
             </GridPane>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="boton_registro" mnemonicParsing="false" onMouseClicked="#registro_click" onMouseEntered="#registro_enfoque" onMouseExited="#registro_desenfoque" prefHeight="53.0" prefWidth="233.0" styleClass="boton_desenfocado_registro" stylesheets="@../Colores_Estilo/Recursos.css" text="Crear Cuenta 👽 ">
+                  <Button fx:id="boton_registro" mnemonicParsing="false" onMouseClicked="#registro_click" onMouseEntered="#registro_enfoque" onMouseExited="#registro_desenfoque" prefHeight="53.0" prefWidth="233.0" styleClass="boton_desenfocado_registro" stylesheets="@Estilos_registro.css" text="Crear Cuenta  ">
                      <font>
                         <Font name="Segoe UI Black" size="18.0" />
                      </font>
