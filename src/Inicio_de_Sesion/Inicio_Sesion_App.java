@@ -29,6 +29,10 @@ public class Inicio_Sesion_App extends Application {
         // 3- asiganación de la escena al Stage que recibe el metodo 
         //     - configuracion del stage
         //     - se muestra el stage de manera no modal mediante el metodo show()
+        
+        stage.setMaximized(true);
+        stage.centerOnScreen();
+        
         stage.setScene(scene);
         stage.setTitle("Rocketeer");
         stage.setResizable(false);
