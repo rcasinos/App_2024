@@ -5,6 +5,7 @@
  */
 package Inicio_de_Sesion;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -19,11 +20,24 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.effect.BoxBlur;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.application.Application;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.layout.VBox;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
+
 
 /**
  *
@@ -41,8 +55,17 @@ public class Inicio_Sesion_Controller implements Initializable{
     private TextField txtUser;
     @FXML
     private PasswordField pPasswordUser;
+  
+    private ToggleButton viewerPassword;
+    @FXML
+    private ToggleButton verPassword;
+    private String pasword;
+    
+    //private  PasswordField password ;
+
     @FXML
     private Button viewerPassword;
+
     
 
 
@@ -51,6 +74,32 @@ public class Inicio_Sesion_Controller implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+        // Configurar el TextField para mostrar el mismo texto que el PasswordField
+         txtUser.textProperty().bindBidirectional(pPasswordUser.textProperty());
+         
+         //Dejamos el passwordfield visible
+          txtUser.setVisible(false);
+          
+          verPassword.setOnAction(event -> {
+              boolean PasswordFieldVisible = pPasswordUser.isVisible();
+              pPasswordUser.setVisible(!PasswordFieldVisible);
+              txtUser.setVisible(PasswordFieldVisible);
+          });
+         
+          
+          
+          
+        /*viewerPassword.setOnAction(event -> {
+          System.out.println("boton pulsado");
+                   String password = pPasswordUser.getText();
+                   txtUser.setText(password);
+        });*/
+        
+         /*pPasswordUser.focusedProperty().addListener((observable,oldValue,newValue)->{
+           if(!newValue){//foco perdido
+               checkPassword();}
+           });*/
     }
 
     @FXML
@@ -141,9 +190,24 @@ public class Inicio_Sesion_Controller implements Initializable{
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
+        
+         // Se bloquea la ventana desde donde se lanza la nueva ventana
+        stage.initModality(Modality.APPLICATION_MODAL);
 
         // Obtenemos la ventana como objeto para aplicarle opciones
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        
+         // Obtener dimensiones de la pantalla principal
+        Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+        
+        // Ajustar la altura de la ventana emergente al máximo posible
+        double windowHeight = bounds.getHeight();
+        stage.setHeight(windowHeight);
+        
+        // Limitar al ancho de la ventana emergente
+        double maxWindowWidth = 800;
+        double windowWidth = Math.min(bounds.getWidth(), maxWindowWidth);
+        stage.setWidth(windowWidth);
         
         //cierro pestaña de inicio
         primaryStage.close();
@@ -163,23 +227,40 @@ public class Inicio_Sesion_Controller implements Initializable{
         // Mostrar la ventana emergente
         stage.show();    
         }
-        
+
     
-    @FXML
-    private void viewPasswordUser(ActionEvent event) {
 
-        txtUser.setVisible(!txtUser.isVisible());
-	pPasswordUser.setVisible(!pPasswordUser.isVisible());
-        
-	//Image ver = new Image(new File("src/Iconos_App/ojo abierto black").toURI().toString());
-	//Image nover = new Image(new File("src/Iconos_App/ojo cerrado").toURI().toString());
-        
-	if(viewerPassword.isPressed()) {
-	   // ojo.setImage(ver);
-	} else {
-	    //ojo.setImage(nover);
 
-	}
+        @FXML
+        private void verPulsado(ActionEvent event) {
+
+            Image ver = new Image(new File("src/Iconos_App/ojo abierto black.png").toURI().toString());
+            Image nover = new Image(new File("src/Iconos_App/ojo cerrado.png").toURI().toString());
+            if(verPassword.isFocused()) {
+              ojo.setImage(ver);
+             } else {
+              ojo.setImage(nover);
+            }
+
+        }
+
+        @FXML
+        private void registro_desenfoque(MouseEvent event) {
+        }
+
+        @FXML
+        private void registro_enfoque(MouseEvent event) {
+        }
+
+        @FXML
+        private void registro_click(MouseEvent event) {
+        }
+
+        @FXML
+        private void iniciarSesion(ActionEvent event) {
+        }
+
+
     }
-}
 
+   
