@@ -182,5 +182,4 @@ public class Inicio_Sesion_Controller implements Initializable{
 	}
     }
 }
-    
 
