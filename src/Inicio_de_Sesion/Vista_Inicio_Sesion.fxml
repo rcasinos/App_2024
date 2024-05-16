@@ -17,6 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+
 <GridPane alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="699.0" prefWidth="900.0" styleClass="negrobackground" stylesheets="@Estilos_Inicio_Sesion.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Inicio_de_Sesion.Inicio_Sesion_Controller">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="0.0" prefWidth="100.0" />
@@ -70,6 +71,7 @@
       </GridPane>
       <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
         <columnConstraints>
+
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="242.66668192545572" minWidth="-Infinity" prefWidth="149.33334350585938" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="674.0" minWidth="10.0" prefWidth="400.7777303059895" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="219.0" minWidth="-Infinity" prefWidth="135.55560302734375" />
@@ -105,6 +107,9 @@
                            <children>
                               <TextField fx:id="txtUser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
                               <PasswordField fx:id="pPasswordUser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="360.0" promptText="Introduce tu contraseña" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
+
+                              <PasswordField fx:id="pPasswordUser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
+
                            </children>
                         </StackPane>
                      </children>
@@ -121,6 +126,7 @@
                   </Button>
                </children>
             </HBox>
+
             <ToggleButton fx:id="verPassword" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#verPulsado" prefHeight="32.0" prefWidth="61.0" style="-fx-border-radius: 20; -fx-border-color: #222222; -fx-background-color: black;" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <graphic>
                   <ImageView fitHeight="26.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
@@ -130,6 +136,16 @@
                   </ImageView>
                </graphic>
             </ToggleButton>
+
+            <Button fx:id="viewerPassword" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#viewPasswordUser" prefHeight="25.0" prefWidth="35.0" style="-fx-background-color: black; -fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #222222;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Iconos_App/ojo%20abierto%20black.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </GridPane>
       <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="265.0" prefWidth="731.0" GridPane.columnIndex="1" GridPane.rowIndex="2">

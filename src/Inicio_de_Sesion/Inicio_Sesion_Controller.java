@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -25,6 +26,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
@@ -53,12 +55,17 @@ public class Inicio_Sesion_Controller implements Initializable{
     private TextField txtUser;
     @FXML
     private PasswordField pPasswordUser;
+  
     private ToggleButton viewerPassword;
     @FXML
     private ToggleButton verPassword;
     private String pasword;
     
     //private  PasswordField password ;
+
+    @FXML
+    private Button viewerPassword;
+
     
 
 
@@ -128,6 +135,9 @@ public class Inicio_Sesion_Controller implements Initializable{
         
         //cierro pestaña de inicio
         primaryStage.close();
+        
+        stage.setMaximized(true);
+        stage.centerOnScreen();
         
         // Mostrar la ventana emergente
         stage.show();
@@ -201,6 +211,18 @@ public class Inicio_Sesion_Controller implements Initializable{
         
         //cierro pestaña de inicio
         primaryStage.close();
+        
+        // Obtener dimensiones de la pantalla principal
+        Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+
+        // Ajustar la altura de la ventana emergente al máximo posible
+        double windowHeight = bounds.getHeight();
+        stage.setHeight(windowHeight);
+
+        // Limitar al ancho de la ventana emergente
+        double maxWindowWidth = 900;
+        double windowWidth = Math.min(bounds.getWidth(), maxWindowWidth);
+        stage.setWidth(windowWidth);
            
         // Mostrar la ventana emergente
         stage.show();    
@@ -208,40 +230,37 @@ public class Inicio_Sesion_Controller implements Initializable{
 
     
 
+
+        @FXML
+        private void verPulsado(ActionEvent event) {
+
+            Image ver = new Image(new File("src/Iconos_App/ojo abierto black.png").toURI().toString());
+            Image nover = new Image(new File("src/Iconos_App/ojo cerrado.png").toURI().toString());
+            if(verPassword.isFocused()) {
+              ojo.setImage(ver);
+             } else {
+              ojo.setImage(nover);
+            }
+
+        }
+
+        @FXML
+        private void registro_desenfoque(MouseEvent event) {
+        }
+
+        @FXML
+        private void registro_enfoque(MouseEvent event) {
+        }
+
+        @FXML
+        private void registro_click(MouseEvent event) {
+        }
+
+        @FXML
+        private void iniciarSesion(ActionEvent event) {
+        }
+
+
+    }
+
    
-    @FXML
-    private void verPulsado(ActionEvent event) {
-        
-        Image ver = new Image(new File("src/Iconos_App/ojo abierto black.png").toURI().toString());
-	Image nover = new Image(new File("src/Iconos_App/ojo cerrado.png").toURI().toString());
-	if(verPassword.isFocused()) {
-	    ojo.setImage(ver);
-	} else {
-	    ojo.setImage(nover);
-	}
-  
-}
-
-    @FXML
-    private void registro_desenfoque(MouseEvent event) {
-    }
-
-    @FXML
-    private void registro_enfoque(MouseEvent event) {
-    }
-
-    @FXML
-    private void registro_click(MouseEvent event) {
-    }
-
-    @FXML
-    private void iniciarSesion(ActionEvent event) {
-    }
-
-    
-    
-    
-    }
-    
-    
-
