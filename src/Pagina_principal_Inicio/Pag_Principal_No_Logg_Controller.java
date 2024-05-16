@@ -117,7 +117,6 @@ public class Pag_Principal_No_Logg_Controller implements Initializable {
     @FXML
     private void iniciar_sesion_click(MouseEvent event) throws Exception {
         
-        System.out.println("Ha entrado al boton");
         // Cargar el FXML de la ventana emergente
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Inicio_de_Sesion/Vista_Inicio_Sesion.fxml"));
         Parent root = loader.load();
