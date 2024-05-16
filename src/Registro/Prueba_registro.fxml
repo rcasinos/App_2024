@@ -16,7 +16,7 @@
 
 <HBox alignment="CENTER" styleClass="negrobackground" stylesheets="@Estilos_registro.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Registro.Registro_Controller">
    <children>
-      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="900.0" styleClass="negrobackground" stylesheets="@Estilos_registro.css">
+      <GridPane prefHeight="900.0" prefWidth="900.0" styleClass="negrobackground" stylesheets="@Estilos_registro.css">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="0.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="800.0" minWidth="10.0" prefWidth="746.0" />
@@ -91,7 +91,7 @@
                               <Font name="Segoe UI Emoji" size="14.0" />
                            </font>
                         </Text>
-                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="450.0" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
+                        <TextField minWidth="-Infinity" prefHeight="26.0" prefWidth="450.0" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
                         <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Como te llamas?" />
                      </children>
                      <GridPane.margin>
@@ -105,7 +105,7 @@
                               <Font name="Segoe UI Emoji" size="14.0" />
                            </font>
                         </Text>
-                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="450.0" promptText="No puede contener espacios" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
+                        <TextField minWidth="-Infinity" prefHeight="26.0" prefWidth="450.0" promptText="No puede contener espacios" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
                         <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Que apodo quieres tener?" />
                      </children>
                      <padding>
@@ -119,7 +119,7 @@
                               <Font name="Segoe UI Emoji" size="14.0" />
                            </font>
                         </Text>
-                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="450.0" promptText="Solo letras y numeros (Min 6 caracteres)" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
+                        <TextField minWidth="-Infinity" prefHeight="26.0" prefWidth="450.0" promptText="Solo letras y numeros (Min 6 caracteres)" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
                         <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe una contraseña" />
                      </children>
                      <padding>
@@ -155,14 +155,14 @@
                   <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="5.0" GridPane.columnIndex="1">
+                  <VBox alignment="CENTER_LEFT" prefHeight="107.0" prefWidth="466.0" spacing="5.0" GridPane.columnIndex="1">
                      <children>
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo Electronico">
                            <font>
                               <Font name="Segoe UI Emoji" size="14.0" />
                            </font>
                         </Text>
-                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="450.0" promptText="Nombre@dominio.org" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
+                        <TextField minWidth="-Infinity" prefHeight="31.0" prefWidth="450.0" promptText="Nombre@dominio.org" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
                         <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe tu correo electronico" />
                      </children>
                      <padding>

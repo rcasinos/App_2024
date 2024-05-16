@@ -20,7 +20,7 @@
 
 <HBox alignment="CENTER" styleClass="negrobackground" stylesheets="@Estilos_Inicio_Sesion.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Inicio_de_Sesion.Inicio_Sesion_Controller">
    <children>
-      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="900.0" styleClass="negrobackground" stylesheets="@Estilos_Inicio_Sesion.css">
+      <GridPane prefHeight="900.0" prefWidth="900.0" styleClass="negrobackground" stylesheets="@Estilos_Inicio_Sesion.css">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="0.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="800.0" minWidth="10.0" prefWidth="746.0" />
@@ -89,7 +89,7 @@
                               <Font name="Segoe UI Emoji" size="14.0" />
                            </font>
                         </Text>
-                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
+                        <TextField prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
                         <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Error " />
                      </children>
                   </VBox>
@@ -112,7 +112,7 @@
                         <StackPane prefHeight="49.0" prefWidth="347.0">
                            <children>
                               <TextField fx:id="txtUser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
-                              <PasswordField fx:id="pPasswordUser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
+                              <PasswordField fx:id="pPasswordUser" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
                            </children>
                         </StackPane>
                         <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe tu contraseña" />
@@ -120,7 +120,7 @@
                   </VBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <children>
-                        <ToggleButton fx:id="verPassword" minWidth="51.0" mnemonicParsing="false" onAction="#verPulsado" prefHeight="40.0" prefWidth="51.0" styleClass="togglebutton_contrasena" stylesheets="@Estilos_Inicio_Sesion.css">
+                        <ToggleButton fx:id="verPassword" mnemonicParsing="false" onAction="#verPulsado" prefHeight="40.0" prefWidth="51.0" styleClass="togglebutton_contrasena" stylesheets="@Estilos_Inicio_Sesion.css">
                            <graphic>
                               <ImageView fitHeight="24.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -136,36 +136,31 @@
                   </HBox>
                </children>
             </GridPane>
-            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <GridPane alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="38.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="674.0" minWidth="10.0" prefWidth="661.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="38.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="185.0" minWidth="-Infinity" prefWidth="184.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="373.0" minWidth="373.0" prefWidth="373.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="91.0" minWidth="-Infinity" prefWidth="75.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="100.0" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="158.0" minHeight="10.0" prefHeight="151.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <HBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="71.0" prefWidth="656.0" GridPane.columnIndex="1">
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <children>
-                        <Button fx:id="boton_olvido_contrasena" mnemonicParsing="false" onMouseClicked="#contrasena_click" onMouseEntered="#contrasena_enfoque" onMouseExited="#contrasena_desenfoque" prefHeight="45.0" prefWidth="360.0" styleClass="boton_desenfocado_contrasena" stylesheets="@Estilos_Inicio_Sesion.css" text="¿Olvidaste tu contraseña?">
+                        <Button fx:id="boton_olvido_contrasena1" mnemonicParsing="false" onMouseClicked="#contrasena_click" onMouseEntered="#contrasena_enfoque" onMouseExited="#contrasena_desenfoque" prefHeight="45.0" prefWidth="360.0" styleClass="boton_desenfocado_contrasena" stylesheets="@Estilos_Inicio_Sesion.css" text="¿Olvidaste tu contraseña?">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Button>
                      </children>
-                     <GridPane.margin>
-                        <Insets top="10.0" />
-                     </GridPane.margin>
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="12.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
-                        <Label styleClass="label_gris" stylesheets="@Estilos_Inicio_Sesion.css" text="¿No tienes una cuenta?">
+                        <Label prefHeight="20.0" prefWidth="148.0" styleClass="label_gris" stylesheets="@Estilos_Inicio_Sesion.css" text="¿No tienes una cuenta?">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -176,9 +171,6 @@
                            </font>
                         </Label>
                      </children>
-                     <padding>
-                        <Insets left="150.0" top="5.0" />
-                     </padding>
                   </HBox>
                </children>
             </GridPane>
