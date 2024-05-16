@@ -42,7 +42,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <children>
-                        <ImageView fitHeight="327.0" fitWidth="885.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="327.0" fitWidth="885.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                            <image>
                               <Image url="@../Iconos_Estilo/Logo%20en%20letras.png" />
                            </image>
@@ -51,7 +51,7 @@
                   </HBox>
                   <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Crea tu Cuenta!">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Crea tu Cuenta!" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="Segoe UI Black" size="34.0" />
                            </font>
@@ -60,7 +60,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Es rápido y fácil">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Es rápido y fácil" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="Segoe UI Emoji" size="19.0" />
                            </font>
@@ -86,12 +86,12 @@
                <children>
                   <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="634.0" spacing="5.0" GridPane.columnIndex="1">
                      <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" VBox.vgrow="ALWAYS">
                            <font>
                               <Font name="Segoe UI Emoji" size="14.0" />
                            </font>
                         </Text>
-                        <TextField minWidth="-Infinity" prefHeight="26.0" prefWidth="450.0" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
+                        <TextField prefHeight="31.0" prefWidth="314.0" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
                         <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Como te llamas?" />
                      </children>
                      <GridPane.margin>
@@ -100,31 +100,25 @@
                   </VBox>
                   <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nickname (Apodo)">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nickname (Apodo)" VBox.vgrow="ALWAYS">
                            <font>
                               <Font name="Segoe UI Emoji" size="14.0" />
                            </font>
                         </Text>
-                        <TextField minWidth="-Infinity" prefHeight="26.0" prefWidth="450.0" promptText="No puede contener espacios" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
+                        <TextField prefHeight="31.0" prefWidth="314.0" promptText="No puede contener espacios" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
                         <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Que apodo quieres tener?" />
                      </children>
-                     <padding>
-                        <Insets right="200.0" />
-                     </padding>
                   </VBox>
                   <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña" VBox.vgrow="ALWAYS">
                            <font>
                               <Font name="Segoe UI Emoji" size="14.0" />
                            </font>
                         </Text>
-                        <TextField minWidth="-Infinity" prefHeight="26.0" prefWidth="450.0" promptText="Solo letras y numeros (Min 6 caracteres)" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
+                        <TextField prefHeight="31.0" prefWidth="314.0" promptText="Solo letras y numeros (Min 6 caracteres)" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
                         <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe una contraseña" />
                      </children>
-                     <padding>
-                        <Insets right="200.0" />
-                     </padding>
                   </VBox>
                   <ImageView fitHeight="38.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
                      <image>
@@ -162,12 +156,9 @@
                               <Font name="Segoe UI Emoji" size="14.0" />
                            </font>
                         </Text>
-                        <TextField minWidth="-Infinity" prefHeight="31.0" prefWidth="450.0" promptText="Nombre@dominio.org" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
+                        <TextField prefHeight="31.0" prefWidth="314.0" promptText="Nombre@dominio.org" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
                         <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe tu correo electronico" />
                      </children>
-                     <padding>
-                        <Insets right="200.0" />
-                     </padding>
                   </VBox>
                   <ImageView fitHeight="38.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
                      <image>
@@ -201,7 +192,7 @@
                         </VBox>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                            <children>
-                              <ImageView fx:id="imagen_foto_perfil" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="NEVER">
+                              <ImageView fx:id="imagen_foto_perfil" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                                  <image>
                                     <Image url="@../Iconos_App/Perfil%20oscuro.png" />
                                  </image>
