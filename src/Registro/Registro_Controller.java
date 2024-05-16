@@ -7,6 +7,7 @@ package Registro;
 import java.io.File;
 import static java.lang.Boolean.FALSE;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.property.BooleanProperty;
@@ -33,6 +34,10 @@ import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+//Imports de nuevas lib
+import model.Acount;
+import model.AcountDAOException;
+
 /**
  * FXML Controller class
  *
@@ -55,6 +60,22 @@ public class Registro_Controller implements Initializable {
     private ImageView imagen_foto_perfil;
     @FXML
     private Button boton_registro;
+    @FXML
+    private TextField apodo_field;
+    @FXML
+    private TextField contrasena_field;
+    @FXML
+    private TextField nombre_field;
+    @FXML
+    private TextField apellido_field;
+    @FXML
+    private TextField email_field;
+    
+    // Declaraciones locales
+    String name, surname, email, user, pass, date;
+    
+    Image img;  
+    LocalDate fecha;
 
     /**
      * Initializes the controller class.
@@ -81,7 +102,7 @@ public class Registro_Controller implements Initializable {
         //boton_subir_foto1.disableProperty().bind(validName.not().or(validNickname.not().or(validEmail.not().or(validPassword.not().or(validPicture.not())))));
         
         
-    }    
+    }
 
     @FXML
     private void subir_foto_desenfoque(MouseEvent event) {
@@ -140,6 +161,27 @@ public class Registro_Controller implements Initializable {
     @FXML
     private void registro_click(MouseEvent event) throws Exception {
         
+        //registro de variables
+        name = nombre_field.getText();
+        surname = apellido_field.getText();
+        email = email_field.getText();
+        user = apodo_field.getText();
+        pass = contrasena_field.getText();
+        img = imagen_foto_perfil.getImage();
+        fecha = LocalDate.now();
+        
+        try{
+            Acount acc = Acount.getInstance();
+        
+            acc.registerUser(name, surname, email, user, pass, img, fecha);      
+            
+        } catch (AcountDAOException e){
+            //Logger.getLogger(Registro_Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        //espere
+        
+        
         // Cargar el FXML de la ventana emergente
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Vista_Logg.fxml"));
         Parent root = loader.load();
@@ -159,7 +201,8 @@ public class Registro_Controller implements Initializable {
         stage.centerOnScreen();
         
         // Mostrar la ventana emergente
-        stage.show();
+        stage.show(); 
+        
         }
     }
 
