@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
 
 /**
  *
- * @author Roberto Casinos
+ * @author HAN PASADO COSAS
  */
 class ojo {
 
