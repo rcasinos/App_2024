@@ -11,14 +11,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 /**
@@ -33,6 +37,12 @@ public class Inicio_Sesion_Controller implements Initializable{
     private Button boton_olvido_contrasena;
     @FXML
     private Label label_registrate;
+    @FXML
+    private TextField txtUser;
+    @FXML
+    private PasswordField pPasswordUser;
+    @FXML
+    private Button viewerPassword;
     
 
 
@@ -76,6 +86,9 @@ public class Inicio_Sesion_Controller implements Initializable{
         
         //cierro pestaña de inicio
         primaryStage.close();
+        
+        stage.setMaximized(true);
+        stage.centerOnScreen();
         
         // Mostrar la ventana emergente
         stage.show();
@@ -134,10 +147,39 @@ public class Inicio_Sesion_Controller implements Initializable{
         
         //cierro pestaña de inicio
         primaryStage.close();
+        
+        // Obtener dimensiones de la pantalla principal
+        Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+
+        // Ajustar la altura de la ventana emergente al máximo posible
+        double windowHeight = bounds.getHeight();
+        stage.setHeight(windowHeight);
+
+        // Limitar al ancho de la ventana emergente
+        double maxWindowWidth = 900;
+        double windowWidth = Math.min(bounds.getWidth(), maxWindowWidth);
+        stage.setWidth(windowWidth);
            
         // Mostrar la ventana emergente
         stage.show();    
         }
-    }
+        
     
+    @FXML
+    private void viewPasswordUser(ActionEvent event) {
+
+        txtUser.setVisible(!txtUser.isVisible());
+	pPasswordUser.setVisible(!pPasswordUser.isVisible());
+        
+	//Image ver = new Image(new File("src/Iconos_App/ojo abierto black").toURI().toString());
+	//Image nover = new Image(new File("src/Iconos_App/ojo cerrado").toURI().toString());
+        
+	if(viewerPassword.isPressed()) {
+	   // ojo.setImage(ver);
+	} else {
+	    //ojo.setImage(nover);
+
+	}
+    }
+}
 
