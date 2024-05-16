@@ -173,38 +173,50 @@ public class Inicio_Sesion_Controller implements Initializable{
     @FXML
     private void registrate_click(MouseEvent event) throws Exception{
         
+        
         // Cargar el FXML de la ventana emergente
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Registro/Prueba_registro.fxml"));
         Parent root = loader.load();
+        
+        // Cerramos la ventana anterior de inicio 
+        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        primaryStage.close();
 
         // Crear una nueva escena y un nuevo escenario para la ventana emergente
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
-        
-         // Se bloquea la ventana desde donde se lanza la nueva ventana
-        stage.initModality(Modality.APPLICATION_MODAL);
 
-        // Obtenemos la ventana como objeto para aplicarle opciones
-        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        
-         // Obtener dimensiones de la pantalla principal
+        // Se bloquea la ventana desde donde se lanza la nueva ventana
+        stage.initModality(Modality.APPLICATION_MODAL);
+       
+        // Obtener dimensiones de la pantalla principal
         Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
-        
+
         // Ajustar la altura de la ventana emergente al máximo posible
         double windowHeight = bounds.getHeight();
         stage.setHeight(windowHeight);
-        
+
         // Limitar al ancho de la ventana emergente
         double maxWindowWidth = 800;
         double windowWidth = Math.min(bounds.getWidth(), maxWindowWidth);
         stage.setWidth(windowWidth);
         
-        //cierro pestaña de inicio
-        primaryStage.close();
-                  
         // Mostrar la ventana emergente
-        stage.show();    
+        stage.showAndWait();
+        
+        // Obtenemos la ventana como objeto para aplicarle opciones
+        Stage primaryStage2 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        
+        //Creamos un efecto de desenfoque
+        BoxBlur blur = new BoxBlur(10, 10, 1);
+
+        //Aplicamos el efecto de desenfoque
+        primaryStage2.getScene().getRoot().setEffect(blur);
+
+        // Restaurar la opacidad de la ventana principal cuando se cierre la ventana emergente
+        primaryStage2.getScene().getRoot().setEffect(null);
+        
         }
 
     
