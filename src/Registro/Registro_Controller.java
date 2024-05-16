@@ -5,6 +5,7 @@
 package Registro;
 
 import java.io.File;
+import java.io.IOException;
 import static java.lang.Boolean.FALSE;
 import java.net.URL;
 import java.time.LocalDate;
@@ -160,26 +161,33 @@ public class Registro_Controller implements Initializable {
 
     @FXML
     private void registro_click(MouseEvent event) throws Exception {
-        
-        //registro de variables
-        name = nombre_field.getText();
-        surname = apellido_field.getText();
-        email = email_field.getText();
-        user = apodo_field.getText();
-        pass = contrasena_field.getText();
-        img = imagen_foto_perfil.getImage();
-        fecha = LocalDate.now();
-        
-        try{
-            Acount acc = Acount.getInstance();
-        
-            acc.registerUser(name, surname, email, user, pass, img, fecha);      
+
+        try {
+            // Obtener instancia de Acount
+            Acount acount = Acount.getInstance();
             
-        } catch (AcountDAOException e){
-            //Logger.getLogger(Registro_Controller.class.getName()).log(Level.SEVERE, null, ex);
+            //registro de variables
+            name = nombre_field.getText();
+            surname = apellido_field.getText();
+            email = email_field.getText();
+            user = apodo_field.getText();
+            pass = contrasena_field.getText();
+            img = imagen_foto_perfil.getImage();
+            fecha = LocalDate.now();
+            
+            // Registrar el nuevo usuario
+            boolean registrationSuccessful = acount.registerUser(name, surname, email, user, pass, img, fecha);
+            
+            if (registrationSuccessful) {
+                System.out.println("Usuario registrado exitosamente.");
+            } else {
+                System.out.println("Error al registrar el usuario.");
+            }
+        } catch (AcountDAOException | IOException e) {
+            // Manejar excepciones
+            e.printStackTrace();
         }
         
-        //espere
         
         
         // Cargar el FXML de la ventana emergente
