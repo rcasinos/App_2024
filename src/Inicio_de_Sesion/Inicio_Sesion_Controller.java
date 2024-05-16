@@ -55,17 +55,8 @@ public class Inicio_Sesion_Controller implements Initializable{
     private TextField txtUser;
     @FXML
     private PasswordField pPasswordUser;
-  
-    private ToggleButton viewerPassword;
     @FXML
     private ToggleButton verPassword;
-    private String pasword;
-    
-    //private  PasswordField password ;
-
-    @FXML
-    private Button viewerPassword;
-
     
 
 
@@ -211,19 +202,7 @@ public class Inicio_Sesion_Controller implements Initializable{
         
         //cierro pestaña de inicio
         primaryStage.close();
-        
-        // Obtener dimensiones de la pantalla principal
-        Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
-
-        // Ajustar la altura de la ventana emergente al máximo posible
-        double windowHeight = bounds.getHeight();
-        stage.setHeight(windowHeight);
-
-        // Limitar al ancho de la ventana emergente
-        double maxWindowWidth = 900;
-        double windowWidth = Math.min(bounds.getWidth(), maxWindowWidth);
-        stage.setWidth(windowWidth);
-           
+                  
         // Mostrar la ventana emergente
         stage.show();    
         }
@@ -244,21 +223,6 @@ public class Inicio_Sesion_Controller implements Initializable{
 
         }
 
-        @FXML
-        private void registro_desenfoque(MouseEvent event) {
-        }
-
-        @FXML
-        private void registro_enfoque(MouseEvent event) {
-        }
-
-        @FXML
-        private void registro_click(MouseEvent event) {
-        }
-
-        @FXML
-        private void iniciarSesion(ActionEvent event) {
-        }
 
 
     }

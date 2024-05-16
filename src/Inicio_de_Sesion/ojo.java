@@ -8,15 +8,12 @@ import javafx.scene.image.Image;
 
 /**
  *
- * @author berjo
+ * @author Roberto Casinos
  */
 class ojo {
 
-    static void setImage(Image nover) {
+    static void setImage(Image ver) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
-   
-
     
 }
