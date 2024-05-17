@@ -73,12 +73,6 @@ public class Registro_Controller implements Initializable {
     @FXML
     private TextField email_field; 
     @FXML
-    private Text message_errorNIckname;
-    @FXML
-    private Text message_errorPassword;
-    @FXML
-    private Text message_errorEmail;
-    @FXML
     private ImageView tickNickname;
     @FXML
     private ImageView tickEmail;
@@ -92,6 +86,20 @@ public class Registro_Controller implements Initializable {
     private Text apellido_txt;
     @FXML
     private ImageView tickFotoSubida;
+    @FXML
+    private Text msg_ini_nickname;
+    @FXML
+    private Text msg_nick_use;
+    @FXML
+    private Text msg_nick_spaces;
+    @FXML
+    private Text msg_ini_pssw;
+    @FXML
+    private Text msg_err_pssw;
+    @FXML
+    private Text msg_ini_email;
+    @FXML
+    private Text msg_err_email;
 
     /**
      * Initializes the controller class.
@@ -115,42 +123,89 @@ public class Registro_Controller implements Initializable {
         validPassword.setValue(FALSE);
         validPicture.setValue(FALSE);
         
+        // Mensajes de error a falso de primeras
+        msg_nick_use.setVisible(false);
+        msg_nick_spaces.setVisible(false);
+        msg_ini_nickname.setVisible(false);
+        msg_ini_pssw.setVisible(false);
+        msg_err_pssw.setVisible(false);
+        
+        // Evento para manejar el clic en el campo de texto de apodo
+        apodo_field.setOnMouseClicked(event -> {
+            // Verificar si el campo de texto de apodo está vacío
+            if (apodo_field.getText().isEmpty()) {
+                // Mostrar el mensaje de error correspondiente
+                msg_ini_nickname.setVisible(true);
+            }
+        });
+        
+        // Evento para manejar el cambio de foco del campo de texto de apodo
+        apodo_field.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            // Verificar si el campo de texto ha perdido el foco
+            if (!newValue) {
+                // Ocultar el mensaje de error
+                msg_ini_nickname.setVisible(false);
+            }
+        });
+        
         // Envoltura a APODO para checkear su vericidad
         apodo_field.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
-        boolean isNickNameValid = User.checkNickName(newValue);
-        boolean isNickNameTaken = false;
-    
-        if (isNickNameValid) {
-            System.out.println("El apodo es valido 1");
-            try {
-                
-                Acount acc = Acount.getInstance();
-                isNickNameTaken = acc.existsLogin(newValue);
-                
-                if (isNickNameTaken) {
+            boolean isNickNameValid = User.checkNickName(newValue);
+            boolean isNickNameTaken = false;
+
+            if (isNickNameValid) {
+                System.out.println("El apodo es valido 1");
+                try {
+                    Acount acc = Acount.getInstance();
+                    isNickNameTaken = acc.existsLogin(newValue);
+
+                    if (isNickNameTaken) {
                         System.out.println("El apodo esta ya cogido");
                         // Apodo está tomado, mostrar error y ocultar tick
-                        message_errorNIckname.setVisible(true);
+                        msg_nick_use.setVisible(true);
+                        msg_nick_spaces.setVisible(false);
+                        msg_ini_nickname.setVisible(false);
                         tickNickname.setVisible(false);
-                }else{
+                    } else {
                         System.out.println("El apodo no esta cogido");
                         // Apodo válido y no está en uso, ocultar error y mostrar tick
-                        message_errorNIckname.setVisible(false);
+                        msg_nick_use.setVisible(false);
+                        msg_nick_spaces.setVisible(false);
+                        msg_ini_nickname.setVisible(false);
                         tickNickname.setVisible(true);
-                        
-                }} catch (AcountDAOException | IOException e) {                    
+                    }
+                } catch (AcountDAOException | IOException e) {
                     // Maneja la excepción de acuerdo a tus necesidades, por ejemplo, mostrar un mensaje de error
                     e.printStackTrace();
                 }
-        } else {
-            System.out.println("El apodo no es correcto");
-            // Apodo no válido (contiene espacios o no cumple otras reglas)
-            message_errorNIckname.setVisible(true); // Mostrar error por apodo no válido
-            tickNickname.setVisible(false); // Ocultar tick
+            } else {
+                System.out.println("El apodo no es correcto");
+                // Apodo no válido (contiene espacios o no cumple otras reglas)
+                msg_nick_use.setVisible(false);
+                msg_nick_spaces.setVisible(true);
+                msg_ini_nickname.setVisible(false); // Mostrar error por apodo no válido
+                tickNickname.setVisible(false); // Ocultar tick
             }
         });
  
-                  
+        // Evento para manejar el clic en el campo de texto de apodo
+        contrasena_field.setOnMouseClicked(event -> {
+            // Verificar si el campo de texto de apodo está vacío
+            if (contrasena_field.getText().isEmpty()) {
+                // Mostrar el mensaje de error correspondiente
+                msg_ini_pssw.setVisible(true);
+            }
+        });
+        
+        // Evento para manejar el cambio de foco del campo de texto de apodo
+        contrasena_field.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            // Verificar si el campo de texto ha perdido el foco
+            if (!newValue) {
+                // Ocultar el mensaje de error
+                msg_ini_pssw.setVisible(false);
+            }
+        }); 
+        
         // Envoltura a CONTRASENA para checkear su vericidad
         contrasena_field.textProperty().addListener((observable, oldValue, newValue) -> {
             
@@ -158,34 +213,56 @@ public class Registro_Controller implements Initializable {
                
             if (!User.checkPassword(newValue)) {
                    System.out.println("Contrasena incorrecta, avisando a mensaje de error");
-                   message_errorPassword.setVisible(true);
+                   msg_ini_pssw.setVisible(false);
+                   msg_err_pssw.setVisible(true);
                    tickContrasena.setVisible(false);
                    
             } else {
                    System.out.println("Contrasena correcta");
-                   message_errorPassword.setVisible(false);
+                   msg_ini_pssw.setVisible(false);
+                   msg_err_pssw.setVisible(false);
                    tickContrasena.setVisible(true);
             }
         });
-         
-                 
+
+        // Evento para manejar el clic en el campo de texto de apodo
+        email_field.setOnMouseClicked(event -> {
+            // Verificar si el campo de texto de apodo está vacío
+            if (email_field.getText().isEmpty()) {
+                // Mostrar el mensaje de error correspondiente
+                msg_ini_email.setVisible(true);
+            }
+        });
+        
+        // Evento para manejar el cambio de foco del campo de texto de apodo
+        email_field.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            // Verificar si el campo de texto ha perdido el foco
+            if (!newValue) {
+                // Ocultar el mensaje de error
+                msg_ini_email.setVisible(false);
+            }
+        });        
+                         
         //Envoltura a EMAIL para checkear su vericidad  
          email_field.textProperty().addListener(new ChangeListener<String>() {
          
+            @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 if (!User.checkEmail(newValue)) {
                     System.out.println("Apodo no valido");
-                    message_errorEmail.setVisible(true);
+                    msg_err_email.setVisible(true);
+                    msg_ini_email.setVisible(false);
                     tickEmail.setVisible(false);
                 }else{
-                    message_errorEmail.setVisible(false);
+                    msg_err_email.setVisible(false);
+                    msg_ini_email.setVisible(false);
                     tickEmail.setVisible(true);
                             
                 }
             }
         });
         
-        // Listener para verificar el estado de los campos de nombre y apellido
+        // Envoltura/Listener para verificar el estado de los campos de nombre y apellido
         ChangeListener<String> nameSurnameListener = (observable, oldValue, newValue) -> {
             boolean isNameValid = !nombre_field.getText().trim().isEmpty();
             boolean isSurnameValid = !apellido_field.getText().trim().isEmpty();
@@ -296,6 +373,27 @@ public class Registro_Controller implements Initializable {
             
             if (registrationSuccessful) {
                 System.out.println("Usuario registrado exitosamente.");
+                // Cargar el FXML de la ventana emergente
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Vista_Logg.fxml"));
+                Parent root = loader.load();
+
+                // Crear una nueva escena y un nuevo escenario para la ventana emergente
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+
+                // Obtenemos la ventana como objeto para aplicarle opciones
+                Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        
+                //cierro pestaña de inicio
+                primaryStage.close();
+        
+                stage.setMaximized(true);
+                stage.centerOnScreen();
+        
+                // Mostrar la ventana emergente
+                stage.show();
+                
             } else {
                 System.out.println("Error al registrar el usuario.");
             }
@@ -304,29 +402,7 @@ public class Registro_Controller implements Initializable {
             e.printStackTrace();
         }
         
-        
-        
-        // Cargar el FXML de la ventana emergente
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Vista_Logg.fxml"));
-        Parent root = loader.load();
-
-        // Crear una nueva escena y un nuevo escenario para la ventana emergente
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-
-        // Obtenemos la ventana como objeto para aplicarle opciones
-        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        
-        //cierro pestaña de inicio
-        primaryStage.close();
-        
-        stage.setMaximized(true);
-        stage.centerOnScreen();
-        
-        // Mostrar la ventana emergente
-        stage.show(); 
-        
+     
         }
    
     

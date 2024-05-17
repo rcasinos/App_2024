@@ -83,24 +83,46 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="100.0" prefWidth="634.0" spacing="5.0" GridPane.columnIndex="1">
                      <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre / Correo electronico">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre / Nickname">
                            <font>
                               <Font name="Segoe UI Emoji" size="14.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="Nombre_field" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
-                        <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Error " />
+                        <TextField fx:id="Nombre_field" focusTraversable="false" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
+                        <Text fx:id="msg_ini_nick" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe tu Usuario / Nickname" />
                      </children>
                   </VBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <VBox alignment="TOP_CENTER" spacing="15.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
                         <Button fx:id="boton_siguiente" mnemonicParsing="false" onMouseClicked="#siguiente_click" onMouseEntered="#siguiente_enfocado" onMouseExited="#siguiente_desenfocado" prefHeight="45.0" prefWidth="360.0" styleClass="boton_desenfocado_siguiente" stylesheets="@Estilos_Inicio_Sesion.css" text="Siguiente 🚀">
                            <font>
                               <Font name="Segoe UI Black" size="24.0" />
                            </font>
                         </Button>
+                        <StackPane prefHeight="25.0" prefWidth="373.0">
+                           <children>
+                              <Text fx:id="msg_err_login" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Credenciales incorrectas, pruebe otra vez">
+                                 <font>
+                                    <Font name="Segoe UI Emoji" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="msg_user_login" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Falta el nombre de usuario">
+                                 <font>
+                                    <Font name="Segoe UI Emoji" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="msg_psw_login" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Falta la contraseña">
+                                 <font>
+                                    <Font name="Segoe UI Emoji" size="14.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
                      </children>
-                  </HBox>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </VBox>
                   <VBox alignment="CENTER" prefHeight="103.0" prefWidth="360.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña">
@@ -114,7 +136,7 @@
                               <PasswordField fx:id="contrasena_p_field" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
                            </children>
                         </StackPane>
-                        <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe tu contraseña" />
+                        <Text fx:id="msg_ini_pssw" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe tu contraseña" />
                      </children>
                   </VBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -155,6 +177,7 @@
                               <Font size="24.0" />
                            </font>
                         </Button>
+                        <Label fx:id="dummy" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="12.0" GridPane.columnIndex="1" GridPane.rowIndex="1">

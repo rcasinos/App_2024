@@ -35,8 +35,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import model.Acount;
@@ -69,6 +71,18 @@ public class Inicio_Sesion_Controller implements Initializable{
     private ImageView ojos_imagen;
     @FXML
     private TextField contrasena_field_prueba;
+    @FXML
+    private Text msg_ini_nick;
+    @FXML
+    private Text msg_err_login;
+    @FXML
+    private Text msg_ini_pssw;
+    @FXML
+    private Text msg_user_login;
+    @FXML
+    private Text msg_psw_login;
+    @FXML
+    private Label dummy;
     
 
 
@@ -76,7 +90,16 @@ public class Inicio_Sesion_Controller implements Initializable{
     // you must initialize here all related with the object 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+        // Establecer el foco en el nodo "dummy" al inicio
+        dummy.requestFocus();       
+        
+        //Ponemos los msg en invisibles primero
+        msg_ini_pssw.setVisible(false);
+        msg_err_login.setVisible(false);
+        msg_ini_nick.setVisible(false);
+        msg_user_login.setVisible(false);
+        msg_psw_login.setVisible(false);
         
         /*Configurar el TextField para mostrar el mismo texto que el PasswordField
          txtUser.textProperty().bindBidirectional(pPasswordUser.textProperty());
@@ -103,6 +126,43 @@ public class Inicio_Sesion_Controller implements Initializable{
            if(!newValue){//foco perdido
                checkPassword();}
            });*/
+         
+        // Evento para manejar el clic en el campo de texto de apodo
+        contrasena_field.setOnMouseClicked(event -> {
+            // Verificar si el campo de texto de apodo está vacío
+            if (contrasena_field.getText().isEmpty()) {
+                // Mostrar el mensaje de error correspondiente
+                msg_ini_pssw.setVisible(true);
+            }
+        });
+        
+        // Evento para manejar el cambio de foco del campo de texto de apodo
+        contrasena_field.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            // Verificar si el campo de texto ha perdido el foco
+            if (!newValue) {
+                // Ocultar el mensaje de error
+                msg_ini_pssw.setVisible(false);
+            }
+        });
+        
+        // Evento para manejar el clic en el campo de texto de apodo
+        Nombre_field.setOnMouseClicked(event -> {
+            // Verificar si el campo de texto de apodo está vacío
+            if (Nombre_field.getText().isEmpty()) {
+                // Mostrar el mensaje de error correspondiente
+                msg_ini_nick.setVisible(true);
+            }
+        });
+        
+        // Evento para manejar el cambio de foco del campo de texto de apodo
+        Nombre_field.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            // Verificar si el campo de texto ha perdido el foco
+            if (!newValue) {
+                // Ocultar el mensaje de error
+                msg_ini_nick.setVisible(false);
+            }
+        });
+         
     }
 
     @FXML
@@ -146,9 +206,15 @@ public class Inicio_Sesion_Controller implements Initializable{
         } else {
             if (u == null || u.equals("")) {
                 System.out.println("Usuario no completado");
+                msg_psw_login.setVisible(false);
+                msg_err_login.setVisible(false);
+                msg_user_login.setVisible(true);
             }
             if (p1 == null || p1.equals("")) {
                 System.out.println("Contraseña no rellenada");
+                msg_err_login.setVisible(false);
+                msg_user_login.setVisible(false);
+                msg_psw_login.setVisible(true);
             }            
             return;
         }
@@ -178,6 +244,9 @@ public class Inicio_Sesion_Controller implements Initializable{
 
         }else {
             System.out.println("No es valido?");
+            msg_err_login.setVisible(true);
+            msg_user_login.setVisible(false);
+            msg_psw_login.setVisible(false);
         }
     }
 
