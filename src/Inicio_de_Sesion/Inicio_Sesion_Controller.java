@@ -6,6 +6,7 @@
 package Inicio_de_Sesion;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -34,9 +35,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import model.Acount;
+import model.AcountDAOException;
 
 
 /**
@@ -48,15 +52,23 @@ public class Inicio_Sesion_Controller implements Initializable{
     @FXML
     private Button boton_siguiente;
     @FXML
-    private Button boton_olvido_contrasena;
-    @FXML
     private Label label_registrate;
     @FXML
-    private TextField txtUser;
-    @FXML
-    private PasswordField pPasswordUser;
-    @FXML
     private ToggleButton verPassword;
+    @FXML
+    private Button boton_olvido_contrasena;
+    @FXML
+    private TextField Nombre_field;
+    @FXML
+    private StackPane stackpane_contrasenas;
+    @FXML
+    private TextField contrasena_field;
+    @FXML
+    private PasswordField contrasena_p_field;
+    @FXML
+    private ImageView ojos_imagen;
+    @FXML
+    private TextField contrasena_field_prueba;
     
 
 
@@ -66,7 +78,7 @@ public class Inicio_Sesion_Controller implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-        // Configurar el TextField para mostrar el mismo texto que el PasswordField
+        /*Configurar el TextField para mostrar el mismo texto que el PasswordField
          txtUser.textProperty().bindBidirectional(pPasswordUser.textProperty());
          
          //Dejamos el passwordfield visible
@@ -77,7 +89,7 @@ public class Inicio_Sesion_Controller implements Initializable{
               pPasswordUser.setVisible(!PasswordFieldVisible);
               txtUser.setVisible(PasswordFieldVisible);
           });
-         
+        */ 
           
           
           
@@ -112,26 +124,61 @@ public class Inicio_Sesion_Controller implements Initializable{
     @FXML
     private void siguiente_click(MouseEvent event) throws Exception{
         
-        // Cargar el FXML de la ventana emergente
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Vista_Logg.fxml"));
-        Parent root = loader.load();
+        String u = Nombre_field.getText();
+        String p1 = contrasena_field_prueba.getText();
+     
+        Acount acc = null;
+        boolean valido = false;
 
-        // Crear una nueva escena y un nuevo escenario para la ventana emergente
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
+        if(u != null && p1 != null && !u.equals("") && !p1.equals(""))  {
+            // Hay valor
+            try {
+                System.out.println("1");
+                acc = Acount.getInstance();
+                System.out.println("2");                
+                valido = acc.logInUserByCredentials(u, p1);
+                System.out.println("3");
+                
+            } catch (AcountDAOException | IOException e) {
+                // Manejar excepciones
+                e.printStackTrace();
+            }
+        } else {
+            if (u == null || u.equals("")) {
+                System.out.println("Usuario no completado");
+            }
+            if (p1 == null || p1.equals("")) {
+                System.out.println("Contraseña no rellenada");
+            }            
+            return;
+        }
+        
+        if (valido) {
+            // Si todo esta Bien:
+            // Cargar el FXML de la ventana emergente
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Vista_Logg.fxml"));
+            Parent root = loader.load();
 
-        // Obtenemos la ventana como objeto para aplicarle opciones
-        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        
-        //cierro pestaña de inicio
-        primaryStage.close();
-        
-        stage.setMaximized(true);
-        stage.centerOnScreen();
-        
-        // Mostrar la ventana emergente
-        stage.show();
+            // Crear una nueva escena y un nuevo escenario para la ventana emergente
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+
+            // Obtenemos la ventana como objeto para aplicarle opciones
+            Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            //cierro pestaña de inicio
+            primaryStage.close();
+
+            stage.setMaximized(true);
+            stage.centerOnScreen();
+
+            // Mostrar la ventana emergente
+            stage.show();
+
+        }else {
+            System.out.println("No es valido?");
+        }
     }
 
     @FXML
@@ -218,25 +265,7 @@ public class Inicio_Sesion_Controller implements Initializable{
         primaryStage2.getScene().getRoot().setEffect(null);
         
         }
-
     
-
-
-        @FXML
-        private void verPulsado(ActionEvent event) {
-
-            Image ver = new Image(new File("src/Iconos_App/ojo abierto black.png").toURI().toString());
-            Image nover = new Image(new File("src/Iconos_App/ojo cerrado.png").toURI().toString());
-            if(verPassword.isFocused()) {
-              ojo.setImage(ver);
-             } else {
-              ojo.setImage(nover);
-            }
-
-        }
-
-
-
     }
 
    
