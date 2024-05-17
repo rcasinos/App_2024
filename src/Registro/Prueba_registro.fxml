@@ -105,7 +105,7 @@
                         <Text fx:id="message_errorPassword" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña incorrecta, solo letras y números , min 6 caracteres" visible="false" />
                      </children>
                   </VBox>
-                  <ImageView fitHeight="38.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+                  <ImageView fx:id="tickNombreApellido" fitHeight="38.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="2">
                      <image>
                         <Image url="@../Iconos_App/marca-de-verificacion.png" />
                      </image>
@@ -115,7 +115,7 @@
                         <Image url="@../Iconos_App/marca-de-verificacion.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="38.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <ImageView fx:id="tickContrasena" fitHeight="38.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <image>
                         <Image url="@../Iconos_App/marca-de-verificacion.png" />
                      </image>
@@ -139,7 +139,7 @@
                                  </font>
                               </Text>
                               <TextField fx:id="nombre_field" prefHeight="31.0" prefWidth="314.0" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
-                              <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Como te llamas?" />
+                              <Text fx:id="nombre_txt" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Como te llamas?" visible="false" />
                            </children>
                            <GridPane.margin>
                               <Insets />
@@ -156,7 +156,7 @@
                                  </font>
                               </Text>
                               <TextField fx:id="apellido_field" prefHeight="31.0" prefWidth="314.0" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
-                              <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Cual es su apellido?" />
+                              <Text fx:id="apellido_txt" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Cual es su apellido?" visible="false" />
                            </children>
                            <padding>
                               <Insets left="2.0" />
@@ -245,6 +245,11 @@
                         <Insets right="20.0" />
                      </padding>
                   </HBox>
+                  <ImageView fx:id="tickFotoSubida" fitHeight="38.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../Iconos_App/marca-de-verificacion.png" />
+                     </image>
+                  </ImageView>
                </children>
             </GridPane>
          </children>

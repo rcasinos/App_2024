@@ -11,36 +11,23 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.application.Application;
-import static javafx.application.Application.launch;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
-import javafx.stage.Modality;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 //Imports de nuevas lib
@@ -62,7 +49,12 @@ public class Registro_Controller implements Initializable {
     private BooleanProperty validPassword;
     private BooleanProperty validPicture;
     
+    // Declaraciones locales
+    String name, surname, email, user, pass, date;
     
+    Image img;  
+    LocalDate fecha;
+           
     //variables del .fxml
     @FXML
     private Button boton_subir_foto;
@@ -79,13 +71,7 @@ public class Registro_Controller implements Initializable {
     @FXML
     private TextField apellido_field;
     @FXML
-    private TextField email_field;
-    
-    // Declaraciones locales
-    String name, surname, email, user, pass, date;
-    
-    Image img;  
-    LocalDate fecha;
+    private TextField email_field; 
     @FXML
     private Text message_errorNIckname;
     @FXML
@@ -96,9 +82,21 @@ public class Registro_Controller implements Initializable {
     private ImageView tickNickname;
     @FXML
     private ImageView tickEmail;
+    @FXML
+    private ImageView tickNombreApellido;
+    @FXML
+    private ImageView tickContrasena;
+    @FXML
+    private Text nombre_txt;
+    @FXML
+    private Text apellido_txt;
+    @FXML
+    private ImageView tickFotoSubida;
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -117,47 +115,66 @@ public class Registro_Controller implements Initializable {
         validPassword.setValue(FALSE);
         validPicture.setValue(FALSE);
         
-        
-        //Comprobamos que el user pone bien el nickname respetando la regla de qeu no contenga errores
-         apodo_field.textProperty().addListener(new ChangeListener<String>() {
-         
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                // me da que hay que usar los metodos check de la clase user pero me dan error no se si lo estoy aplicando bien,,
-                //por ahora esto podría decirse que es la misma funcion creo
-                if (!User.checkNickName(newValue)/*newValue.contains(" ")*/) {
-                    //System.out.println("Apodo con espacio, avisando a mensanje de error");
-                    message_errorNIckname.setVisible(true);//Este error es el de puede contener espacios, quizas no deberiamos poner mas de un error pero bueno ya lo veremos
-                    tickNickname.setVisible(false);
+        // Envoltura a APODO para checkear su vericidad
+        apodo_field.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+        boolean isNickNameValid = User.checkNickName(newValue);
+        boolean isNickNameTaken = false;
+    
+        if (isNickNameValid) {
+            System.out.println("El apodo es valido 1");
+            try {
+                
+                Acount acc = Acount.getInstance();
+                isNickNameTaken = acc.existsLogin(newValue);
+                
+                if (isNickNameTaken) {
+                        System.out.println("El apodo esta ya cogido");
+                        // Apodo está tomado, mostrar error y ocultar tick
+                        message_errorNIckname.setVisible(true);
+                        tickNickname.setVisible(false);
                 }else{
-                    message_errorNIckname.setVisible(false);
-                    tickNickname.setVisible(true);
+                        System.out.println("El apodo no esta cogido");
+                        // Apodo válido y no está en uso, ocultar error y mostrar tick
+                        message_errorNIckname.setVisible(false);
+                        tickNickname.setVisible(true);
+                        
+                }} catch (AcountDAOException | IOException e) {                    
+                    // Maneja la excepción de acuerdo a tus necesidades, por ejemplo, mostrar un mensaje de error
+                    e.printStackTrace();
                 }
+        } else {
+            System.out.println("El apodo no es correcto");
+            // Apodo no válido (contiene espacios o no cumple otras reglas)
+            message_errorNIckname.setVisible(true); // Mostrar error por apodo no válido
+            tickNickname.setVisible(false); // Ocultar tick
+            }
+        });
+ 
+                  
+        // Envoltura a CONTRASENA para checkear su vericidad
+        contrasena_field.textProperty().addListener((observable, oldValue, newValue) -> {
+            
+            System.out.println("Nueva contrasena ingresada: " + newValue); // Debug
+               
+            if (!User.checkPassword(newValue)) {
+                   System.out.println("Contrasena incorrecta, avisando a mensaje de error");
+                   message_errorPassword.setVisible(true);
+                   tickContrasena.setVisible(false);
+                   
+            } else {
+                   System.out.println("Contrasena correcta");
+                   message_errorPassword.setVisible(false);
+                   tickContrasena.setVisible(true);
             }
         });
          
-         
-         
-         // Aqui podriamos añadir lo de que vaya contando los caracteres , pero eso ya más adelante(extra)
-         contrasena_field.textProperty().addListener(new ChangeListener<String>() {
-         
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if (!User.checkPassword(newValue)) {
-                    System.out.println("Contraseña incorrecta, avisando a mensanje de error");
-                    message_errorPassword.setVisible(true);
-                }else{
-                    message_errorPassword.setVisible(false);
-                }
-            }
-        });
-         
-         
-         // este va bien SUuuuuuuuuu
-         
+                 
+        //Envoltura a EMAIL para checkear su vericidad  
          email_field.textProperty().addListener(new ChangeListener<String>() {
          
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 if (!User.checkEmail(newValue)) {
-                    System.out.println("Correo incorrecto, avisando a mensanje de error");
+                    System.out.println("Apodo no valido");
                     message_errorEmail.setVisible(true);
                     tickEmail.setVisible(false);
                 }else{
@@ -168,11 +185,40 @@ public class Registro_Controller implements Initializable {
             }
         });
         
-        //Creamos envoltorio para el boton de registrarse y que solo se active cuando 
-        // todas las opciones esten bien puestas y correctas
-        //boton_subir_foto1.disableProperty().bind(validName.not().or(validNickname.not().or(validEmail.not().or(validPassword.not().or(validPicture.not())))));
+        // Listener para verificar el estado de los campos de nombre y apellido
+        ChangeListener<String> nameSurnameListener = (observable, oldValue, newValue) -> {
+            boolean isNameValid = !nombre_field.getText().trim().isEmpty();
+            boolean isSurnameValid = !apellido_field.getText().trim().isEmpty();
+
+            if (isNameValid && isSurnameValid) {
+                tickNombreApellido.setVisible(true);
+            } else {
+                tickNombreApellido.setVisible(false);
+            }
+        };
+
+        // Asignar el listener a los campos de nombre y apellido
+        nombre_field.textProperty().addListener(nameSurnameListener);
+        apellido_field.textProperty().addListener(nameSurnameListener);
+         
+        nombre_field.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue && nombre_field.getText().isEmpty()) {
+                nombre_txt.setVisible(true);
+            } else {
+                nombre_txt.setVisible(false);
+            }
+        });
+
+        apellido_field.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue && apellido_field.getText().isEmpty()) {
+                apellido_txt.setVisible(true);
+            } else {
+                apellido_txt.setVisible(false);
+            }
+        });
         
-        
+        //Se activa el boton de creacion de cuenta si los campos obligatorios estan rellenados    
+        //COMPLETAR
     }
 
     @FXML

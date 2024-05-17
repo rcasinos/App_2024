@@ -88,7 +88,7 @@
                               <Font name="Segoe UI Emoji" size="14.0" />
                            </font>
                         </Text>
-                        <TextField prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
+                        <TextField fx:id="Nombre_field" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
                         <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Error " />
                      </children>
                   </VBox>
@@ -108,10 +108,10 @@
                               <Font name="Segoe UI Emoji" size="14.0" />
                            </font>
                         </Text>
-                        <StackPane prefHeight="49.0" prefWidth="347.0">
+                        <StackPane fx:id="stackpane_contrasenas" prefHeight="49.0" prefWidth="347.0">
                            <children>
-                              <TextField fx:id="txtUser" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
-                              <PasswordField fx:id="pPasswordUser" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
+                              <TextField fx:id="contrasena_field" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
+                              <PasswordField fx:id="contrasena_p_field" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
                            </children>
                         </StackPane>
                         <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe tu contraseña" />
@@ -119,9 +119,9 @@
                   </VBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <children>
-                        <ToggleButton fx:id="verPassword" mnemonicParsing="false" onAction="#verPulsado" prefHeight="40.0" prefWidth="51.0" styleClass="togglebutton_contrasena" stylesheets="@Estilos_Inicio_Sesion.css">
+                        <ToggleButton fx:id="verPassword" mnemonicParsing="false" prefHeight="40.0" prefWidth="51.0" styleClass="togglebutton_contrasena" stylesheets="@Estilos_Inicio_Sesion.css">
                            <graphic>
-                              <ImageView fitHeight="24.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="ojos_imagen" fitHeight="24.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Iconos_App/ojo%20abierto%20black.png" />
                                  </image>
@@ -150,7 +150,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <children>
-                        <Button fx:id="boton_olvido_contrasena1" mnemonicParsing="false" onMouseClicked="#contrasena_click" onMouseEntered="#contrasena_enfoque" onMouseExited="#contrasena_desenfoque" prefHeight="45.0" prefWidth="360.0" styleClass="boton_desenfocado_contrasena" stylesheets="@Estilos_Inicio_Sesion.css" text="¿Olvidaste tu contraseña?">
+                        <Button fx:id="boton_olvido_contrasena" mnemonicParsing="false" onMouseClicked="#contrasena_click" onMouseEntered="#contrasena_enfoque" onMouseExited="#contrasena_desenfoque" prefHeight="45.0" prefWidth="360.0" styleClass="boton_desenfocado_contrasena" stylesheets="@Estilos_Inicio_Sesion.css" text="¿Olvidaste tu contraseña?">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -171,6 +171,7 @@
                         </Label>
                      </children>
                   </HBox>
+                  <TextField fx:id="contrasena_field_prueba" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </children>
