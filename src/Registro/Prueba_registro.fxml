@@ -91,7 +91,7 @@
                            </font>
                         </Text>
                         <TextField fx:id="apodo_field" prefHeight="31.0" prefWidth="314.0" promptText="No puede contener espacios" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
-                        <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Que apodo quieres tener?" />
+                        <Text fx:id="message_errorNIckname" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="El apodo no puede contener espacios" visible="false" />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -102,7 +102,7 @@
                            </font>
                         </Text>
                         <TextField fx:id="contrasena_field" prefHeight="31.0" prefWidth="314.0" promptText="Solo letras y numeros (Min 6 caracteres)" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
-                        <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe una contraseña" />
+                        <Text fx:id="message_errorPassword" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña incorrecta, solo letras y números , min 6 caracteres" visible="false" />
                      </children>
                   </VBox>
                   <ImageView fitHeight="38.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
@@ -110,7 +110,7 @@
                         <Image url="@../Iconos_App/marca-de-verificacion.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="38.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <ImageView fx:id="tickNickname" fitHeight="38.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <image>
                         <Image url="@../Iconos_App/marca-de-verificacion.png" />
                      </image>
@@ -186,10 +186,10 @@
                            </font>
                         </Text>
                         <TextField fx:id="email_field" prefHeight="31.0" prefWidth="314.0" promptText="Nombre@dominio.org" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
-                        <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe tu correo electronico" />
+                        <Text fx:id="message_errorEmail" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo incorrecto" visible="false" />
                      </children>
                   </VBox>
-                  <ImageView fitHeight="38.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+                  <ImageView fx:id="tickEmail" fitHeight="38.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="2">
                      <image>
                         <Image url="@../Iconos_App/marca-de-verificacion.png" />
                      </image>

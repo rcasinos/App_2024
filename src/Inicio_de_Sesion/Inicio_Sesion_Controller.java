@@ -47,7 +47,6 @@ public class Inicio_Sesion_Controller implements Initializable{
 
     @FXML
     private Button boton_siguiente;
-    @FXML
     private Button boton_olvido_contrasena;
     @FXML
     private Label label_registrate;
@@ -57,6 +56,8 @@ public class Inicio_Sesion_Controller implements Initializable{
     private PasswordField pPasswordUser;
     @FXML
     private ToggleButton verPassword;
+    @FXML
+    private Button boton_olvido_contrasena1;
     
 
 
