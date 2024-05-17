@@ -103,7 +103,7 @@
                 <RowConstraints minHeight="5.0" prefHeight="14.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Pane styleClass="blanco_puro" stylesheets="@Estilos_loggeado.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Pane fx:id="panel_principal" styleClass="blanco_puro" stylesheets="@Estilos_loggeado.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>
