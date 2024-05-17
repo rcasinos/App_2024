@@ -5,14 +5,18 @@
  */
 package Loggeado;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 
 /**
  *
@@ -33,6 +37,8 @@ public class Logg_Controller implements Initializable {
     private Label boton_exportar;
     @FXML
     private Label boton_configuracion;
+    @FXML
+    private Pane panel_principal;
     
    
     //=========================================================
@@ -60,9 +66,6 @@ public class Logg_Controller implements Initializable {
 
     @FXML
     private void mi_perfil_click(MouseEvent event) {
-        
-
-        
         //Quitamos el seleccionado del labelSeleccionado
         if(labelSeleccionado != null){
         labelSeleccionado.getStyleClass().remove("label_seleccionado_azul");
@@ -75,6 +78,24 @@ public class Logg_Controller implements Initializable {
         
         //Seleccionamos el labelactual como el seleccionado
         labelSeleccionado = boton_mi_perfil;
+        
+        //CAMBIO DE ESCENA 
+        try {
+            // Cargar el archivo FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Perfil/Vista_Mi_Perfil.fxml"));
+            Node ventana = loader.load(); // Obtener el nodo raíz del archivo FXML
+
+            // Agregar la ventana al Pane
+            if (panel_principal.getChildren() != null){
+                //Borrar la ventana anterior
+                panel_principal.getChildren().clear();
+            }
+            panel_principal.getChildren().add(ventana);
+
+            // Ahora puedes acceder a los métodos y variables públicas del controlador de la ventana incrustada
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -108,6 +129,24 @@ public class Logg_Controller implements Initializable {
         
         //Seleccionamos el labelactual como el seleccionado
         labelSeleccionado = boton_gastos;
+        
+                //CAMBIO DE ESCENA 
+        try {
+            // Cargar el archivo FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Gastos/Vista_Gastos.fxml"));
+            Node ventana = loader.load(); // Obtener el nodo raíz del archivo FXML
+
+            // Agregar la ventana al Pane
+            if (panel_principal.getChildren() != null){
+                //Borrar la ventana anterior
+                panel_principal.getChildren().clear();
+            }
+            panel_principal.getChildren().add(ventana);
+
+            // Ahora puedes acceder a los métodos y variables públicas del controlador de la ventana incrustada
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -140,7 +179,25 @@ public class Logg_Controller implements Initializable {
         boton_analiticas.getStyleClass().add("label_seleccionado_azul");
         
         //Seleccionamos el labelactual como el seleccionado
-        labelSeleccionado = boton_analiticas;        
+        labelSeleccionado = boton_analiticas;
+        
+        //CAMBIO DE ESCENA 
+        try {
+            // Cargar el archivo FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Analiticas/Vista_Analiticas.fxml"));
+            Node ventana = loader.load(); // Obtener el nodo raíz del archivo FXML
+
+            // Agregar la ventana al Pane
+            if (panel_principal.getChildren() != null){
+                //Borrar la ventana anterior
+                panel_principal.getChildren().clear();
+            }
+            panel_principal.getChildren().add(ventana);
+
+            // Ahora puedes acceder a los métodos y variables públicas del controlador de la ventana incrustada
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -173,7 +230,24 @@ public class Logg_Controller implements Initializable {
         boton_exportar.getStyleClass().add("label_seleccionado_azul");
         
         //Seleccionamos el labelactual como el seleccionado
-        labelSeleccionado = boton_exportar;        
+        labelSeleccionado = boton_exportar;
+
+        try {
+            // Cargar el archivo FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Exportar/Vista_Exportar.fxml"));
+            Node ventana = loader.load(); // Obtener el nodo raíz del archivo FXML
+
+            // Agregar la ventana al Pane
+            if (panel_principal.getChildren() != null){
+                //Borrar la ventana anterior
+                panel_principal.getChildren().clear();
+            }
+            panel_principal.getChildren().add(ventana);
+
+            // Ahora puedes acceder a los métodos y variables públicas del controlador de la ventana incrustada
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -206,7 +280,24 @@ public class Logg_Controller implements Initializable {
         boton_configuracion.getStyleClass().add("label_seleccionado_azul");
         
         //Seleccionamos el labelactual como el seleccionado
-        labelSeleccionado = boton_configuracion;        
+        labelSeleccionado = boton_configuracion;
+
+        try {
+            // Cargar el archivo FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Configuracion/Vista_Configuracion.fxml"));
+            Node ventana = loader.load(); // Obtener el nodo raíz del archivo FXML
+
+            // Agregar la ventana al Pane
+            if (panel_principal.getChildren() != null){
+                //Borrar la ventana anterior
+                panel_principal.getChildren().clear();
+            }
+            panel_principal.getChildren().add(ventana);
+
+            // Ahora puedes acceder a los métodos y variables públicas del controlador de la ventana incrustada
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
