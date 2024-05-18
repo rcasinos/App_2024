@@ -194,7 +194,6 @@
                         </Label>
                      </children>
                   </HBox>
-                  <TextField fx:id="contrasena_field_prueba" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </children>

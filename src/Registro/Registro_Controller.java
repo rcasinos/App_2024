@@ -112,14 +112,14 @@ public class Registro_Controller implements Initializable {
         validNickname = new SimpleBooleanProperty(false);
         validPassword = new SimpleBooleanProperty(false);
         validPicture = new SimpleBooleanProperty(false);
-
+//-----------------------------------------------------------------------------------------------------------------/  
         // Mensajes de error a falso de primeras
         msg_nick_use.setVisible(false);
         msg_nick_spaces.setVisible(false);
         msg_ini_nickname.setVisible(false);
         msg_ini_pssw.setVisible(false);
         msg_err_pssw.setVisible(false);
-
+//-----------------------------------------------------------------------------------------------------------------/  
         // Evento para manejar el clic en el campo de texto de apodo
         apodo_field.setOnMouseClicked(event -> {
             // Verificar si el campo de texto de apodo está vacío
@@ -128,7 +128,7 @@ public class Registro_Controller implements Initializable {
                 msg_ini_nickname.setVisible(true);
             }
         });
-
+//-----------------------------------------------------------------------------------------------------------------/  
         // Evento para manejar el cambio de foco del campo de texto de apodo
         apodo_field.focusedProperty().addListener((observable, oldValue, newValue) -> {
             // Verificar si el campo de texto ha perdido el foco
@@ -137,7 +137,7 @@ public class Registro_Controller implements Initializable {
                 msg_ini_nickname.setVisible(false);
             }
         });
-
+//-----------------------------------------------------------------------------------------------------------------/  
         // Envoltura a APODO para checkear su vericidad
         apodo_field.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
             boolean isNickNameValid = User.checkNickName(newValue);
@@ -180,7 +180,7 @@ public class Registro_Controller implements Initializable {
                 validNickname.setValue(false);
             }
         });
-
+//-----------------------------------------------------------------------------------------------------------------/  
         // Evento para manejar el clic en el campo de texto de apodo
         contrasena_field.setOnMouseClicked(event -> {
             // Verificar si el campo de texto de apodo está vacío
@@ -198,7 +198,7 @@ public class Registro_Controller implements Initializable {
                 msg_ini_pssw.setVisible(false);
             }
         });
-
+//-----------------------------------------------------------------------------------------------------------------/  
         // Envoltura a CONTRASENA para checkear su vericidad
         contrasena_field.textProperty().addListener((observable, oldValue, newValue) -> {
 
@@ -219,7 +219,7 @@ public class Registro_Controller implements Initializable {
                 validPassword.setValue(true);
             }
         });
-
+//-----------------------------------------------------------------------------------------------------------------/  
         // Evento para manejar el clic en el campo de texto de apodo
         email_field.setOnMouseClicked(event -> {
             // Verificar si el campo de texto de apodo está vacío
@@ -237,7 +237,7 @@ public class Registro_Controller implements Initializable {
                 msg_ini_email.setVisible(false);
             }
         });
-
+//-----------------------------------------------------------------------------------------------------------------/  
         //Envoltura a EMAIL para checkear su vericidad
         email_field.textProperty().addListener(new ChangeListener<String>() {
 
@@ -258,7 +258,7 @@ public class Registro_Controller implements Initializable {
                 }
             }
         });
-
+//-----------------------------------------------------------------------------------------------------------------/  
         // Envoltura/Listener para verificar el estado de los campos de nombre y apellido
         ChangeListener<String> nameSurnameListener = (observable, oldValue, newValue) -> {
             boolean isNameValid = !nombre_field.getText().trim().isEmpty();
@@ -272,7 +272,7 @@ public class Registro_Controller implements Initializable {
                 validName.setValue(false);
             }
         };
-
+//-----------------------------------------------------------------------------------------------------------------/  
         // Asignar el listener a los campos de nombre y apellido
         nombre_field.textProperty().addListener(nameSurnameListener);
         apellido_field.textProperty().addListener(nameSurnameListener);
@@ -292,12 +292,12 @@ public class Registro_Controller implements Initializable {
                 apellido_txt.setVisible(false);
             }
         });
-
+//-----------------------------------------------------------------------------------------------------------------/  
         // Vinculación para habilitar/deshabilitar el botón de registro
         BooleanBinding formValid = validName.and(validNickname).and(validEmail).and(validPassword);
         boton_registro.disableProperty().bind(formValid.not());
     }
-
+//-----------------------------------------------------------------------------------------------------------------/  
     @FXML
     private void subir_foto_desenfoque(MouseEvent event) {
         //Modificamos el estilo del boton al entrar en el
@@ -311,7 +311,7 @@ public class Registro_Controller implements Initializable {
         boton_subir_foto.getStyleClass().remove("boton_desenfocado_subir_imagen");
         boton_subir_foto.getStyleClass().add("boton_enfocado_subir_imagen");
     }
-
+//-----------------------------------------------------------------------------------------------------------------/  
     @FXML
     private void subir_foto_click(MouseEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -332,7 +332,7 @@ public class Registro_Controller implements Initializable {
             validPicture.setValue(true);
         }
     }
-
+//-----------------------------------------------------------------------------------------------------------------/  
     @FXML
     private void registro_desenfoque(MouseEvent event) {
         //Modificamos el estilo del boton al entrar en el
@@ -346,7 +346,7 @@ public class Registro_Controller implements Initializable {
         boton_registro.getStyleClass().remove("boton_desenfocado_registro");
         boton_registro.getStyleClass().add("boton_enfocado_registro");
     }
-
+//-----------------------------------------------------------------------------------------------------------------/  
     @FXML
     private void registro_click(MouseEvent event) throws Exception {
         try {
