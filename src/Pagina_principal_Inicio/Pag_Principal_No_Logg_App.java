@@ -8,7 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-//si esto se sube a desarrollo me voy a jugar un brawl
+
 
 public class Pag_Principal_No_Logg_App extends Application {
         

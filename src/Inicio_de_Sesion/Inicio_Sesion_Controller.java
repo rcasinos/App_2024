@@ -69,6 +69,7 @@ public class Inicio_Sesion_Controller implements Initializable{
     private PasswordField contrasena_p_field;
     @FXML
     private ImageView ojos_imagen;
+    @FXML
     private TextField contrasena_field_prueba;
     @FXML
     private Text msg_ini_nick;
@@ -100,18 +101,18 @@ public class Inicio_Sesion_Controller implements Initializable{
         msg_user_login.setVisible(false);
         msg_psw_login.setVisible(false);
         
-        //Configurar el TextField para mostrar el mismo texto que el PasswordField
-         contrasena_field.textProperty().bindBidirectional(contrasena_p_field.textProperty());
+        /*Configurar el TextField para mostrar el mismo texto que el PasswordField
+         txtUser.textProperty().bindBidirectional(pPasswordUser.textProperty());
          
          //Dejamos el passwordfield visible
-          contrasena_field.setVisible(false);
+          txtUser.setVisible(false);
           
           verPassword.setOnAction(event -> {
-              boolean PasswordFieldVisible = contrasena_p_field.isVisible();
-              contrasena_p_field.setVisible(!PasswordFieldVisible);
-              contrasena_field.setVisible(PasswordFieldVisible);
+              boolean PasswordFieldVisible = pPasswordUser.isVisible();
+              pPasswordUser.setVisible(!PasswordFieldVisible);
+              txtUser.setVisible(PasswordFieldVisible);
           });
-         
+        */ 
           
           
           
@@ -333,10 +334,6 @@ public class Inicio_Sesion_Controller implements Initializable{
         primaryStage2.getScene().getRoot().setEffect(null);
         
         }
-
-    @FXML
-    private void cambiarOjo(ActionEvent event) {
-    }
     
     }
 

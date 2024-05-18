@@ -141,11 +141,11 @@
                   </VBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <children>
-                        <ToggleButton fx:id="verPassword" mnemonicParsing="false" onAction="#cambiarOjo" prefHeight="40.0" prefWidth="51.0" styleClass="togglebutton_contrasena" stylesheets="@Estilos_Inicio_Sesion.css">
+                        <ToggleButton fx:id="verPassword" mnemonicParsing="false" prefHeight="40.0" prefWidth="51.0" styleClass="togglebutton_contrasena" stylesheets="@Estilos_Inicio_Sesion.css">
                            <graphic>
                               <ImageView fx:id="ojos_imagen" fitHeight="24.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Iconos_App/ojo%20cerrado.png" />
+                                    <Image url="@../Iconos_App/ojo%20abierto%20black.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -194,6 +194,7 @@
                         </Label>
                      </children>
                   </HBox>
+                  <TextField fx:id="contrasena_field_prueba" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </children>
