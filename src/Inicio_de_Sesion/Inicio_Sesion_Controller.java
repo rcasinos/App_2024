@@ -69,6 +69,7 @@ public class Inicio_Sesion_Controller implements Initializable{
     private PasswordField contrasena_p_field;
     @FXML
     private ImageView ojos_imagen;
+    private TextField contrasena_field_prueba;
     @FXML
     private Text msg_ini_nick;
     @FXML
@@ -91,7 +92,7 @@ public class Inicio_Sesion_Controller implements Initializable{
         
         // Establecer el foco en el nodo "dummy" al inicio
         dummy.requestFocus();       
-      //-----------------------------------------------------------------------------------------------------------------/  
+        
         //Ponemos los msg en invisibles primero
         msg_ini_pssw.setVisible(false);
         msg_err_login.setVisible(false);
@@ -99,7 +100,6 @@ public class Inicio_Sesion_Controller implements Initializable{
         msg_user_login.setVisible(false);
         msg_psw_login.setVisible(false);
         
-        //-----------------------------------------------------------------------------------------------------------------/  
         //Configurar el TextField para mostrar el mismo texto que el PasswordField
          contrasena_field.textProperty().bindBidirectional(contrasena_p_field.textProperty());
          
@@ -111,7 +111,7 @@ public class Inicio_Sesion_Controller implements Initializable{
               contrasena_p_field.setVisible(!PasswordFieldVisible);
               contrasena_field.setVisible(PasswordFieldVisible);
           });
-        //-----------------------------------------------------------------------------------------------------------------/  
+         
           
           
           
@@ -125,7 +125,7 @@ public class Inicio_Sesion_Controller implements Initializable{
            if(!newValue){//foco perdido
                checkPassword();}
            });*/
-        //-----------------------------------------------------------------------------------------------------------------/   
+         
         // Evento para manejar el clic en el campo de texto de apodo
         contrasena_field.setOnMouseClicked(event -> {
             // Verificar si el campo de texto de apodo está vacío
@@ -134,7 +134,7 @@ public class Inicio_Sesion_Controller implements Initializable{
                 msg_ini_pssw.setVisible(true);
             }
         });
-        //-----------------------------------------------------------------------------------------------------------------/  
+        
         // Evento para manejar el cambio de foco del campo de texto de apodo
         contrasena_field.focusedProperty().addListener((observable, oldValue, newValue) -> {
             // Verificar si el campo de texto ha perdido el foco
@@ -143,7 +143,7 @@ public class Inicio_Sesion_Controller implements Initializable{
                 msg_ini_pssw.setVisible(false);
             }
         });
-        //-----------------------------------------------------------------------------------------------------------------/  
+        
         // Evento para manejar el clic en el campo de texto de apodo
         Nombre_field.setOnMouseClicked(event -> {
             // Verificar si el campo de texto de apodo está vacío
@@ -152,7 +152,7 @@ public class Inicio_Sesion_Controller implements Initializable{
                 msg_ini_nick.setVisible(true);
             }
         });
-        //-----------------------------------------------------------------------------------------------------------------/  
+        
         // Evento para manejar el cambio de foco del campo de texto de apodo
         Nombre_field.focusedProperty().addListener((observable, oldValue, newValue) -> {
             // Verificar si el campo de texto ha perdido el foco
@@ -163,7 +163,7 @@ public class Inicio_Sesion_Controller implements Initializable{
         });
          
     }
-    //------------------------------------------------------------------------------------------------------------------------------------/  
+
     @FXML
     private void siguiente_desenfocado(MouseEvent event) {
         
@@ -179,12 +179,12 @@ public class Inicio_Sesion_Controller implements Initializable{
         boton_siguiente.getStyleClass().remove("boton_desenfocado_siguiente");
         boton_siguiente.getStyleClass().add("boton_enfocado_siguiente");
     }
-//-----------------------------------------------------------------------------------------------------------------/  
+
     @FXML
     private void siguiente_click(MouseEvent event) throws Exception{
         
         String u = Nombre_field.getText();
-        String p1 = contrasena_p_field.getText();
+        String p1 = contrasena_field_prueba.getText();
      
         Acount acc = null;
         boolean valido = false;
@@ -248,7 +248,7 @@ public class Inicio_Sesion_Controller implements Initializable{
             msg_psw_login.setVisible(false);
         }
     }
-//-----------------------------------------------------------------------------------------------------------------/  
+
     @FXML
     private void contrasena_desenfoque(MouseEvent event) {
         
@@ -264,11 +264,11 @@ public class Inicio_Sesion_Controller implements Initializable{
         boton_olvido_contrasena.getStyleClass().remove("boton_desenfocado_contrasena");
         boton_olvido_contrasena.getStyleClass().add("boton_enfocado_contrasena");
     }
-//-----------------------------------------------------------------------------------------------------------------/  
+
     @FXML
     private void contrasena_click(MouseEvent event) {
     }
-//-----------------------------------------------------------------------------------------------------------------/  
+
     @FXML
     private void registrate_desenfoque(MouseEvent event) {
         
@@ -284,7 +284,7 @@ public class Inicio_Sesion_Controller implements Initializable{
         label_registrate.getStyleClass().remove("label_desenfocado_azul");
         label_registrate.getStyleClass().add("label_enfocado_azul");
     }
-//-----------------------------------------------------------------------------------------------------------------/  
+
     @FXML
     private void registrate_click(MouseEvent event) throws Exception{
         
@@ -333,6 +333,10 @@ public class Inicio_Sesion_Controller implements Initializable{
         primaryStage2.getScene().getRoot().setEffect(null);
         
         }
+
+    @FXML
+    private void cambiarOjo(ActionEvent event) {
+    }
     
     }
 
