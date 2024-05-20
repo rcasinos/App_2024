@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
 /**
@@ -89,7 +90,15 @@ public class Logg_Controller implements Initializable {
             // Cargar el archivo FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Perfil/Vista_Mi_Perfil.fxml"));
             Node ventana = loader.load(); // Obtener el nodo raíz del archivo FXML
-
+            
+            //Verificar si el nodo raiz es de tipo Region
+            if (ventana instanceof Region){
+                Region region = (Region) ventana;
+                
+                //Vincular tamaño nueva ventana con el tamaño panel principal
+                region.prefWidthProperty().bind(panel_principal.widthProperty());
+                region.prefHeightProperty().bind(panel_principal.heightProperty());
+            }
             // Agregar la ventana al Pane
             if (panel_principal.getChildren() != null){
                 //Borrar la ventana anterior
@@ -140,7 +149,15 @@ public class Logg_Controller implements Initializable {
             // Cargar el archivo FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Gastos/Vista_Gastos.fxml"));
             Node ventana = loader.load(); // Obtener el nodo raíz del archivo FXML
-
+            
+            //Verificar si el nodo raiz es de tipo Region
+            if (ventana instanceof Region){
+                Region region = (Region) ventana;
+                
+                //Vincular tamaño nueva ventana con el tamaño panel principal
+                region.prefWidthProperty().bind(panel_principal.widthProperty());
+                region.prefHeightProperty().bind(panel_principal.heightProperty());
+            }
             // Agregar la ventana al Pane
             if (panel_principal.getChildren() != null){
                 //Borrar la ventana anterior
@@ -192,6 +209,15 @@ public class Logg_Controller implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Analiticas/Vista_Analiticas.fxml"));
             Node ventana = loader.load(); // Obtener el nodo raíz del archivo FXML
 
+            //Verificar si el nodo raiz es de tipo Region
+            if (ventana instanceof Region){
+                Region region = (Region) ventana;
+                
+                //Vincular tamaño nueva ventana con el tamaño panel principal
+                region.prefWidthProperty().bind(panel_principal.widthProperty());
+                region.prefHeightProperty().bind(panel_principal.heightProperty());
+            }
+            
             // Agregar la ventana al Pane
             if (panel_principal.getChildren() != null){
                 //Borrar la ventana anterior
@@ -242,6 +268,15 @@ public class Logg_Controller implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Exportar/Vista_Exportar.fxml"));
             Node ventana = loader.load(); // Obtener el nodo raíz del archivo FXML
 
+             //Verificar si el nodo raiz es de tipo Region
+            if (ventana instanceof Region){
+                Region region = (Region) ventana;
+                
+                //Vincular tamaño nueva ventana con el tamaño panel principal
+                region.prefWidthProperty().bind(panel_principal.widthProperty());
+                region.prefHeightProperty().bind(panel_principal.heightProperty());
+            }           
+            
             // Agregar la ventana al Pane
             if (panel_principal.getChildren() != null){
                 //Borrar la ventana anterior
@@ -292,6 +327,15 @@ public class Logg_Controller implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Configuracion/Vista_Configuracion.fxml"));
             Node ventana = loader.load(); // Obtener el nodo raíz del archivo FXML
 
+            //Verificar si el nodo raiz es de tipo Region
+            if (ventana instanceof Region){
+                Region region = (Region) ventana;
+                
+                //Vincular tamaño nueva ventana con el tamaño panel principal
+                region.prefWidthProperty().bind(panel_principal.widthProperty());
+                region.prefHeightProperty().bind(panel_principal.heightProperty());
+            }            
+            
             // Agregar la ventana al Pane
             if (panel_principal.getChildren() != null){
                 //Borrar la ventana anterior
