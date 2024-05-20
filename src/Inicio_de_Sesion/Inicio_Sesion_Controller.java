@@ -67,8 +67,6 @@ public class Inicio_Sesion_Controller implements Initializable{
     private TextField contrasena_field;
     @FXML
     private PasswordField contrasena_p_field;
-    @FXML
-    private ImageView ojos_imagen;
     private TextField contrasena_field_prueba;
     @FXML
     private Text msg_ini_nick;
@@ -82,6 +80,12 @@ public class Inicio_Sesion_Controller implements Initializable{
     private Text msg_psw_login;
     @FXML
     private Label dummy;
+    @FXML
+    private StackPane stackpane_ojopiojo;
+    @FXML
+    private ImageView ojos_cerrado;
+    @FXML
+    private ImageView ojo_abierto;
     
 
 
@@ -111,9 +115,9 @@ public class Inicio_Sesion_Controller implements Initializable{
               contrasena_p_field.setVisible(!PasswordFieldVisible);
               contrasena_field.setVisible(PasswordFieldVisible);
           });
-        
-          
-          
+        //Probando a enlazar los ojos a ver si funciona
+         
+         //Probé de todo, binbidirectional, listeners, focused property, imageproperty
           
         /*viewerPassword.setOnAction(event -> {
           System.out.println("boton pulsado");
@@ -333,6 +337,7 @@ public class Inicio_Sesion_Controller implements Initializable{
         primaryStage2.getScene().getRoot().setEffect(null);
         
         }
+
     
     }
 
