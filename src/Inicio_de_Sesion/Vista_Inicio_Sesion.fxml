@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -130,36 +129,32 @@
                               <Font name="Segoe UI Emoji" size="14.0" />
                            </font>
                         </Text>
-                        <StackPane fx:id="stackpane_contrasenas" prefHeight="49.0" prefWidth="347.0">
+                        <StackPane fx:id="stackpane_contrasenas" alignment="CENTER_RIGHT" prefHeight="49.0" prefWidth="347.0">
                            <children>
                               <TextField fx:id="contrasena_field" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
+                              <ImageView fx:id="ocultar" fitHeight="25.0" fitWidth="23.0" onMouseClicked="#ocultar" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Iconos_App/ojo%20cerrado.png" />
+                                 </image>
+                                 <StackPane.margin>
+                                    <Insets right="5.0" />
+                                 </StackPane.margin>
+                              </ImageView>
                               <PasswordField fx:id="contrasena_p_field" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
+                              <ImageView fx:id="mostrar" fitHeight="25.0" fitWidth="23.0" onMouseClicked="#mostrar" pickOnBounds="true" preserveRatio="true">
+                                 <StackPane.margin>
+                                    <Insets right="5.0" />
+                                 </StackPane.margin>
+                                 <image>
+                                    <Image url="@../Iconos_App/ojo%20abierto.png" />
+                                 </image>
+                              </ImageView>
                            </children>
                         </StackPane>
                         <Text fx:id="msg_ini_pssw" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe tu contraseña" />
                      </children>
                   </VBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                     <children>
-                        <ToggleButton fx:id="verPassword" mnemonicParsing="false" prefHeight="40.0" prefWidth="51.0" styleClass="togglebutton_contrasena" stylesheets="@Estilos_Inicio_Sesion.css">
-                           <graphic>
-                              <StackPane fx:id="stackpane_ojopiojo" prefHeight="0.0" prefWidth="235.0">
-                                 <children>
-                                    <ImageView fx:id="ojos_cerrado" fitHeight="36.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Iconos_App/ojo%20cerrado.png" />
-                                       </image>
-                                    </ImageView>
-                                    <ImageView fx:id="ojo_abierto" fitHeight="31.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Iconos_App/ojo%20abierto%20black.png" />
-                                       </image>
-                                    </ImageView>
-                                 </children>
-                              </StackPane>
-                           </graphic>
-                        </ToggleButton>
-                     </children>
                      <GridPane.margin>
                         <Insets left="10.0" />
                      </GridPane.margin>
