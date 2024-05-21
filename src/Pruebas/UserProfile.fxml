@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.fxml.FXML?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pruebas.GastosController">
+    <children>
+        <TableView fx:id="tablaGastos" prefHeight="200.0" prefWidth="400.0">
+            <columns>
+                <TableColumn text="Nombre" prefWidth="100" />
+                <TableColumn text="Cantidad" prefWidth="100" />
+                <TableColumn text="Fecha" prefWidth="200" />
+            </columns>
+        </TableView>
+    </children>
+</VBox>
+
+

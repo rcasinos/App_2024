@@ -13,10 +13,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
+import javafx.stage.Stage;
 
 /**
  *
@@ -39,6 +43,8 @@ public class Logg_Controller implements Initializable {
     private Label boton_configuracion;
     @FXML
     private Pane panel_principal;
+    @FXML
+    private Label boton_cerrar_sesion;
     
    
     //=========================================================
@@ -84,7 +90,15 @@ public class Logg_Controller implements Initializable {
             // Cargar el archivo FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Perfil/Vista_Mi_Perfil.fxml"));
             Node ventana = loader.load(); // Obtener el nodo raíz del archivo FXML
-
+            
+            //Verificar si el nodo raiz es de tipo Region
+            if (ventana instanceof Region){
+                Region region = (Region) ventana;
+                
+                //Vincular tamaño nueva ventana con el tamaño panel principal
+                region.prefWidthProperty().bind(panel_principal.widthProperty());
+                region.prefHeightProperty().bind(panel_principal.heightProperty());
+            }
             // Agregar la ventana al Pane
             if (panel_principal.getChildren() != null){
                 //Borrar la ventana anterior
@@ -135,7 +149,15 @@ public class Logg_Controller implements Initializable {
             // Cargar el archivo FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Gastos/Vista_Gastos.fxml"));
             Node ventana = loader.load(); // Obtener el nodo raíz del archivo FXML
-
+            
+            //Verificar si el nodo raiz es de tipo Region
+            if (ventana instanceof Region){
+                Region region = (Region) ventana;
+                
+                //Vincular tamaño nueva ventana con el tamaño panel principal
+                region.prefWidthProperty().bind(panel_principal.widthProperty());
+                region.prefHeightProperty().bind(panel_principal.heightProperty());
+            }
             // Agregar la ventana al Pane
             if (panel_principal.getChildren() != null){
                 //Borrar la ventana anterior
@@ -187,6 +209,15 @@ public class Logg_Controller implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Analiticas/Vista_Analiticas.fxml"));
             Node ventana = loader.load(); // Obtener el nodo raíz del archivo FXML
 
+            //Verificar si el nodo raiz es de tipo Region
+            if (ventana instanceof Region){
+                Region region = (Region) ventana;
+                
+                //Vincular tamaño nueva ventana con el tamaño panel principal
+                region.prefWidthProperty().bind(panel_principal.widthProperty());
+                region.prefHeightProperty().bind(panel_principal.heightProperty());
+            }
+            
             // Agregar la ventana al Pane
             if (panel_principal.getChildren() != null){
                 //Borrar la ventana anterior
@@ -237,6 +268,15 @@ public class Logg_Controller implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Exportar/Vista_Exportar.fxml"));
             Node ventana = loader.load(); // Obtener el nodo raíz del archivo FXML
 
+             //Verificar si el nodo raiz es de tipo Region
+            if (ventana instanceof Region){
+                Region region = (Region) ventana;
+                
+                //Vincular tamaño nueva ventana con el tamaño panel principal
+                region.prefWidthProperty().bind(panel_principal.widthProperty());
+                region.prefHeightProperty().bind(panel_principal.heightProperty());
+            }           
+            
             // Agregar la ventana al Pane
             if (panel_principal.getChildren() != null){
                 //Borrar la ventana anterior
@@ -287,6 +327,15 @@ public class Logg_Controller implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Configuracion/Vista_Configuracion.fxml"));
             Node ventana = loader.load(); // Obtener el nodo raíz del archivo FXML
 
+            //Verificar si el nodo raiz es de tipo Region
+            if (ventana instanceof Region){
+                Region region = (Region) ventana;
+                
+                //Vincular tamaño nueva ventana con el tamaño panel principal
+                region.prefWidthProperty().bind(panel_principal.widthProperty());
+                region.prefHeightProperty().bind(panel_principal.heightProperty());
+            }            
+            
             // Agregar la ventana al Pane
             if (panel_principal.getChildren() != null){
                 //Borrar la ventana anterior
@@ -298,6 +347,61 @@ public class Logg_Controller implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void cerrar_sesion_desenfoque(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        boton_cerrar_sesion.getStyleClass().remove("label_enfocado_azul");
+        boton_cerrar_sesion.getStyleClass().add("label_desenfocado_azul");
+    }
+
+    @FXML
+    private void cerrar_sesion_enfoque(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        boton_cerrar_sesion.getStyleClass().remove("label_desenfocado_azul");
+        boton_cerrar_sesion.getStyleClass().add("label_enfocado_azul");
+        
+    }
+
+    @FXML
+    private void cerrar_sesion_click(MouseEvent event) throws IOException {
+        
+        //Quitamos el seleccionado del labelSeleccionado
+        if(labelSeleccionado != null){
+        labelSeleccionado.getStyleClass().remove("label_seleccionado_azul");
+        labelSeleccionado.getStyleClass().add("label_desenfocado_azul");
+        }
+        
+        //Quitamos el estilo enfocado y metemos el click
+        boton_cerrar_sesion.getStyleClass().remove("label_enfocado_azul");
+        boton_cerrar_sesion.getStyleClass().add("label_seleccionado_azul");
+        
+        //Seleccionamos el labelactual como el seleccionado
+        labelSeleccionado = boton_cerrar_sesion;
+        
+        // Cargar el FXML de la ventana emergente
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pagina_principal_Inicio/Vista_Pag_Principal_No_Logg.fxml"));
+                Parent root = loader.load();
+
+                // Crear una nueva escena y un nuevo escenario para la ventana emergente
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+
+                // Obtenemos la ventana como objeto para aplicarle opciones
+                Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+                //cierro pestaña de inicio
+                primaryStage.close();
+
+                stage.setMaximized(true);
+                stage.centerOnScreen();
+
+                // Mostrar la ventana emergente
+                stage.show();
     }
 
 }
