@@ -1,19 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.XYChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.fxml.FXML?>
 
-<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pruebas.GastosController">
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="your.package.Controller">
     <children>
-        <TableView fx:id="tablaGastos" prefHeight="200.0" prefWidth="400.0">
-            <columns>
-                <TableColumn text="Nombre" prefWidth="100" />
-                <TableColumn text="Cantidad" prefWidth="100" />
-                <TableColumn text="Fecha" prefWidth="200" />
-            </columns>
-        </TableView>
+        <!-- Filtros -->
+        <HBox spacing="10" alignment="CENTER">
+            <children>
+                <Label text="Filtro:"/>
+                <ComboBox fx:id="filterComboBox">
+                </ComboBox>
+                <Label text="Fecha Inicio:"/>
+                <DatePicker fx:id="startDatePicker"/>
+                <Label text="Fecha Fin:"/>
+                <DatePicker fx:id="endDatePicker"/>
+                <Button text="Aplicar Filtro" onAction="#applyFilter"/>
+            </children>
+        </HBox>
+        
+        <!-- Gráficos -->
+        <TabPane fx:id="tabPane" prefHeight="400" prefWidth="600">
+            <tabs>
+                <Tab text="Gráfico de Barras">
+                    
+                </Tab>
+                <Tab text="Gráfico de Líneas">
+                    
+                </Tab>
+            </tabs>
+        </TabPane>
     </children>
 </VBox>
 
