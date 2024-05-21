@@ -55,7 +55,6 @@ public class Inicio_Sesion_Controller implements Initializable{
     private Button boton_siguiente;
     @FXML
     private Label label_registrate;
-    @FXML
     private ToggleButton verPassword;
     @FXML
     private Button boton_olvido_contrasena;
@@ -67,9 +66,7 @@ public class Inicio_Sesion_Controller implements Initializable{
     private TextField contrasena_field;
     @FXML
     private PasswordField contrasena_p_field;
-    @FXML
-    private ImageView ojos_imagen;
-    private TextField contrasena_field_prueba;
+    
     @FXML
     private Text msg_ini_nick;
     @FXML
@@ -82,6 +79,11 @@ public class Inicio_Sesion_Controller implements Initializable{
     private Text msg_psw_login;
     @FXML
     private Label dummy;
+    @FXML
+    private ImageView mostrar;
+   
+    @FXML
+    private ImageView ocultar;
     
 
 
@@ -102,18 +104,20 @@ public class Inicio_Sesion_Controller implements Initializable{
         
         //Configurar el TextField para mostrar el mismo texto que el PasswordField
          contrasena_field.textProperty().bindBidirectional(contrasena_p_field.textProperty());
-         
+         contrasena_field.setVisible(false);
+         //contrasena_field.setVisible(false);
          //Dejamos el passwordfield visible
-          contrasena_field.setVisible(false);
+          ocultar.setVisible(false);
           
-          verPassword.setOnAction(event -> {
+          //mostrar.setVisible(true);
+          /*verPassword.setOnAction(event -> {
               boolean PasswordFieldVisible = contrasena_p_field.isVisible();
               contrasena_p_field.setVisible(!PasswordFieldVisible);
               contrasena_field.setVisible(PasswordFieldVisible);
-          });
-        
-          
-          
+          });*/
+        //Probando a enlazar los ojos a ver si funciona
+         
+         //Probé de todo, binbidirectional, listeners, focused property, imageproperty
           
         /*viewerPassword.setOnAction(event -> {
           System.out.println("boton pulsado");
@@ -333,6 +337,29 @@ public class Inicio_Sesion_Controller implements Initializable{
         primaryStage2.getScene().getRoot().setEffect(null);
         
         }
+
+    @FXML
+    private void ocultar(MouseEvent event) {
+        
+        boolean contraseñaMostrar = contrasena_p_field.isVisible();
+        contrasena_p_field.setVisible(!contraseñaMostrar);
+        contrasena_field.setVisible(contraseñaMostrar);
+       ocultar.setVisible(false);
+       mostrar.setVisible(true);
+        
+        
+    }
+
+    @FXML
+    private void mostrar(MouseEvent event) {
+        
+        boolean contraseñaMostrar = contrasena_p_field.isVisible();
+        contrasena_p_field.setVisible(!contraseñaMostrar);
+        contrasena_field.setVisible(contraseñaMostrar);
+       ocultar.setVisible(true);
+       mostrar.setVisible(false);
+    }
+
     
     }
 

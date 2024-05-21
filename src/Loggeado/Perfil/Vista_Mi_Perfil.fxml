@@ -1,16 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<Pane prefHeight="584.0" prefWidth="835.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane prefHeight="584.0" prefWidth="835.0" styleClass="negrobackground" stylesheets="@../Estilos_loggeado.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Loggeado.Perfil.Vista_Mi_PerfilController">
    <children>
-      <Label layoutX="207.0" layoutY="273.0" text="LO LOGRASTE ROBERTO, DESCANSA 1">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Label>
+      <GridPane layoutX="104.0" prefHeight="584.0" prefWidth="731.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="675.0" minWidth="0.0" prefWidth="48.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="775.0" minWidth="10.0" prefWidth="725.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="675.0" minWidth="10.0" prefWidth="48.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <ImageView fx:id="foto_de_perfil" fitHeight="194.0" fitWidth="730.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
+            <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Hola buenas" wrappingWidth="419.47004222869873" />
+                  <Button fx:id="buttomEdit" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="121.0" style="-fx-background-color: black; -fx-border-color: #222222; -fx-border-radius: 20; -fx-border-width: 3;" stylesheets="@../Estilos_loggeado.css" text="Editar Perfil" textAlignment="CENTER">
+                     <font>
+                        <Font name="Segoe UI Black" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </GridPane>
    </children>
 </Pane>
