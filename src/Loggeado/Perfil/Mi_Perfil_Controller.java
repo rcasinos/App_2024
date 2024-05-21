@@ -18,7 +18,7 @@ import model.Acount;
 import model.AcountDAOException;
 import model.User;
 
-public class Vista_Mi_PerfilController {
+public class Mi_Perfil_Controller {
 
     @FXML
     private ImageView imagenPerfil;
@@ -100,7 +100,7 @@ public class Vista_Mi_PerfilController {
             textFieldNombre.setText(user.getName());
             textFieldApellido.setText(user.getSurname());
             textFieldCorreo.setText(user.getEmail());
-            textFieldPassword.setText(""); // No llenar el campo de password por seguridad
+            textFieldPassword.setText("Falta por implementar"); // No llenar el campo de password por seguridad
         } else {
             System.out.println("El usuario logueado es nulo.");
         }
