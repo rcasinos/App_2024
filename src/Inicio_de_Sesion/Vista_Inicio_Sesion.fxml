@@ -133,12 +133,12 @@
                            <children>
                               <TextField fx:id="contrasena_field" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
                               <ImageView fx:id="ocultar" fitHeight="25.0" fitWidth="23.0" onMouseClicked="#ocultar" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Iconos_App/ojo%20cerrado.png" />
-                                 </image>
                                  <StackPane.margin>
                                     <Insets right="5.0" />
                                  </StackPane.margin>
+                                 <image>
+                                    <Image url="@../Iconos_App/ojo%20cerrado.png" />
+                                 </image>
                               </ImageView>
                               <PasswordField fx:id="contrasena_p_field" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
                               <ImageView fx:id="mostrar" fitHeight="25.0" fitWidth="23.0" onMouseClicked="#mostrar" pickOnBounds="true" preserveRatio="true">

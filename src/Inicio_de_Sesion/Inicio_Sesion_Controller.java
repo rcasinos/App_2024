@@ -108,27 +108,7 @@ public class Inicio_Sesion_Controller implements Initializable{
          //contrasena_field.setVisible(false);
          //Dejamos el passwordfield visible
           ocultar.setVisible(false);
-          
-          //mostrar.setVisible(true);
-          /*verPassword.setOnAction(event -> {
-              boolean PasswordFieldVisible = contrasena_p_field.isVisible();
-              contrasena_p_field.setVisible(!PasswordFieldVisible);
-              contrasena_field.setVisible(PasswordFieldVisible);
-          });*/
-        //Probando a enlazar los ojos a ver si funciona
          
-         //Probé de todo, binbidirectional, listeners, focused property, imageproperty
-          
-        /*viewerPassword.setOnAction(event -> {
-          System.out.println("boton pulsado");
-                   String password = pPasswordUser.getText();
-                   txtUser.setText(password);
-        });*/
-        
-         /*pPasswordUser.focusedProperty().addListener((observable,oldValue,newValue)->{
-           if(!newValue){//foco perdido
-               checkPassword();}
-           });*/
          
         // Evento para manejar el clic en el campo de texto de apodo
         contrasena_field.setOnMouseClicked(event -> {
