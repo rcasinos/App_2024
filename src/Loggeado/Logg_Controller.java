@@ -21,12 +21,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Cell;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import model.User;
 
 /*
 import com.itextpdf.io.font.constants.StandardFonts;
@@ -75,14 +77,27 @@ public class Logg_Controller implements Initializable {
     private Pane panel_principal;
     @FXML
     private Label boton_cerrar_sesion;
+    @FXML
+    private ImageView imageUSer;
+    @FXML
+    private Label nameUser;
     
    
     //=========================================================
     // you must initialize here all related with the object 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+       
+        
+        
+    }   
+    
+    private void populateUserDetails(User user) {
+      
+            nameUser.setText(user.getNickName());
+            imageUSer.setImage(user.getImage());      
+    
+    }
 
     @FXML
     private void mi_perfil_desenfoque(MouseEvent event) {

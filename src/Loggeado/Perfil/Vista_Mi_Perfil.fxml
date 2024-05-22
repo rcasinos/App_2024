@@ -10,11 +10,13 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <HBox prefHeight="889.0" prefWidth="1454.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Loggeado.Perfil.Mi_Perfil_Controller">
    <children>
-      <GridPane prefHeight="889.0" prefWidth="1454.0">
+      <GridPane gridLinesVisible="true" prefHeight="889.0" prefWidth="1454.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="1155.333251953125" minWidth="924.6666259765625" prefWidth="985.9999389648438" />
@@ -41,10 +43,10 @@
             </HBox>
             <HBox GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <GridPane prefHeight="498.0" prefWidth="888.0" style="-fx-border-color: #000000;">
+                  <GridPane gridLinesVisible="true">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" prefWidth="203.00001525878906" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="691.9999847412109" minWidth="10.0" prefWidth="679.9999847412109" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="720.3333740234375" minWidth="10.0" prefWidth="272.3333435058594" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="10.0" prefWidth="1181.6666564941406" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -54,7 +56,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <HBox alignment="CENTER" prefHeight="78.0" prefWidth="201.0" style="-fx-border-color: #ffffff;">
+                        <HBox alignment="CENTER" style="-fx-border-color: #ffffff;">
                            <children>
                               <Label fx:id="labelNickname" alignment="CENTER" prefHeight="49.0" prefWidth="223.0" stylesheets="@Estilos_Perfil.css" text="Nickname:" textFill="DODGERBLUE">
                                  <font>
@@ -99,54 +101,54 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-border-color: white;" GridPane.columnIndex="1">
+                        <HBox alignment="CENTER_LEFT" style="-fx-border-color: white;" GridPane.columnIndex="1">
                            <children>
                               <TextField fx:id="textFieldNickname" prefHeight="25.0" prefWidth="259.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
-                              <Label text="Error message" textFill="RED">
-                                 <font>
-                                    <Font name="Segoe UI Emoji" size="18.0" />
-                                 </font>
-                              </Label>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-border-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <HBox alignment="CENTER_LEFT" style="-fx-border-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <children>
                               <TextField fx:id="textFieldNombre" prefHeight="25.0" prefWidth="260.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
-                              <Label text="Error message" textFill="RED">
-                                 <font>
-                                    <Font name="Segoe UI Emoji" size="18.0" />
-                                 </font>
-                              </Label>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
+                                 </children>
+                              </StackPane>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-border-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <HBox alignment="CENTER_LEFT" style="-fx-border-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <children>
                               <TextField fx:id="textFieldApellido" prefHeight="25.0" prefWidth="260.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
-                              <Label text="Error message" textFill="RED">
-                                 <font>
-                                    <Font name="Segoe UI Emoji" size="18.0" />
-                                 </font>
-                              </Label>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
+                                 </children>
+                              </StackPane>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-border-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <HBox alignment="CENTER_LEFT" style="-fx-border-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <children>
                               <TextField fx:id="textFieldCorreo" prefHeight="25.0" prefWidth="260.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
-                              <Label text="Error message" textFill="RED">
-                                 <font>
-                                    <Font name="Segoe UI Emoji" size="18.0" />
-                                 </font>
-                              </Label>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
+                                 </children>
+                              </StackPane>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-border-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <HBox alignment="CENTER_LEFT" style="-fx-border-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <children>
                               <TextField fx:id="textFieldPassword" prefHeight="25.0" prefWidth="260.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
-                              <Label text="Error message" textFill="RED">
-                                 <font>
-                                    <Font name="Segoe UI Emoji" size="18.0" />
-                                 </font>
-                              </Label>
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
+                                 </children>
+                              </StackPane>
                            </children>
                         </HBox>
                      </children>
@@ -172,7 +174,7 @@
                         <Font size="21.0" />
                      </font>
                   </Button>
-                  <Button fx:id="botonEdit" mnemonicParsing="false" onMouseClicked="#editarPerfil_click" onMouseEntered="#edit_entered" onMouseExited="#edit_exited" prefHeight="50.0" prefWidth="183.0" styleClass="boton_desenfocado_perfil" stylesheets="@Estilos_Perfil.css" text="EDIT">
+                  <Button fx:id="botonEdit" mnemonicParsing="false" onMouseEntered="#edit_entered" onMouseExited="#edit_exited" prefHeight="50.0" prefWidth="183.0" styleClass="boton_desenfocado_perfil" stylesheets="@Estilos_Perfil.css" text="EDIT">
                      <font>
                         <Font name="Segoe UI Emoji" size="21.0" />
                      </font>
