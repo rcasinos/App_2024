@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -86,7 +87,8 @@ public class Mi_Perfil_Controller {
      // evento que cuando le das a cancelar vuelve a cambiar los botones , rollo la visibilidad
      botonCancel.setOnMouseClicked(event -> {
          
-         botonCancel.requestFocus();
+      setEditableFields(false);
+         //botonCancel.requestFocus();
         botonSave.setVisible(false);
         botonSave.setDisable(true);
      //boton para cambiar la imagen tambien oculto hasta qeu se le de al edit
@@ -97,17 +99,18 @@ public class Mi_Perfil_Controller {
         botonCancel.setDisable(true);   
      // VOlvemos a mostrar el boton de edit
       botonEdit.setVisible(true);
-        
-            
+          
         });
           //--------------------------------------------------------------------------------
 
      
      //listener que se encarga de mostrar los demas botones y habilitarlos
      botonEdit.setOnMouseClicked(event -> {
-            botonEdit.requestFocus();
+            //botonEdit.requestFocus();
+              setEditableFields(true);
                 //mostramos el boton save pero no esta habilitado
                 botonSave.setVisible(true);
+                botonSave.setDisable(true);
                 //MOstramos y habilitamos el botn de cambiar la foto
                 butom_Image.setVisible(true);
                 butom_Image.setDisable(false);
@@ -117,7 +120,19 @@ public class Mi_Perfil_Controller {
             
          });
     //-------------------------------------------------------------------------------- 
-
+      
+        ChangeListener<String> changeListener = (observable, oldValue, newValue)->{
+                if (!textFieldNombre.getText().isEmpty() || textFieldApellido.getText().isEmpty() || textFieldPassword.getText().isEmpty() || textFieldCorreo.getText().isEmpty()) {
+                 botonSave.setDisable(false);
+        } else {
+                    botonSave.setDisable(true);
+        }
+    
+    };
+        textFieldNombre.textProperty().addListener(changeListener);
+        textFieldApellido.textProperty().addListener(changeListener);
+        textFieldCorreo.textProperty().addListener(changeListener);
+        textFieldPassword.textProperty().addListener(changeListener);
      
      
         
@@ -170,19 +185,12 @@ public class Mi_Perfil_Controller {
     }
  //-------------------------------------------------------------------------------- 
     // Evento para habilitar la edición de los campos
-    @FXML
-    private void editarPerfil_click(MouseEvent event) {
-        if (!editando) {
-            botonEdit.setVisible(false);
-            setEditableFields(true);
-            editando = true;
-        }
-    }
+   
  //-------------------------------------------------------------------------------- 
     // Evento para guardar los cambios y deshabilitar la edición
     @FXML
     private void guardarCambios_click(MouseEvent event) {
-        if (editando) {
+       
             // Obtener los valores de los campos de texto
             String nuevoNombre = textFieldNombre.getText();
             String nuevoApellido = textFieldApellido.getText();
@@ -201,7 +209,13 @@ public class Mi_Perfil_Controller {
 
                     // Deshabilitar la edición de los campos
                     setEditableFields(false);
-                    editando = false;
+                    botonCancel.setVisible(false);
+                    botonCancel.setDisable(true);
+                    botonSave.setVisible(false);
+                    botonSave.setDisable(true);
+                    butom_Image.setVisible(false);
+                    butom_Image.setDisable(true);
+                            
                     System.out.println("Datos cambiado correctamente");
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -210,7 +224,7 @@ public class Mi_Perfil_Controller {
                 // Mostrar mensaje de error en la validación
                 System.out.println("Error en la validación de los datos.");
             }
-        }
+        
     }
 
 
@@ -309,8 +323,8 @@ public class Mi_Perfil_Controller {
     @FXML
     private void cancelEdit(ActionEvent event) {
         
-        
-        
+        populateUserDetails(loggedUser);
+      
         
     }
 
