@@ -19,7 +19,7 @@
 
 <HBox prefHeight="889.0" prefWidth="1454.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Loggeado.Analiticas.Vista_AnaliticasController">
    <children>
-      <GridPane gridLinesVisible="true" prefHeight="889.0" prefWidth="1454.0">
+      <GridPane gridLinesVisible="true" prefHeight="889.0" prefWidth="1454.0" styleClass="negrobackground" stylesheets="@Estilos_Analiticas.css">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -45,7 +45,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2">
                            <children>
-                              <Label text="Filtrar por:">
+                              <Label styleClass="label_subtitulos" stylesheets="@Estilos_Analiticas.css" text="Filtrar por:">
                                  <font>
                                     <Font name="Segoe UI Emoji" size="17.0" />
                                  </font>
@@ -61,7 +61,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
                            <children>
-                              <Label contentDisplay="CENTER" prefHeight="60.0" prefWidth="488.0" text="Visualizado de gastos general">
+                              <Label contentDisplay="CENTER" prefHeight="60.0" prefWidth="488.0" styleClass="label_titulos" stylesheets="@Estilos_Analiticas.css" text="Visualizado de gastos general">
                                  <font>
                                     <Font name="Segoe UI Black" size="33.0" />
                                  </font>
@@ -87,7 +87,7 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2">
                            <children>
-                              <Label text="Mes:">
+                              <Label styleClass="label_subtitulos" stylesheets="@Estilos_Analiticas.css" text="Mes:">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -108,7 +108,7 @@
                                     <MenuItem mnemonicParsing="false" text="12" />
                                 </items>
                               </MenuButton>
-                              <Label text="Año:">
+                              <Label styleClass="label_subtitulos" stylesheets="@Estilos_Analiticas.css" text="Año:">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -122,7 +122,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <children>
-                              <Label text="Mes:">
+                              <Label styleClass="label_subtitulos" stylesheets="@Estilos_Analiticas.css" text="Mes:">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -143,7 +143,7 @@
                                     <MenuItem mnemonicParsing="false" text="12" />
                                  </items>
                               </MenuButton>
-                              <Label text="Año:">
+                              <Label styleClass="label_subtitulos" stylesheets="@Estilos_Analiticas.css" text="Año:">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -157,7 +157,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="60.0" prefWidth="704.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
                            <children>
-                              <Label contentDisplay="CENTER" prefHeight="60.0" prefWidth="371.0" text="Comparador de gastos">
+                              <Label contentDisplay="CENTER" prefHeight="60.0" prefWidth="371.0" styleClass="label_titulos" stylesheets="@Estilos_Analiticas.css" text="Comparador de gastos">
                                  <font>
                                     <Font name="Segoe UI Black" size="33.0" />
                                  </font>
@@ -193,8 +193,8 @@
             </VBox>
             <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.rowIndex="2">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="100.0" text="Filter" />
-                  <TextArea prefHeight="109.0" prefWidth="688.0" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="100.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@Estilos_Analiticas.css" text="Filter" />
+                  <TextArea prefHeight="109.0" prefWidth="688.0" stylesheets="@Estilos_Analiticas.css" />
                </children>
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -202,7 +202,7 @@
             </VBox>
             <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="100.0" text="Filter" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="100.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@Estilos_Analiticas.css" text="Filter" />
                   <TextArea prefHeight="109.0" prefWidth="688.0" />
                </children>
                <GridPane.margin>

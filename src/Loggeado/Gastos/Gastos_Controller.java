@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,6 +21,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.util.Duration;
 import model.Acount;
 import model.AcountDAO;
 import model.AcountDAOException;
@@ -53,6 +58,13 @@ public class Gastos_Controller implements Initializable {
     private ObservableList<Charge> chargeList;
     private User loggedUser;
     private Acount acc;
+    
+    @FXML
+    private HBox hbox_titulo;
+    @FXML
+    private Button view_all_expenses;
+    @FXML
+    private Button view_all_categories_button;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -78,16 +90,41 @@ public class Gastos_Controller implements Initializable {
 
         // Load data into table view
         expenses_tableview.setItems(chargeList);
+        
+        // Crear una animación de cambio de color
+        Timeline colorTransition = new Timeline(
+            new KeyFrame(Duration.seconds(0), 
+                new KeyValue(hbox_titulo.styleProperty(), "-fx-background-color: #ffffff;")),
+            new KeyFrame(Duration.seconds(3), 
+                new KeyValue(hbox_titulo.styleProperty(), "-fx-background-color: #f0f8ff;")), // Muy ligero azul
+            new KeyFrame(Duration.seconds(6), 
+                new KeyValue(hbox_titulo.styleProperty(), "-fx-background-color: #e0f0ff;")), // Ligero azul
+            new KeyFrame(Duration.seconds(9), 
+                new KeyValue(hbox_titulo.styleProperty(), "-fx-background-color: #d0e8ff;")), // Azul claro
+            new KeyFrame(Duration.seconds(12), 
+                new KeyValue(hbox_titulo.styleProperty(), "-fx-background-color: #ffffff;")) // De vuelta a blanco
+        );
+        colorTransition.setCycleCount(Timeline.INDEFINITE);
+        colorTransition.setAutoReverse(true);
+
+        // Iniciar la animación
+        colorTransition.play();
     }
 
     @FXML
     private void add_expense_exited(MouseEvent event) {
-        // Add logic for mouse exited event for add expense button if needed
+        
+        //Modificamos el estilo del boton al entrar en el
+        add_expense_button.getStyleClass().remove("boton_enfocado_subir_imagen");
+        add_expense_button.getStyleClass().add("boton_desenfocado_subir_imagen");
     }
 
     @FXML
     private void add_expense_entered(MouseEvent event) {
-        // Add logic for mouse entered event for add expense button if needed
+        
+        //Modificamos el estilo del boton al entrar en el
+        add_expense_button.getStyleClass().remove("boton_desenfocado_subir_imagen");
+        add_expense_button.getStyleClass().add("boton_enfocado_subir_imagen");
     }
 
     @FXML
@@ -165,33 +202,38 @@ public class Gastos_Controller implements Initializable {
             }
     }
 
-
-
-
     @FXML
     private void create_category_exited(MouseEvent event) {
-        // Add logic for mouse exited event for create category button if needed
+        //Modificamos el estilo del boton al entrar en el
+        create_category_button.getStyleClass().remove("boton_enfocado_subir_imagen");
+        create_category_button.getStyleClass().add("boton_desenfocado_subir_imagen");
     }
 
     @FXML
     private void create_category_entered(MouseEvent event) {
-        // Add logic for mouse entered event for create category button if needed
+        //Modificamos el estilo del boton al entrar en el
+        create_category_button.getStyleClass().remove("boton_desenfocado_subir_imagen");
+        create_category_button.getStyleClass().add("boton_enfocado_subir_imagen");
     }
 
     @FXML
     private void create_category_click(MouseEvent event) {
-        // Add logic for creating a new category
+        //Modificamos el estilo del boton al entrar en el
         showAlert("Create Category", "Category creation logic goes here.");
     }
 
     @FXML
     private void edit_expense_exited(MouseEvent event) {
-        // Add logic for mouse exited event for edit expense button if needed
+        //Modificamos el estilo del boton al entrar en el
+        edit_expense_button.getStyleClass().remove("boton_enfocado_subir_imagen");
+        edit_expense_button.getStyleClass().add("boton_desenfocado_subir_imagen");
     }
 
     @FXML
     private void edit_expense_entered(MouseEvent event) {
-        // Add logic for mouse entered event for edit expense button if needed
+        //Modificamos el estilo del boton al entrar en el
+        edit_expense_button.getStyleClass().remove("boton_desenfocado_subir_imagen");
+        edit_expense_button.getStyleClass().add("boton_enfocado_subir_imagen");
     }
 
     @FXML
@@ -208,12 +250,16 @@ public class Gastos_Controller implements Initializable {
 
     @FXML
     private void remove_exp_exited(MouseEvent event) {
-        // Add logic for mouse exited event for remove expense button if needed
+        //Modificamos el estilo del boton al entrar en el
+        remove_exp_button.getStyleClass().remove("boton_enfocado_subir_imagen");
+        remove_exp_button.getStyleClass().add("boton_desenfocado_subir_imagen");
     }
 
     @FXML
     private void remove_exp_entered(MouseEvent event) {
-        // Add logic for mouse entered event for remove expense button if needed
+        //Modificamos el estilo del boton al entrar en el
+        remove_exp_button.getStyleClass().remove("boton_desenfocado_subir_imagen");
+        remove_exp_button.getStyleClass().add("boton_enfocado_subir_imagen");
     }
 
     @FXML
@@ -232,12 +278,16 @@ public class Gastos_Controller implements Initializable {
 
     @FXML
     private void remove_img_exited(MouseEvent event) {
-        // Add logic for mouse exited event for remove image button if needed
+        //Modificamos el estilo del boton al entrar en el
+        remove_img_button.getStyleClass().remove("boton_enfocado_registro");
+        remove_img_button.getStyleClass().add("boton_desenfocado_registro");
     }
 
     @FXML
     private void remove_img_entered(MouseEvent event) {
-        // Add logic for mouse entered event for remove image button if needed
+        //Modificamos el estilo del boton al entrar en el
+        remove_img_button.getStyleClass().remove("boton_desenfocado_registro");
+        remove_img_button.getStyleClass().add("boton_enfocado_registro");
     }
 
     @FXML
@@ -254,12 +304,16 @@ public class Gastos_Controller implements Initializable {
 
     @FXML
     private void change_photo_exited(MouseEvent event) {
-        // Add logic for mouse exited event for change photo button if needed
+        //Modificamos el estilo del boton al entrar en el
+        change_photo_button.getStyleClass().remove("boton_enfocado_registro");
+        change_photo_button.getStyleClass().add("boton_desenfocado_registro");
     }
 
     @FXML
     private void change_mouse_entered(MouseEvent event) {
-        // Add logic for mouse entered event for change photo button if needed
+        //Modificamos el estilo del boton al entrar en el
+        change_photo_button.getStyleClass().remove("boton_desenfocado_registro");
+        change_photo_button.getStyleClass().add("boton_enfocado_registro");
     }
 
     @FXML
@@ -269,10 +323,49 @@ public class Gastos_Controller implements Initializable {
     }
 
     private void showAlert(String title, String message) {
+        
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    @FXML
+    private void view_expense_exited(MouseEvent event) {
+
+        view_all_expenses.getStyleClass().remove("boton_enfocado_registro");
+        view_all_expenses.getStyleClass().add("boton_desenfocado_registro");        
+    }
+
+    @FXML
+    private void view_expense_entered(MouseEvent event) {
+        
+        view_all_expenses.getStyleClass().remove("boton_desenfocado_registro");
+        view_all_expenses.getStyleClass().add("boton_enfocado_registro");
+    }
+
+    @FXML
+    private void view_expense_click(MouseEvent event) {
+        
+    }
+
+    @FXML
+    private void view_category_exited(MouseEvent event) {
+        
+        view_all_categories_button.getStyleClass().remove("boton_enfocado_registro");
+        view_all_categories_button.getStyleClass().add("boton_desenfocado_registro");        
+    }
+
+    @FXML
+    private void view_category_entered(MouseEvent event) {
+        
+        view_all_categories_button.getStyleClass().remove("boton_desenfocado_registro");
+        view_all_categories_button.getStyleClass().add("boton_enfocado_registro");        
+    }
+
+    @FXML
+    private void view_all_categories(MouseEvent event) {
+        
     }
 }

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -61,9 +62,66 @@ public class Mi_Perfil_Controller {
 
     private boolean editando = false;
     private User loggedUser;
+    @FXML
+    private Button butom_Image;
+    @FXML
+    private Button botonCancel;
 
     // Método para inicializar los componentes
     public void initialize() {
+     //--------------------------------------------------------------------------------     
+    //Ocultamos el boton de save los cambios ya que no hay cambios hechos
+    // ademas este estará deshabilitado hasta que s ehayan realizado cambios en alguno de los campos
+    // del perfil    
+     botonSave.setVisible(false);
+     botonSave.setDisable(true);
+     //boton para cambiar la imagen tambien oculto hasta qeu se le de al edit
+     butom_Image.setVisible(false);
+     butom_Image.setDisable(true);
+     //boton de cancelar el edit tambien invisible y deshabilitado
+     botonCancel.setVisible(false);
+     botonCancel.setDisable(true);
+     
+     //--------------------------------------------------------------------------------
+     // evento que cuando le das a cancelar vuelve a cambiar los botones , rollo la visibilidad
+     botonCancel.setOnMouseClicked(event -> {
+         
+         botonCancel.requestFocus();
+        botonSave.setVisible(false);
+        botonSave.setDisable(true);
+     //boton para cambiar la imagen tambien oculto hasta qeu se le de al edit
+        butom_Image.setVisible(false);
+         butom_Image.setDisable(true);
+     //boton de cancelar el edit tambien invisible y deshabilitado
+         botonCancel.setVisible(false);
+        botonCancel.setDisable(true);   
+     // VOlvemos a mostrar el boton de edit
+      botonEdit.setVisible(true);
+        
+            
+        });
+          //--------------------------------------------------------------------------------
+
+     
+     //listener que se encarga de mostrar los demas botones y habilitarlos
+     botonEdit.setOnMouseClicked(event -> {
+            botonEdit.requestFocus();
+                //mostramos el boton save pero no esta habilitado
+                botonSave.setVisible(true);
+                //MOstramos y habilitamos el botn de cambiar la foto
+                butom_Image.setVisible(true);
+                butom_Image.setDisable(false);
+                //Mostramos el boton de cancelar y lo habilitamos
+                 botonCancel.setVisible(true);
+                 botonCancel.setDisable(false);   
+            
+         });
+    //-------------------------------------------------------------------------------- 
+
+     
+     
+        
+    //-------------------------------------------------------------------------------- 
         makeImageViewCircular();
         try {
             // Inicializa la imagen del usuario cuando la escena se carga
@@ -78,7 +136,7 @@ public class Mi_Perfil_Controller {
         textFieldNickname.setEditable(false);
         setEditableFields(false);
     }
-
+ //-------------------------------------------------------------------------------- 
     // Método para hacer circular la imagen de perfil
     private void makeImageViewCircular() {
         imagenPerfil.setPreserveRatio(true);
@@ -92,7 +150,7 @@ public class Mi_Perfil_Controller {
 
         imagenPerfil.setClip(clip);
     }
-
+ //-------------------------------------------------------------------------------- 
     // Método para llenar los detalles del usuario en los campos de texto
     private void populateUserDetails(User user) {
         if (user != null) {
@@ -105,21 +163,22 @@ public class Mi_Perfil_Controller {
             System.out.println("El usuario logueado es nulo.");
         }
     }
-
+ //-------------------------------------------------------------------------------- 
     // Método para obtener la imagen del usuario logueado
     public Image getLoggedUserImage() throws AcountDAOException, IOException {
         return Acount.getInstance().getLoggedUser().getImage();
     }
-
+ //-------------------------------------------------------------------------------- 
     // Evento para habilitar la edición de los campos
     @FXML
     private void editarPerfil_click(MouseEvent event) {
         if (!editando) {
+            botonEdit.setVisible(false);
             setEditableFields(true);
             editando = true;
         }
     }
-
+ //-------------------------------------------------------------------------------- 
     // Evento para guardar los cambios y deshabilitar la edición
     @FXML
     private void guardarCambios_click(MouseEvent event) {
@@ -208,6 +267,9 @@ public class Mi_Perfil_Controller {
 
     @FXML
     private void guardarCambios_entered(MouseEvent event) {
+        
+        
+        
     }
 
     @FXML
@@ -242,6 +304,14 @@ public class Mi_Perfil_Controller {
                 System.err.println("Error al guardar la imagen.");
             }
         }
+    }
+
+    @FXML
+    private void cancelEdit(ActionEvent event) {
+        
+        
+        
+        
     }
 
 }
