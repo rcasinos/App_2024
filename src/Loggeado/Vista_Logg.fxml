@@ -72,6 +72,11 @@
                               <Font name="Segoe UI Black" size="12.0" />
                            </font>
                         </Label>
+                        <Label fx:id="boton_cerrar_sesion" onMouseClicked="#cerrar_sesion_click" onMouseEntered="#cerrar_sesion_enfoque" onMouseExited="#cerrar_sesion_desenfoque" styleClass="label_desenfocado_azul" stylesheets="@Estilos_loggeado.css" text="Cerrar Sesion">
+                           <font>
+                              <Font name="Segoe UI Black" size="12.0" />
+                           </font>
+                        </Label>
                      </children>
                      <padding>
                         <Insets left="20.0" top="100.0" />
@@ -103,7 +108,7 @@
                 <RowConstraints minHeight="5.0" prefHeight="14.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Pane styleClass="blanco_puro" stylesheets="@Estilos_loggeado.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Pane fx:id="panel_principal" styleClass="blanco_puro" stylesheets="@Estilos_loggeado.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>

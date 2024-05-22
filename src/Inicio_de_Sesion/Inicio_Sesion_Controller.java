@@ -55,7 +55,6 @@ public class Inicio_Sesion_Controller implements Initializable{
     private Button boton_siguiente;
     @FXML
     private Label label_registrate;
-    @FXML
     private ToggleButton verPassword;
     @FXML
     private Button boton_olvido_contrasena;
@@ -67,10 +66,7 @@ public class Inicio_Sesion_Controller implements Initializable{
     private TextField contrasena_field;
     @FXML
     private PasswordField contrasena_p_field;
-    @FXML
-    private ImageView ojos_imagen;
-    @FXML
-    private TextField contrasena_field_prueba;
+    
     @FXML
     private Text msg_ini_nick;
     @FXML
@@ -83,6 +79,11 @@ public class Inicio_Sesion_Controller implements Initializable{
     private Text msg_psw_login;
     @FXML
     private Label dummy;
+    @FXML
+    private ImageView mostrar;
+   
+    @FXML
+    private ImageView ocultar;
     
 
 
@@ -101,31 +102,13 @@ public class Inicio_Sesion_Controller implements Initializable{
         msg_user_login.setVisible(false);
         msg_psw_login.setVisible(false);
         
-        /*Configurar el TextField para mostrar el mismo texto que el PasswordField
-         txtUser.textProperty().bindBidirectional(pPasswordUser.textProperty());
-         
+        //Configurar el TextField para mostrar el mismo texto que el PasswordField
+         contrasena_field.textProperty().bindBidirectional(contrasena_p_field.textProperty());
+         contrasena_field.setVisible(false);
+         //contrasena_field.setVisible(false);
          //Dejamos el passwordfield visible
-          txtUser.setVisible(false);
-          
-          verPassword.setOnAction(event -> {
-              boolean PasswordFieldVisible = pPasswordUser.isVisible();
-              pPasswordUser.setVisible(!PasswordFieldVisible);
-              txtUser.setVisible(PasswordFieldVisible);
-          });
-        */ 
-          
-          
-          
-        /*viewerPassword.setOnAction(event -> {
-          System.out.println("boton pulsado");
-                   String password = pPasswordUser.getText();
-                   txtUser.setText(password);
-        });*/
-        
-         /*pPasswordUser.focusedProperty().addListener((observable,oldValue,newValue)->{
-           if(!newValue){//foco perdido
-               checkPassword();}
-           });*/
+          ocultar.setVisible(false);
+         
          
         // Evento para manejar el clic en el campo de texto de apodo
         contrasena_field.setOnMouseClicked(event -> {
@@ -185,7 +168,7 @@ public class Inicio_Sesion_Controller implements Initializable{
     private void siguiente_click(MouseEvent event) throws Exception{
         
         String u = Nombre_field.getText();
-        String p1 = contrasena_field_prueba.getText();
+        String p1 = contrasena_p_field.getText();
      
         Acount acc = null;
         boolean valido = false;
@@ -334,6 +317,29 @@ public class Inicio_Sesion_Controller implements Initializable{
         primaryStage2.getScene().getRoot().setEffect(null);
         
         }
+
+    @FXML
+    private void ocultar(MouseEvent event) {
+        
+        boolean contraseñaMostrar = contrasena_p_field.isVisible();
+        contrasena_p_field.setVisible(!contraseñaMostrar);
+        contrasena_field.setVisible(contraseñaMostrar);
+       ocultar.setVisible(false);
+       mostrar.setVisible(true);
+        
+        
+    }
+
+    @FXML
+    private void mostrar(MouseEvent event) {
+        
+        boolean contraseñaMostrar = contrasena_p_field.isVisible();
+        contrasena_p_field.setVisible(!contraseñaMostrar);
+        contrasena_field.setVisible(contraseñaMostrar);
+       ocultar.setVisible(true);
+       mostrar.setVisible(false);
+    }
+
     
     }
 

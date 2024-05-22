@@ -1,0 +1,17 @@
+.table-view {
+    -fx-background-color: #f0f0f0; /* Color de fondo */
+}
+
+.table-column {
+    -fx-alignment: CENTER; /* Alineación central de texto */
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #e0e0e0; /* Color de fondo para filas impares */
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #87CEEB; /* Color de fondo para filas seleccionadas */
+    -fx-text-fill: white; /* Color de texto para filas seleccionadas */
+}
+
