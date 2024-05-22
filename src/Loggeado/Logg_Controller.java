@@ -53,6 +53,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import javafx.geometry.Rectangle2D;
+import javafx.stage.Screen;
 
 /**
  *
@@ -91,7 +93,8 @@ public class Logg_Controller implements Initializable {
         
         
     }   
-    
+    //----------------------------------------------------------------------------------------------------------
+
     private void populateUserDetails(User user) {
       
             nameUser.setText(user.getNickName());
@@ -106,6 +109,7 @@ public class Logg_Controller implements Initializable {
         boton_mi_perfil.getStyleClass().remove("label_enfocado_azul");
         boton_mi_perfil.getStyleClass().add("label_desenfocado_azul");
     }
+//----------------------------------------------------------------------------------------------------------
 
     @FXML
     private void mi_perfil_enfoque(MouseEvent event) {
@@ -139,7 +143,7 @@ public class Logg_Controller implements Initializable {
             //Verificar si el nodo raiz es de tipo Region
             if (ventana instanceof Region){
                 Region region = (Region) ventana;
-                
+               
                 //Vincular tamaño nueva ventana con el tamaño panel principal
                 region.prefWidthProperty().bind(panel_principal.widthProperty());
                 region.prefHeightProperty().bind(panel_principal.heightProperty());
@@ -156,6 +160,7 @@ public class Logg_Controller implements Initializable {
             e.printStackTrace();
         }
     }
+//----------------------------------------------------------------------------------------------------------
 
     @FXML
     private void gastos_desenfoque(MouseEvent event) {
@@ -172,7 +177,7 @@ public class Logg_Controller implements Initializable {
         boton_gastos.getStyleClass().remove("label_desenfocado_azul");
         boton_gastos.getStyleClass().add("label_enfocado_azul");
     }
-
+//----------------------------------------------------------------------------------------------------------
     @FXML
     private void gastos_click(MouseEvent event) {
         
@@ -215,6 +220,7 @@ public class Logg_Controller implements Initializable {
             e.printStackTrace();
         }
     }
+//----------------------------------------------------------------------------------------------------------
 
     @FXML
     private void analiticas_desenfoque(MouseEvent event) {
@@ -231,6 +237,7 @@ public class Logg_Controller implements Initializable {
         boton_analiticas.getStyleClass().remove("label_desenfocado_azul");
         boton_analiticas.getStyleClass().add("label_enfocado_azul");
     }
+//----------------------------------------------------------------------------------------------------------
 
     @FXML
     private void analiticas_click(MouseEvent event) {
@@ -275,6 +282,7 @@ public class Logg_Controller implements Initializable {
             e.printStackTrace();
         }
     }
+//----------------------------------------------------------------------------------------------------------
 
     @FXML
     private void exportar_desenfoque(MouseEvent event) {
@@ -291,6 +299,7 @@ public class Logg_Controller implements Initializable {
         boton_exportar.getStyleClass().remove("label_desenfocado_azul");
         boton_exportar.getStyleClass().add("label_enfocado_azul");
     }
+//----------------------------------------------------------------------------------------------------------
 
     @FXML
     private void exportar_click(MouseEvent event) {
@@ -409,6 +418,7 @@ public class Logg_Controller implements Initializable {
             }
         } */
     }
+//----------------------------------------------------------------------------------------------------------
 
     @FXML
     private void configuracion_desenfoque(MouseEvent event) {
@@ -425,6 +435,7 @@ public class Logg_Controller implements Initializable {
         boton_configuracion.getStyleClass().remove("label_desenfocado_azul");
         boton_configuracion.getStyleClass().add("label_enfocado_azul");
     }
+//----------------------------------------------------------------------------------------------------------
 
     @FXML
     private void configuracion_click(MouseEvent event) {
@@ -468,6 +479,7 @@ public class Logg_Controller implements Initializable {
             e.printStackTrace();
         }
     }
+//----------------------------------------------------------------------------------------------------------
 
     @FXML
     private void cerrar_sesion_desenfoque(MouseEvent event) {
@@ -477,6 +489,7 @@ public class Logg_Controller implements Initializable {
         boton_cerrar_sesion.getStyleClass().add("label_desenfocado_azul");
     }
 
+
     @FXML
     private void cerrar_sesion_enfoque(MouseEvent event) {
         
@@ -485,6 +498,7 @@ public class Logg_Controller implements Initializable {
         boton_cerrar_sesion.getStyleClass().add("label_enfocado_azul");
         
     }
+//----------------------------------------------------------------------------------------------------------
 
     @FXML
     private void cerrar_sesion_click(MouseEvent event) throws IOException {
@@ -525,3 +539,4 @@ public class Logg_Controller implements Initializable {
     }
 
 }
+//----------------------------------------------------------------------------------------------------------

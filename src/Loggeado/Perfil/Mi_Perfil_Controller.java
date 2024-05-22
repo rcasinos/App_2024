@@ -1,9 +1,12 @@
 package Loggeado.Perfil;
 
+import java.awt.event.FocusEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,8 +17,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import model.Acount;
 import model.AcountDAOException;
 import model.User;
@@ -67,10 +72,14 @@ public class Mi_Perfil_Controller {
     private Button butom_Image;
     @FXML
     private Button botonCancel;
+    @FXML
+    private Text text_nickname;
 
     // Método para inicializar los componentes
     public void initialize() {
-     //--------------------------------------------------------------------------------     
+     //--------------------------------------------------------------------------------  
+     
+     text_nickname.setVisible(false);
     //Ocultamos el boton de save los cambios ya que no hay cambios hechos
     // ademas este estará deshabilitado hasta que s ehayan realizado cambios en alguno de los campos
     // del perfil    
@@ -325,6 +334,19 @@ public class Mi_Perfil_Controller {
         
         populateUserDetails(loggedUser);
       
+        
+    }
+
+    @FXML
+    private void informar_user(MouseEvent event) {
+        
+        text_nickname.setVisible(true);
+        
+         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5),e -> text_nickname.setVisible(false)));
+            timeline.setCycleCount(1); // Solo ejecutar una vez
+            timeline.play();
+        
+
         
     }
 
