@@ -10,7 +10,9 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <HBox prefHeight="889.0" prefWidth="1454.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Loggeado.Perfil.Mi_Perfil_Controller">
    <children>
@@ -39,7 +41,7 @@
                   <Insets left="40.0" />
                </padding>
             </HBox>
-            <HBox style="-fx-border-color: #ffffff;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <HBox GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <GridPane gridLinesVisible="true">
                     <columnConstraints>
@@ -102,26 +104,51 @@
                         <HBox alignment="CENTER_LEFT" style="-fx-border-color: white;" GridPane.columnIndex="1">
                            <children>
                               <TextField fx:id="textFieldNickname" prefHeight="25.0" prefWidth="259.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" style="-fx-border-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <children>
                               <TextField fx:id="textFieldNombre" prefHeight="25.0" prefWidth="260.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
+                                 </children>
+                              </StackPane>
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" style="-fx-border-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <children>
                               <TextField fx:id="textFieldApellido" prefHeight="25.0" prefWidth="260.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
+                                 </children>
+                              </StackPane>
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" style="-fx-border-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <children>
                               <TextField fx:id="textFieldCorreo" prefHeight="25.0" prefWidth="260.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
+                                 </children>
+                              </StackPane>
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" style="-fx-border-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <children>
                               <TextField fx:id="textFieldPassword" prefHeight="25.0" prefWidth="260.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
+                                 </children>
+                              </StackPane>
                            </children>
                         </HBox>
                      </children>
@@ -147,7 +174,7 @@
                         <Font size="21.0" />
                      </font>
                   </Button>
-                  <Button fx:id="botonEdit" mnemonicParsing="false" onMouseClicked="#editarPerfil_click" onMouseEntered="#edit_entered" onMouseExited="#edit_exited" prefHeight="50.0" prefWidth="183.0" styleClass="boton_desenfocado_perfil" stylesheets="@Estilos_Perfil.css" text="EDIT">
+                  <Button fx:id="botonEdit" mnemonicParsing="false" onMouseEntered="#edit_entered" onMouseExited="#edit_exited" prefHeight="50.0" prefWidth="183.0" styleClass="boton_desenfocado_perfil" stylesheets="@Estilos_Perfil.css" text="EDIT">
                      <font>
                         <Font name="Segoe UI Emoji" size="21.0" />
                      </font>

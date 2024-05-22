@@ -84,12 +84,12 @@
                   </VBox>
                   <HBox alignment="CENTER_LEFT" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                        <ImageView fx:id="imageUSer" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                            <image>
                               <Image url="@../Iconos_App/perfil.png" />
                            </image>
                         </ImageView>
-                        <Label styleClass="label_enfocado_azul" stylesheets="@Estilos_loggeado.css" text="Robertuki099" HBox.hgrow="ALWAYS" />
+                        <Label fx:id="nameUser" styleClass="label_enfocado_azul" stylesheets="@Estilos_loggeado.css" text="Robertuki099" HBox.hgrow="ALWAYS" />
                      </children>
                      <padding>
                         <Insets left="20.0" />
