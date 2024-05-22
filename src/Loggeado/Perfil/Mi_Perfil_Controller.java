@@ -137,7 +137,6 @@ public class Mi_Perfil_Controller {
      
         
     //-------------------------------------------------------------------------------- 
-        makeImageViewCircular();
         try {
             // Inicializa la imagen del usuario cuando la escena se carga
             imagenPerfil.setImage(getLoggedUserImage());
@@ -150,20 +149,6 @@ public class Mi_Perfil_Controller {
         // Deshabilitar la edición de los campos inicialmente
         textFieldNickname.setEditable(false);
         setEditableFields(false);
-    }
- //-------------------------------------------------------------------------------- 
-    // Método para hacer circular la imagen de perfil
-    private void makeImageViewCircular() {
-        imagenPerfil.setPreserveRatio(true);
-        imagenPerfil.setFitWidth(150);
-        imagenPerfil.setFitHeight(150);
-
-        Circle clip = new Circle();
-        clip.radiusProperty().bind(imagenPerfil.fitWidthProperty().divide(2));
-        clip.centerXProperty().bind(imagenPerfil.fitWidthProperty().divide(2));
-        clip.centerYProperty().bind(imagenPerfil.fitHeightProperty().divide(2));
-
-        imagenPerfil.setClip(clip);
     }
  //-------------------------------------------------------------------------------- 
     // Método para llenar los detalles del usuario en los campos de texto
