@@ -1,5 +1,6 @@
-package Loggeado.Gastos;
+package Pruebas;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -10,27 +11,44 @@ import java.util.logging.Logger;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.Acount;
 import model.AcountDAO;
 import model.AcountDAOException;
+import model.Category;
 import model.Charge;
 import model.User;
 import modeling.MyChargeModel;
+import modeling.SharedData;
 
-public class Gastos_Controller implements Initializable {
+public class Gastos_Controller1 implements Initializable {
 
     @FXML
     private TableView<Charge> expenses_tableview;
@@ -58,6 +76,7 @@ public class Gastos_Controller implements Initializable {
     private ObservableList<Charge> chargeList;
     private User loggedUser;
     private Acount acc;
+    private Category expenseCategory;
     
     @FXML
     private HBox hbox_titulo;
@@ -65,9 +84,27 @@ public class Gastos_Controller implements Initializable {
     private Button view_all_expenses;
     @FXML
     private Button view_all_categories_button;
+    @FXML
+    private TextField text_field_name;
+    @FXML
+    private TextField text_fiel_description;
+    @FXML
+    private TextField text_fiel_cost;
+    @FXML
+    private MenuButton category_pciker;
+    @FXML
+    private TextField text_field_units;
+    @FXML
+    private HBox hbox_panel;
+    @FXML
+    private Button save_button;
+    @FXML
+    private ImageView ticket_image;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+         
+        hbox_panel.setVisible(false);
         
         //Obtener la instancia de acount y el usuario logg
         try{
@@ -84,12 +121,13 @@ public class Gastos_Controller implements Initializable {
 
         // Setup table columns
         name_column.setCellValueFactory(new PropertyValueFactory<>("name"));
-        category_column.setCellValueFactory(new PropertyValueFactory<>("category"));
+        category_column.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategory().getName()));
         color_column.setCellValueFactory(new PropertyValueFactory<>("description")); // Assuming color is in description
-        cost_column.setCellValueFactory(new PropertyValueFactory<>("cost"));
-
-        // Load data into table view
-        expenses_tableview.setItems(chargeList);
+        cost_column.setCellValueFactory(cellData -> {
+            Charge charge = cellData.getValue();
+            double total = charge.getUnits() * charge.getCost();
+            return new SimpleDoubleProperty(total).asObject();
+        });        
         
         // Crear una animación de cambio de color
         Timeline colorTransition = new Timeline(
@@ -110,7 +148,24 @@ public class Gastos_Controller implements Initializable {
         // Iniciar la animación
         colorTransition.play();
     }
+    
+    private void loadUserCharges() throws AcountDAOException, IOException {
+        
+        List<Charge> userCharges = Acount.getInstance().getUserCharges();
+        chargeList = FXCollections.observableArrayList(userCharges);
+        SharedData.getInstance().getCharges().setAll(userCharges);
+        expenses_tableview.setItems(chargeList);
+    }
 
+    // Método para actualizar el TableView con la lista de cargos actualizada
+    public void updateTableView() {
+        try {
+            loadUserCharges(); // Vuelve a cargar los cargos del usuario
+        } catch (AcountDAOException | IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     @FXML
     private void add_expense_exited(MouseEvent event) {
         
@@ -130,76 +185,32 @@ public class Gastos_Controller implements Initializable {
     @FXML
     private void add_expense_click(MouseEvent event) {
         
-        // Get user info
-            Acount acc = null;
-            AcountDAO accD = null;
-
+    //CAMBIO DE ESCENA 
             try {
-                acc = Acount.getInstance();
-                this.loggedUser = acc.getLoggedUser();
-            }
-            catch (IOException ex) {
-            }
-            catch (AcountDAOException ex) {
-            }
+                // Cargar el archivo FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Gastos/Controller/AddExpense.fxml"));
+                Node ventana = loader.load(); // Obtener el nodo raíz del archivo FXML
 
-            // Get all charges
-            List<Charge> charges = null;
-            try {
-                System.out.println(acc.getLoggedUser().getNickName());
-                charges = acc.getUserCharges();
-            }
-            catch (AcountDAOException ex) {
-            }
-            catch (NullPointerException d) {
-                System.out.println(d);
-                charges = null;
-            }
+                //Verificar si el nodo raiz es de tipo Region
+                if (ventana instanceof Region){
+                    Region region = (Region) ventana;
 
-            /*
-            // Add example test
-            List<Category> categories = null;
-            try {
-                categories = acc.getUserCategories();
-                acc.registerCharge("Comida", "Pizza", 12.3, 1, this.user.getImage(), LocalDate.now(), categories.get(0));
-            }
-            catch (AcountDAOException ex) {
-                Logger.getLogger(LobbyController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            */
-
-            if (charges != null || !charges.isEmpty()) {
-                // Remove all first
-                chargeList.removeAll(chargeList);
-
-                System.out.println("Tamaño: " + charges.size());
-                int t_size = charges.size();
-                // Set columns
-                name_column.setCellValueFactory(new PropertyValueFactory<>("categoryName"));
-                color_column.setCellValueFactory(new PropertyValueFactory<>("chargeName"));
-                category_column.setCellValueFactory(new PropertyValueFactory<>("chargePrice"));
-                cost_column.setCellValueFactory(new PropertyValueFactory<>("chargeUds"));
-
-                try {
-                    // Insert to model MyChargeModel
-
-                    // Not showing data to table
-                    int i = 0;
-                    for (Charge charge : charges) {
-                        System.out.println(i+"/"+t_size);
-                        MyChargeModel myCharge = new MyChargeModel(charge.getCategory().getName(), charge.getName(), Double.toString(charge.getCost()), Integer.toString(charge.getUnits()), charge.getDate().toString(), charge);
-                        System.out.println(myCharge.getCategoryName() + " " + myCharge.getChargeName() + " " + myCharge.getChargePrice() + " " + myCharge.getChargeUds() + " " + myCharge.getChargeDate());
-                        //chargeList.add(myCharge);
-                        i++;
-                    }
-
-                    // Set data
-                    expenses_tableview.setItems(chargeList);
+                    //Vincular tamaño nueva ventana con el tamaño panel principal
+                    region.prefWidthProperty().bind(hbox_panel.widthProperty());
+                    region.prefHeightProperty().bind(hbox_panel.heightProperty());
                 }
-                catch (NullPointerException ex) {
-                    System.out.println("Vacio");
+                // Agregar la ventana al Pane
+                if (hbox_panel.getChildren() != null){
+                    //Borrar la ventana anterior
+                    hbox_panel.getChildren().clear();
                 }
+                hbox_panel.getChildren().add(ventana);
+
+                // Ahora puedes acceder a los métodos y variables públicas del controlador de la ventana incrustada
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+        
     }
 
     @FXML
@@ -320,6 +331,20 @@ public class Gastos_Controller implements Initializable {
     private void change_button_click(MouseEvent event) {
         // Add logic for changing the photo of an expense
         showAlert("Change Photo", "Change photo logic goes here.");
+        
+        FileChooser fileChooser = new FileChooser(); 
+        
+        //hay que configurar para que el fileChooser solo permita formatos de imagen. Primero crear el filtro y luego añadirlo
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Archivos de imagen (*.png, *.jpg, *.jpge)", "*.png", "*.jpg", "*.jpge"); 
+        fileChooser.getExtensionFilters().add(extFilter);
+        
+        //Mostrar la forma de seleccionar el archivo
+        File file  = fileChooser.showOpenDialog(new Stage()); 
+        
+        if (file != null) {
+            Image image = new Image(file.toURI().toString()); 
+            ticket_image.setImage(image); 
+        }
     }
 
     private void showAlert(String title, String message) {
@@ -368,4 +393,68 @@ public class Gastos_Controller implements Initializable {
     private void view_all_categories(MouseEvent event) {
         
     }
+
+    @FXML
+    private void save_change_expense_click(MouseEvent event) throws AcountDAOException, IOException  {
+        boolean validExpense = validateNumericField(text_fiel_cost);
+        boolean validUnits = validateNumericField(text_field_units);
+        
+        
+        if (validExpense && validUnits) {
+            String expenseName = text_field_name.getText();
+            String expenseDescription = text_fiel_description.getText();
+            double expenseAmount = Double.parseDouble(text_fiel_cost.getText()); 
+            int expenseUnits = Integer.parseInt(text_field_units.getText());
+            LocalDate expenseDate = LocalDate.now();
+            Image expenseTicket = ticket_image.getImage();
+
+            boolean isCorrectAdded = Acount.getInstance().registerCharge(expenseName, expenseDescription, expenseAmount, expenseUnits, expenseTicket, expenseDate, expenseCategory);
+                     
+        } else {
+            System.out.println("Failed to add an expense");
+        }
+        
+        hbox_panel.setVisible(true);
+    }
+
+    private boolean validateNumericField(TextField textField) {
+        String text = textField.getText();
+        if (text.isEmpty() || !text.matches("\\d+")) {
+            textField.getStyleClass().add("expenses-wrong-field");
+            textField.getStyleClass().removeAll("expenses-normal-field");
+            return false;
+        } else {
+            textField.getStyleClass().add("expenses-normal-field");
+            textField.getStyleClass().removeAll("expenses-wrong-field");
+            return true;
+        }
+    }
+
+    @FXML
+    private void visualize_categories(ActionEvent event) throws AcountDAOException, IOException {
+        
+        //obtenemos las categorias del usuario que esta logeado
+        List<Category> loggedUserCategories = Acount.getInstance().getUserCategories();
+        
+        // Limpiar los items existentes
+        category_pciker.getItems().clear();
+        
+        for (Category category : loggedUserCategories) {
+            MenuItem menuItem = new MenuItem(category.getName());
+            menuItem.setOnAction(e -> {
+                category_pciker.setText(category.getName()); 
+                expenseCategory = category;
+            });
+            category_pciker.getItems().add(menuItem);
+        }
+        
+        //añadimos la opcion de nueva categoria
+        /*
+        MenuItem addNewCategoryItem = new MenuItem("New Category");
+        addNewCategoryItem.setOnAction(e -> handleAddCategory());
+        category_pciker.getItems().add(addNewCategoryItem); */
+    }
+    
 }
+
+
