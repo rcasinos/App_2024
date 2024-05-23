@@ -197,18 +197,21 @@ public class AddExpenseController implements Initializable {
 //-----------------------------------------------------------------------------------
     @FXML
     private void save_change_expense_click(MouseEvent event) throws AcountDAOException, IOException {
-        
+
         boolean validExpense = validateNumericField(text_fiel_cost);
         boolean validUnits = validateNumericField(text_field_units);
-        
-        
+
         if (validExpense && validUnits) {
             System.out.println("1");
             String expenseName = text_field_name.getText();
             String expenseDescription = text_fiel_description.getText();
             double expenseAmount = Double.parseDouble(text_fiel_cost.getText()); 
             int expenseUnits = Integer.parseInt(text_field_units.getText());
-            LocalDate expenseDate = LocalDate.now();
+
+            // Obtener la fecha seleccionada en el DatePicker
+            LocalDate selectedDate = data_expense.getValue();
+            LocalDate expenseDate = (selectedDate != null) ? selectedDate : LocalDate.now();
+
             Image expenseTicket = ticket_image.getImage();
             System.out.println("2");
             boolean isCorrectAdded = Acount.getInstance().registerCharge(expenseName, expenseDescription, expenseAmount, expenseUnits, expenseTicket, expenseDate, expenseCategory);
@@ -217,6 +220,7 @@ public class AddExpenseController implements Initializable {
             System.out.println("Failed to add an expense");
         }        
     }
+
 //-----------------------------------------------------------------------------------   
 
     @FXML

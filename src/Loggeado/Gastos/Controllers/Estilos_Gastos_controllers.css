@@ -2,87 +2,104 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
 */
-/* 
-    Created on : 23 may 2024, 12:46:36
-    Author     : berjo
-*/
 
-/*
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.DateCell;
-import javafx.scene.control.DatePicker;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.util.Callback;
-import javafx.util.StringConverter;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
-public class DatePickerExample extends Application {
-
-    @Override
-    public void start(Stage primaryStage) {
-        DatePicker datePicker = new DatePicker();
-        
-        // Restringir el DatePicker para permitir solo fechas a partir del día actual
-        datePicker.setDayCellFactory(new Callback<DatePicker, DateCell>() {
-            @Override
-            public DateCell call(DatePicker param) {
-                return new DateCell() {
-                    @Override
-                    public void updateItem(LocalDate item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (item.isBefore(LocalDate.now())) {
-                            setDisable(true);
-                            setStyle("-fx-background-color: #ffc0cb;"); // Color de fondo para fechas deshabilitadas
-                        }
-                    }
-                };
-            }
-        });
-
-        
-
-        // Convertidor de cadena para formatear la fecha
-        String pattern = "yyyy-MM-dd";
-        datePicker.setConverter(new StringConverter<LocalDate>() {
-            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
-
-            @Override
-            public String toString(LocalDate date) {
-                if (date != null) {
-                    return dateFormatter.format(date);
-                } else {
-                    return "";
-                }
-            }
-
-            @Override
-            public LocalDate fromString(String string) {
-                if (string != null && !string.isEmpty()) {
-                    return LocalDate.parse(string, dateFormatter);
-                } else {
-                    return null;
-                }
-            }
-        });
-
+.estilos_datapicker {
+    -fx-base: black; /* Fondo negro */
+    -fx-control-inner-background: black; /* Fondo interior negro */
+    -fx-text-inner-color: white; /* Texto en blanco */
+    -fx-highlight-fill: black; /* Resaltado negro */
+    -fx-highlight-text-fill: white; /* Texto en resaltado blanco */
+    -fx-background-color: black; /* Fondo negro */
+    -fx-border-color: #1E90FF; /* Color del borde azul */
+    -fx-border-width: 1px; /* Ancho del borde */
+    -fx-border-radius: 3px; /* Radio del borde */
 }
 
-
-
-*/
-.estilos_datapicker{
-    -fx-base: black;
-    -fx-control-inner-background: black;
-    -fx-text-inner-color: white; 
-    -fx-highlight-fill: black; 
-    -fx-highlight-text-fill: white;
-    -fx-background-color: black;
-    -fx-arrow-button: black;
+.estilos_datapicker .date-picker-popup > * {
+    -fx-background-color: black; /* Fondo negro para el popup */
+    -fx-border-color: white; /* Color del borde blanco */
 }
 
+.estilos_datapicker .date-picker-popup > .month-year-pane > .label {
+    -fx-text-fill: white; /* Texto blanco para el mes y año */
+}
 
-      
+.estilos_datapicker .date-picker-popup > .calendar-grid {
+    -fx-border-color: white; /* Color del borde blanco */
+}
+
+.negrobackground{
+    -fx-background-color:#000000
+}
+
+.azul_estilo{
+    -fx-background-color:#1E90FF
+}
+
+.blanco_puro{
+    -fx-background-color:#ffffff
+}
+
+.boton_enfocado_subir_imagen{
+    -fx-background-color:#1B77E0;
+    -fx-background-radius: 20; 
+    -fx-text-fill: #ffffff;
+}
+.boton_desenfocado_subir_imagen{
+    -fx-background-color:#1E90FF;
+    -fx-background-radius: 20;
+    -fx-text-fill: #ffffff;    
+}
+
+.textfield_registro{
+    -fx-background-color: #000000; 
+    -fx-border-color: #1E90FF;
+    -fx-background-radius: 5px; 
+    -fx-border-radius: 5px; 
+    -fx-padding: 5px; 
+    -fx-border-width: 2px;
+    -fx-text-fill: #ffffff;
+}
+
+.textarea_registro {
+    -fx-background-color: transparent; /* Hacer transparente el fondo del TextArea */
+    -fx-border-color: #1E90FF;
+    -fx-background-radius: 5px; 
+    -fx-border-radius: 5px; 
+    -fx-padding: 5px; 
+    -fx-border-width: 2px;
+    -fx-text-fill: #ffffff;    
+}
+
+.boton_desenfocado_registro{
+    -fx-background-color:#000000;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20; 
+    -fx-border-color: #1E90FF; 
+    -fx-border-width: 2px; 
+}
+
+.boton_enfocado_registro{
+    
+    -fx-background-color:#1E90FF;
+    -fx-background-radius: 20;
+    -fx-text-fill: #ffffff;
+}
+  
+.label_titulos{
+    -fx-text-fill: #1E90FF
+}
+
+.label_subtitulos{
+    -fx-text-fill: #ffffff
+}
+
+.hbox_titulo {
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+    -fx-padding: 10px;
+    -fx-border-color: #000000;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75), 10, 0.5, 0.0, 0.0); /* Sombra */
+}

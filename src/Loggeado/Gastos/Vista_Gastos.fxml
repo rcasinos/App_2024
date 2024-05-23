@@ -38,11 +38,11 @@
                         </Label>
                      </children>
                   </StackPane>
-                  <TableView fx:id="expenses_tableview" prefHeight="743.0" prefWidth="727.0" style="-fx-background-color: #FFFFFF;">
+                  <TableView fx:id="expenses_tableview" prefHeight="743.0" prefWidth="727.0" style="-fx-background-color: #FFFFFF;" stylesheets="@Estilos_Gastos.css">
                     <columns>
                       <TableColumn fx:id="name_column" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="203.33334350585938" text="Name" />
                       <TableColumn fx:id="category_column" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="174.0" text="Category" />
-                        <TableColumn fx:id="color_column" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="171.0" text="Color" />
+                        <TableColumn fx:id="date_column" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="171.0" text="Date" />
                         <TableColumn fx:id="cost_column" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="132.0" text="Cost" />
                     </columns>
                   </TableView>

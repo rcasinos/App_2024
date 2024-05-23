@@ -36,7 +36,7 @@ public class AddCategoryController implements Initializable {
     @FXML
     private TextField categoryName;
     @FXML
-    private TextArea categoryDescription;
+    private TextField categoryDescription;
     @FXML
     private Button cancel_button;
     @FXML

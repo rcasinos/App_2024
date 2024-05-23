@@ -53,7 +53,7 @@ public class Vista_GastosController implements Initializable {
     @FXML
     private TableColumn<Charge, String> category_column;
     @FXML
-    private TableColumn<Charge, String> color_column;
+    private TableColumn<Charge, String> date_column;
     @FXML
     private TableColumn<Charge, Double> cost_column;
     @FXML
@@ -86,7 +86,7 @@ public class Vista_GastosController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         name_column.setCellValueFactory(new PropertyValueFactory<>("name"));
-        color_column.setCellValueFactory(new PropertyValueFactory<>("name"));
+        date_column.setCellValueFactory(new PropertyValueFactory<>("date"));
         category_column.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategory().getName()));
         cost_column.setCellValueFactory(cellData -> {
             Charge charge = cellData.getValue();
@@ -200,14 +200,31 @@ public class Vista_GastosController implements Initializable {
     @FXML
     private void create_category_click(MouseEvent event) {
         
-         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("AddCategory.fxml"));
-            Parent homeRoot = loader.load();
-            hbox_panel.getChildren().clear();
-            hbox_panel.getChildren().add(homeRoot);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    //CAMBIO DE ESCENA 
+            try {
+                // Cargar el archivo FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Gastos/Controllers/AddCategory.fxml"));
+                Node ventana = loader.load(); // Obtener el nodo raíz del archivo FXML
+
+                //Verificar si el nodo raiz es de tipo Region
+                if (ventana instanceof Region){
+                    Region region = (Region) ventana;
+
+                    //Vincular tamaño nueva ventana con el tamaño panel principal
+                    region.prefWidthProperty().bind(hbox_panel.widthProperty());
+                    region.prefHeightProperty().bind(hbox_panel.heightProperty());
+                }
+                // Agregar la ventana al Pane
+                if (hbox_panel.getChildren() != null){
+                    //Borrar la ventana anterior
+                    hbox_panel.getChildren().clear();
+                }
+                hbox_panel.getChildren().add(ventana);
+
+                // Ahora puedes acceder a los métodos y variables públicas del controlador de la ventana incrustada
+            } catch (IOException e) {
+                e.printStackTrace();
+            }        
     }
 //----------------------------------------------------------------------------------------------------
     @FXML
@@ -225,6 +242,32 @@ public class Vista_GastosController implements Initializable {
 //----------------------------------------------------------------------------------------------------
     @FXML
     private void view_expense_click(MouseEvent event) {
+        
+    //CAMBIO DE ESCENA 
+            try {
+                // Cargar el archivo FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Gastos/Controllers/View_Expenses.fxml"));
+                Node ventana = loader.load(); // Obtener el nodo raíz del archivo FXML
+
+                //Verificar si el nodo raiz es de tipo Region
+                if (ventana instanceof Region){
+                    Region region = (Region) ventana;
+
+                    //Vincular tamaño nueva ventana con el tamaño panel principal
+                    region.prefWidthProperty().bind(hbox_panel.widthProperty());
+                    region.prefHeightProperty().bind(hbox_panel.heightProperty());
+                }
+                // Agregar la ventana al Pane
+                if (hbox_panel.getChildren() != null){
+                    //Borrar la ventana anterior
+                    hbox_panel.getChildren().clear();
+                }
+                hbox_panel.getChildren().add(ventana);
+
+                // Ahora puedes acceder a los métodos y variables públicas del controlador de la ventana incrustada
+            } catch (IOException e) {
+                e.printStackTrace();
+            }         
     }
 //----------------------------------------------------------------------------------------------------
     @FXML
@@ -243,6 +286,32 @@ public class Vista_GastosController implements Initializable {
 //----------------------------------------------------------------------------------------------------
     @FXML
     private void view_all_categories(MouseEvent event) {
+        
+    //CAMBIO DE ESCENA 
+            try {
+                // Cargar el archivo FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Gastos/Controllers/View_Category.fxml"));
+                Node ventana = loader.load(); // Obtener el nodo raíz del archivo FXML
+
+                //Verificar si el nodo raiz es de tipo Region
+                if (ventana instanceof Region){
+                    Region region = (Region) ventana;
+
+                    //Vincular tamaño nueva ventana con el tamaño panel principal
+                    region.prefWidthProperty().bind(hbox_panel.widthProperty());
+                    region.prefHeightProperty().bind(hbox_panel.heightProperty());
+                }
+                // Agregar la ventana al Pane
+                if (hbox_panel.getChildren() != null){
+                    //Borrar la ventana anterior
+                    hbox_panel.getChildren().clear();
+                }
+                hbox_panel.getChildren().add(ventana);
+
+                // Ahora puedes acceder a los métodos y variables públicas del controlador de la ventana incrustada
+            } catch (IOException e) {
+                e.printStackTrace();
+            }         
     }
 //----------------------------------------------------------------------------------------------------
     @FXML
