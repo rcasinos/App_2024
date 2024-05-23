@@ -21,6 +21,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -198,6 +199,15 @@ public class Vista_GastosController implements Initializable {
 //----------------------------------------------------------------------------------------------------
     @FXML
     private void create_category_click(MouseEvent event) {
+        
+         try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AddCategory.fxml"));
+            Parent homeRoot = loader.load();
+            hbox_panel.getChildren().clear();
+            hbox_panel.getChildren().add(homeRoot);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 //----------------------------------------------------------------------------------------------------
     @FXML
