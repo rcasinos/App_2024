@@ -240,7 +240,7 @@
                            <children>
                               <ImageView fx:id="imagen_foto_perfil" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                                  <image>
-                                    <Image url="@../Iconos_App/Perfil%20oscuro.png" />
+                                    <Image url="@../Iconos_Estilo/astronauta_image_perfil.png" />
                                  </image>
                               </ImageView>
                            </children>
