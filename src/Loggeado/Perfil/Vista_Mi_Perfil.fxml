@@ -119,13 +119,13 @@
                         <HBox alignment="CENTER_LEFT" style="-fx-border-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <children>
                               <TextField fx:id="textFieldNombre" prefHeight="25.0" prefWidth="260.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
-                              <Text fx:id="msg_nombre" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Introduce tu nombre" wrappingWidth="237.13671875" />
+                              <Text fx:id="msg_nombre" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Introduce tu  nuevo nombre" wrappingWidth="237.13671875" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" style="-fx-border-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <children>
                               <TextField fx:id="textFieldApellido" prefHeight="25.0" prefWidth="260.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
-                              <Text fx:id="msg_apellido" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Introduce tu apellido" wrappingWidth="237.13671875" />
+                              <Text fx:id="msg_apellido" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Introduce tu  nuevo apellido" wrappingWidth="237.13671875" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" style="-fx-border-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="3">
@@ -133,7 +133,7 @@
                               <TextField fx:id="textFieldCorreo" prefHeight="25.0" prefWidth="260.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
                               <StackPane alignment="CENTER_LEFT" prefHeight="103.0" prefWidth="328.0">
                                  <children>
-                                    <Text fx:id="msg_ini_email" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe tu correo electronico" wrappingWidth="243.93087148666382" />
+                                    <Text fx:id="msg_ini_email" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Introduce tu  nuevo correo electronico" wrappingWidth="243.93087148666382" />
                                     <Text fx:id="msg_err_email" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo electronico incorrecto, recuerda la forma --&gt; Nombre@dominio.org" wrappingWidth="258.2157745361328" />
                                  </children>
                               </StackPane>
@@ -142,11 +142,10 @@
                         <HBox alignment="CENTER_LEFT" style="-fx-border-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <children>
                               <TextField fx:id="textFieldPassword" prefHeight="32.0" prefWidth="404.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
-                              <StackPane prefHeight="28.0" prefWidth="470.0">
+                              <StackPane alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="470.0">
                                  <children>
-                                    <Text fx:id="msg_ini_nickname" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe tu apodo" wrappingWidth="319.9450378417969" />
-                                    <Text fx:id="msg_nick_use" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="El apodo ya está en uso" />
-                                    <Text fx:id="msg_nick_spaces" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Apodo incorrecto, prueba a quitar espacios " />
+                                    <Text fx:id="msg_ini_pssw" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Introduce tu nueva contraseña" />
+                                    <Text fx:id="msg_err_pssw" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña incorrecta (Letras y numeros, min 6 caracteres)" />
                                  </children>
                               </StackPane>
                            </children>

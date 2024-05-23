@@ -84,14 +84,67 @@ public class Mi_Perfil_Controller {
     @FXML
     private Text msg_err_email;
     @FXML
-    private Text msg_ini_nickname;
+    private Text msg_ini_pssw;
     @FXML
-    private Text msg_nick_use;
-    @FXML
-    private Text msg_nick_spaces;
+    private Text msg_err_pssw;
 
     // Método para inicializar los componentes
     public void initialize() {
+    
+    //----------------------------------------------------------------- 
+    //Ocultamos los mensajes de error de contraseña y de correo 
+         msg_err_email.setVisible(false);
+         msg_ini_email.setVisible(false);
+         //---------------------------------
+         msg_ini_pssw.setVisible(false);
+         msg_err_pssw.setVisible(false);
+ //--------------------------------------------------------------------------
+          textFieldCorreo.textProperty().addListener(new ChangeListener<String>() {
+
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!User.checkEmail(newValue)) {
+                    System.out.println("Apodo no valido");
+                    msg_err_email.setVisible(true);
+                    msg_ini_email.setVisible(false);
+                    //validEmail.setValue(false);
+                } else {
+                    msg_err_email.setVisible(false);
+                    msg_ini_email.setVisible(false);
+                   // validEmail.setValue(true);
+
+                }
+            }
+        });
+ //---------------------------------------------------------------------------
+  textFieldCorreo.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                informar_correo();
+            }
+        });
+ 
+ 
+ 
+ // Envoltura a CONTRASENA para checkear su vericidad
+         textFieldPassword.textProperty().addListener((observable, oldValue, newValue) -> {
+
+            System.out.println("Nueva contrasena ingresada: " + newValue); // Debug
+
+            if (!User.checkPassword(newValue)) {
+                System.out.println("Contrasena incorrecta, avisando a mensaje de error");
+                msg_ini_pssw.setVisible(false);
+                msg_err_pssw.setVisible(true);
+                
+               // validPassword.setValue(false);
+
+            } else {
+                System.out.println("Contrasena correcta");
+                msg_ini_pssw.setVisible(false);
+                msg_err_pssw.setVisible(false);
+               // validPassword.setValue(true);
+            }
+        });
+        
      //--------------------------------------------------------------------------------  
      msg_nombre.setVisible(false);
      text_nickname.setVisible(false);
@@ -373,7 +426,7 @@ public class Mi_Perfil_Controller {
         
         msg_nombre.setVisible(true);
         
-         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5),e -> msg_nombre.setVisible(false)));
+         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3),e -> msg_nombre.setVisible(false)));
             timeline.setCycleCount(1); // Solo ejecutar una vez
             timeline.play();
     }
@@ -385,9 +438,19 @@ public class Mi_Perfil_Controller {
         
         msg_apellido.setVisible(true);
         
-         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5),e -> msg_apellido.setVisible(false)));
+         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3),e -> msg_apellido.setVisible(false)));
             timeline.setCycleCount(1); // Solo ejecutar una vez
             timeline.play();
+    }
+    
+    private void informar_correo(){
+        
+         msg_ini_email.setVisible(true);
+        
+         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3),e -> msg_ini_email.setVisible(false)));
+            timeline.setCycleCount(1); // Solo ejecutar una vez
+            timeline.play();
+        
     }
 
 }
