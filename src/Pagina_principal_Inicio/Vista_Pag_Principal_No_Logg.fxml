@@ -13,7 +13,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <HBox alignment="CENTER" styleClass="negrobackground" stylesheets="@Estilos_pag_princp_no_logg.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Pagina_principal_Inicio.Pag_Principal_No_Logg_Controller">
    <children>
       <GridPane alignment="CENTER" prefHeight="1000.0" prefWidth="1800.0" styleClass="negrobackground" stylesheets="@Estilos_pag_princp_no_logg.css" HBox.hgrow="ALWAYS">
@@ -31,7 +30,7 @@
                <children>
                   <ImageView fitHeight="415.0" fitWidth="623.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                      <image>
-                        <Image url="@../Iconos_Estilo/Union%20Letras%20y%20Logo.png" />
+                        <Image url="@../Iconos_Estilo/Union_Letras_logo.png" />
                      </image>
                   </ImageView>
                </children>
