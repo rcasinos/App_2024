@@ -1,0 +1,88 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 23 may 2024, 12:46:36
+    Author     : berjo
+*/
+
+/*
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.DateCell;
+import javafx.scene.control.DatePicker;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.util.Callback;
+import javafx.util.StringConverter;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+public class DatePickerExample extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+        DatePicker datePicker = new DatePicker();
+        
+        // Restringir el DatePicker para permitir solo fechas a partir del día actual
+        datePicker.setDayCellFactory(new Callback<DatePicker, DateCell>() {
+            @Override
+            public DateCell call(DatePicker param) {
+                return new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item.isBefore(LocalDate.now())) {
+                            setDisable(true);
+                            setStyle("-fx-background-color: #ffc0cb;"); // Color de fondo para fechas deshabilitadas
+                        }
+                    }
+                };
+            }
+        });
+
+        
+
+        // Convertidor de cadena para formatear la fecha
+        String pattern = "yyyy-MM-dd";
+        datePicker.setConverter(new StringConverter<LocalDate>() {
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
+
+            @Override
+            public String toString(LocalDate date) {
+                if (date != null) {
+                    return dateFormatter.format(date);
+                } else {
+                    return "";
+                }
+            }
+
+            @Override
+            public LocalDate fromString(String string) {
+                if (string != null && !string.isEmpty()) {
+                    return LocalDate.parse(string, dateFormatter);
+                } else {
+                    return null;
+                }
+            }
+        });
+
+}
+
+
+
+*/
+.estilos_datapicker{
+    -fx-base: black;
+    -fx-control-inner-background: black;
+    -fx-text-inner-color: white; 
+    -fx-highlight-fill: black; 
+    -fx-highlight-text-fill: white;
+    -fx-background-color: black;
+    -fx-arrow-button: black;
+}
+
+
+      
