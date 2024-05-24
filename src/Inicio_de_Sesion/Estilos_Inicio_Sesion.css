@@ -1,0 +1,85 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 12 mar 2024, 13:51:25
+    Author     : berjo
+*/
+
+.negrobackground{
+    -fx-background-color:#000000
+}
+
+.azul_estilo{
+    -fx-background-color:#1E90FF
+}
+
+.blanco_puro{
+    -fx-background-color:#ffffff
+}
+
+.boton_desenfocado_siguiente{
+    -fx-background-color:#ffffff;
+    -fx-background-radius: 20;
+    -fx-text-fill: #000000;
+    -fx-font-size: 16;
+}
+
+.boton_enfocado_siguiente{
+    -fx-background-color:#dddddd;
+    -fx-background-radius: 20;
+    -fx-text-fill: #000000;
+    -fx-font-size: 16;
+}
+
+.boton_desenfocado_contrasena{
+    -fx-background-color:#000000;
+    -fx-background-radius: 20;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16;
+    -fx-border-radius: 20; 
+    -fx-border-color: #ffffff; 
+    -fx-border-width: 1px;     
+}
+
+.boton_enfocado_contrasena{
+    -fx-background-color:#111111;
+    -fx-background-radius: 20;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16;
+    -fx-border-radius: 20; 
+    -fx-border-color: #ffffff; 
+    -fx-border-width: 1px;    
+}
+
+.label_desenfocado_azul{
+    -fx-text-fill: #1E90FF;
+}
+
+.label_enfocado_azul{
+    -fx-text-fill: #1E90FF;
+    -fx-underline: true;
+}
+
+.label_gris{
+    -fx-text-fill: #999999;
+}
+
+.textfield_inicio_sesion{
+    -fx-background-color: #000000; 
+    -fx-border-color: #222222;
+    -fx-background-radius: 5px; 
+    -fx-border-radius: 5px; 
+    -fx-padding: 5px; 
+    -fx-border-width: 2px;
+    -fx-text-fill: #ffffff;
+}
+
+
+.togglebutton_contrasena{
+     -fx-background-color: #000000; 
+     -fx-border-color: #222222; 
+     -fx-border-radius: 20px;
+}
+

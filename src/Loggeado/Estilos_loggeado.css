@@ -1,0 +1,48 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 12 mar 2024, 13:51:25
+    Author     : berjo
+*/
+.negrobackground{
+    -fx-background-color:#000000
+}
+
+.azul_estilo{
+    -fx-background-color:#1E90FF
+}
+
+.blanco_puro{
+    -fx-background-color:#ffffff
+}
+
+.boton_enfocado_main{
+    -fx-background-color:#1B77E0;
+    -fx-background-radius: 20;        
+}
+.boton_desenfocado_main{
+    -fx-background-color:#1E90FF;
+    -fx-background-radius: 20;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16;    
+}
+
+.label_desenfocado_azul{
+    -fx-text-fill: #999999;
+    -fx-font-size: 20;
+    -fx-font-family: "Segoe UI Black";
+    
+}
+.label_enfocado_azul{
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 20;
+    -fx-font-family: "Segoe UI Black";
+}
+
+.label_seleccionado_azul{
+    -fx-text-fill: #1E90FF;
+    -fx-font-size: 23;
+    -fx-font-family: "Segoe UI Black";
+}

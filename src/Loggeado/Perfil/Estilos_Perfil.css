@@ -1,0 +1,44 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 19 may 2024, 20:15:47
+    Author     : Roberto Casinos
+*/
+.negrobackground{
+    -fx-background-color:#000000
+}
+
+.azul_estilo{
+    -fx-background-color:#1E90FF
+}
+
+.blanco_puro{
+    -fx-background-color:#ffffff
+}
+
+.textfield_estilos{
+    -fx-background-color: #000000; 
+    -fx-border-color: #222222;
+    -fx-background-radius: 5px; 
+    -fx-border-radius: 5px; 
+    -fx-padding: 5px; 
+    -fx-border-width: 2px;
+    -fx-text-fill: #ffffff;
+}
+
+.boton_desenfocado_perfil{
+    -fx-background-color:#000000;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20; 
+    -fx-border-color: #1E90FF; 
+    -fx-border-width: 2px; 
+}
+
+.boton_enfocado_perfil{
+    
+    -fx-background-color:#1E90FF;
+    -fx-background-radius: 20;
+    -fx-text-fill: #ffffff;
+}

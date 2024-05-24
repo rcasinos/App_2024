@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<HBox alignment="CENTER" styleClass="negrobackground" stylesheets="@Estilos_Inicio_Sesion.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Inicio_de_Sesion.Inicio_Sesion_Controller">
+   <children>
+      <GridPane prefHeight="900.0" prefWidth="900.0" styleClass="negrobackground" stylesheets="@Estilos_Inicio_Sesion.css">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="0.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="800.0" minWidth="10.0" prefWidth="746.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="0.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <GridPane GridPane.columnIndex="1">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="239.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="656.0" minWidth="10.0" prefWidth="647.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="166.0" minWidth="3.0" prefWidth="10.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+                     <children>
+                        <ImageView fitHeight="153.0" fitWidth="159.0" pickOnBounds="true" preserveRatio="true" rotate="45.0">
+                           <image>
+                              <Image url="@../Iconos_Estilo/Logo%20definitivo%20app.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Inicia Sesión en ">
+                           <font>
+                              <Font name="Segoe UI Black" size="35.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="223.0" fitWidth="677.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Iconos_Estilo/Logo%20en%20letras.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </children>
+            </GridPane>
+            <GridPane alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="185.0" minWidth="-Infinity" prefWidth="184.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="373.0" minWidth="373.0" prefWidth="373.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="91.0" minWidth="-Infinity" prefWidth="75.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <VBox alignment="CENTER" prefHeight="100.0" prefWidth="634.0" spacing="5.0" GridPane.columnIndex="1">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre / Nickname">
+                           <font>
+                              <Font name="Segoe UI Emoji" size="14.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="Nombre_field" focusTraversable="false" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
+                        <Text fx:id="msg_ini_nick" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe tu Usuario / Nickname" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" spacing="15.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <children>
+                        <Button fx:id="boton_siguiente" mnemonicParsing="false" onMouseClicked="#siguiente_click" onMouseEntered="#siguiente_enfocado" onMouseExited="#siguiente_desenfocado" prefHeight="45.0" prefWidth="360.0" styleClass="boton_desenfocado_siguiente" stylesheets="@Estilos_Inicio_Sesion.css" text="Siguiente 🚀">
+                           <font>
+                              <Font name="Segoe UI Black" size="24.0" />
+                           </font>
+                        </Button>
+                        <StackPane prefHeight="25.0" prefWidth="373.0">
+                           <children>
+                              <Text fx:id="msg_err_login" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Credenciales incorrectas, pruebe otra vez">
+                                 <font>
+                                    <Font name="Segoe UI Emoji" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="msg_user_login" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Falta el nombre de usuario">
+                                 <font>
+                                    <Font name="Segoe UI Emoji" size="14.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="msg_psw_login" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Falta la contraseña">
+                                 <font>
+                                    <Font name="Segoe UI Emoji" size="14.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </StackPane>
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="103.0" prefWidth="360.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña">
+                           <font>
+                              <Font name="Segoe UI Emoji" size="14.0" />
+                           </font>
+                        </Text>
+                        <StackPane fx:id="stackpane_contrasenas" alignment="CENTER_RIGHT" prefHeight="49.0" prefWidth="347.0">
+                           <children>
+                              <TextField fx:id="contrasena_field" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
+                              <ImageView fx:id="ocultar" fitHeight="25.0" fitWidth="23.0" onMouseClicked="#ocultar" pickOnBounds="true" preserveRatio="true">
+                                 <StackPane.margin>
+                                    <Insets right="5.0" />
+                                 </StackPane.margin>
+                                 <image>
+                                    <Image url="@../Iconos_App/ojo%20cerrado.png" />
+                                 </image>
+                              </ImageView>
+                              <PasswordField fx:id="contrasena_p_field" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
+                              <ImageView fx:id="mostrar" fitHeight="25.0" fitWidth="23.0" onMouseClicked="#mostrar" pickOnBounds="true" preserveRatio="true">
+                                 <StackPane.margin>
+                                    <Insets right="5.0" />
+                                 </StackPane.margin>
+                                 <image>
+                                    <Image url="@../Iconos_App/ojo%20abierto.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </StackPane>
+                        <Text fx:id="msg_ini_pssw" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe tu contraseña" />
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </HBox>
+               </children>
+            </GridPane>
+            <GridPane alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="185.0" minWidth="-Infinity" prefWidth="184.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="373.0" minWidth="373.0" prefWidth="373.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="91.0" minWidth="-Infinity" prefWidth="75.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+                     <children>
+                        <Button fx:id="boton_olvido_contrasena" mnemonicParsing="false" onMouseClicked="#contrasena_click" onMouseEntered="#contrasena_enfoque" onMouseExited="#contrasena_desenfoque" prefHeight="45.0" prefWidth="360.0" styleClass="boton_desenfocado_contrasena" stylesheets="@Estilos_Inicio_Sesion.css" text="¿Olvidaste tu contraseña?">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                        <Label fx:id="dummy" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="12.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <Label prefHeight="20.0" prefWidth="148.0" styleClass="label_gris" stylesheets="@Estilos_Inicio_Sesion.css" text="¿No tienes una cuenta?">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="label_registrate" alignment="TOP_LEFT" onMouseClicked="#registrate_click" onMouseEntered="#registrate_enfoque" onMouseExited="#registrate_desenfoque" prefHeight="30.0" prefWidth="72.0" styleClass="label_desenfocado_azul" stylesheets="@Estilos_Inicio_Sesion.css" text="Registrate">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+   </children>
+</HBox>
