@@ -28,7 +28,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import model.Acount;
 import model.AcountDAOException;
@@ -75,6 +77,13 @@ public class Vista_GastosController implements Initializable {
     private User loggedUser;
     private Acount acc;
     private Category expenseCategory;
+    @FXML
+    private Button butom_reset;
+    
+     private Pane panel_principal;
+    private VBox vbox_pane;
+    @FXML
+    private HBox hbox_panel_principal;
 
     /**
      * Initializes the controller class.
@@ -84,7 +93,12 @@ public class Vista_GastosController implements Initializable {
 //----------------------------------------------------------------------------------------------------    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+  //-----------------------------------------------------------------------------------
+   // Configurar la acción del botón
+      
+
         
+ //----------------------------------------------------------------------------------------------------  
         name_column.setCellValueFactory(new PropertyValueFactory<>("name"));
         date_column.setCellValueFactory(new PropertyValueFactory<>("date"));
         category_column.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategory().getName()));
@@ -119,6 +133,15 @@ public class Vista_GastosController implements Initializable {
         // Iniciar la animación
         colorTransition.play();
     } 
+  //---------------------------------------------------------------------------------------------------------  
+     // Método para actualizar o refrescar el Pane
+    private void actualizarPane(Pane pane) {
+        // Modificar el contenido del Pane
+        pane.getChildren().clear();
+        // Forzar un nuevo layout y refresco
+        pane.layout();
+    }
+    
 //----------------------------------------------------------------------------------------------------    
     private void loadUserCharges() throws AcountDAOException, IOException {
         List<Charge> userCharges = Acount.getInstance().getUserCharges();
@@ -351,4 +374,34 @@ public class Vista_GastosController implements Initializable {
     private void remove_exp_click(MouseEvent event) {
     }
  //----------------------------------------------------------------------------------------------------   
+
+    @FXML
+    private void reset_pagina(MouseEvent event) {
+        
+     try {
+                // Cargar el archivo FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Gastos/Vista_Gastos.fxml"));
+                Node ventana = loader.load(); // Obtener el nodo raíz del archivo FXML
+
+                //Verificar si el nodo raiz es de tipo Region
+                if (ventana instanceof Region){
+                    Region region = (Region) ventana;
+
+                    //Vincular tamaño nueva ventana con el tamaño panel principal
+                    region.prefWidthProperty().bind(hbox_panel_principal.widthProperty());
+                    region.prefHeightProperty().bind(hbox_panel_principal.heightProperty());
+                }
+                // Agregar la ventana al Pane
+                if (hbox_panel_principal.getChildren() != null){
+                    //Borrar la ventana anterior
+                    hbox_panel_principal.getChildren().clear();
+                }
+                hbox_panel_principal.getChildren().add(ventana);
+
+                // Ahora puedes acceder a los métodos y variables públicas del controlador de la ventana incrustada
+            } catch (IOException e) {
+                e.printStackTrace();
+            }        
+    
+    }
 }

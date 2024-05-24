@@ -254,7 +254,7 @@ public class Mi_Perfil_Controller {
             textFieldNombre.setText(user.getName());
             textFieldApellido.setText(user.getSurname());
             textFieldCorreo.setText(user.getEmail());
-            textFieldPassword.setText("Falta por implementar"); // No llenar el campo de password por seguridad
+            textFieldPassword.setText(user.getPassword()); // No llenar el campo de password por seguridad
         } else {
             System.out.println("El usuario logueado es nulo.");
         }

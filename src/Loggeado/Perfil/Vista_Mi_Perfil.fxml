@@ -17,7 +17,7 @@
 
 <HBox alignment="CENTER" prefHeight="889.0" prefWidth="1386.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Loggeado.Perfil.Mi_Perfil_Controller">
    <children>
-      <GridPane gridLinesVisible="true" prefHeight="889.0" prefWidth="1454.0">
+      <GridPane prefHeight="889.0" prefWidth="1454.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="1155.333251953125" minWidth="924.6666259765625" prefWidth="985.9999389648438" />
@@ -39,7 +39,7 @@
                   <Button fx:id="butom_Image" mnemonicParsing="false" onMouseClicked="#change_picture_click" onMouseEntered="#change_picture_entered" onMouseExited="#change_picture_exited" prefHeight="41.0" prefWidth="96.0" styleClass="boton_desenfocado_perfil" stylesheets="@Estilos_Perfil.css" text="Cambiar" textFill="WHITE" />
                   <HBox alignment="CENTER_RIGHT" prefHeight="186.0" prefWidth="693.0">
                      <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrado desde:" wrappingWidth="255.13671875">
+                        <Text fx:id="fecha_de_registro" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrado desde:" wrappingWidth="239.13670349121094">
                            <font>
                               <Font size="14.0" />
                            </font></Text>
@@ -52,7 +52,7 @@
             </HBox>
             <HBox GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <GridPane gridLinesVisible="true">
+                  <GridPane>
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="720.3333740234375" minWidth="10.0" prefWidth="272.3333435058594" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="10.0" prefWidth="1181.6666564941406" />
