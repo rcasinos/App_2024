@@ -11,10 +11,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox prefHeight="889.0" prefWidth="1454.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Loggeado.Perfil.Mi_Perfil_Controller">
+<HBox alignment="CENTER" prefHeight="889.0" prefWidth="1386.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Loggeado.Perfil.Mi_Perfil_Controller">
    <children>
       <GridPane gridLinesVisible="true" prefHeight="889.0" prefWidth="1454.0">
         <columnConstraints>
@@ -32,10 +33,18 @@
                <children>
                   <ImageView fx:id="imagenPerfil" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true">
                      <image>
-                        <Image url="@../../Iconos_App/Perfil%20oscuro.png" />
+                        <Image url="@../../Iconos_Estilo/astronauta_image_perfil.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="butom_Image" mnemonicParsing="false" onMouseClicked="#change_picture_click" onMouseEntered="#change_picture_entered" onMouseExited="#change_picture_exited" prefHeight="41.0" prefWidth="96.0" styleClass="boton_desenfocado_perfil" stylesheets="@Estilos_Perfil.css" text="Change" textFill="WHITE" />
+                  <Button fx:id="butom_Image" mnemonicParsing="false" onMouseClicked="#change_picture_click" onMouseEntered="#change_picture_entered" onMouseExited="#change_picture_exited" prefHeight="41.0" prefWidth="96.0" styleClass="boton_desenfocado_perfil" stylesheets="@Estilos_Perfil.css" text="Cambiar" textFill="WHITE" />
+                  <HBox alignment="CENTER_RIGHT" prefHeight="186.0" prefWidth="693.0">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrado desde:" wrappingWidth="255.13671875">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Text>
+                     </children>
+                  </HBox>
                </children>
                <padding>
                   <Insets left="40.0" />
@@ -58,7 +67,7 @@
                      <children>
                         <HBox alignment="CENTER" style="-fx-border-color: #ffffff;">
                            <children>
-                              <Label fx:id="labelNickname" alignment="CENTER" prefHeight="49.0" prefWidth="223.0" stylesheets="@Estilos_Perfil.css" text="Nickname:" textFill="DODGERBLUE">
+                              <Label fx:id="labelNickname" alignment="CENTER" prefHeight="49.0" prefWidth="223.0" stylesheets="@Estilos_Perfil.css" text="Apodo:" textFill="DODGERBLUE">
                                  <font>
                                     <Font name="Segoe UI Black" size="22.0" />
                                  </font>
@@ -94,7 +103,7 @@
                         </HBox>
                         <HBox alignment="CENTER" style="-fx-border-color: white;" GridPane.rowIndex="4">
                            <children>
-                              <Label fx:id="labelPassword" alignment="CENTER" prefHeight="49.0" prefWidth="223.0" text="Password:" textFill="DODGERBLUE">
+                              <Label fx:id="labelPassword" alignment="CENTER" prefHeight="49.0" prefWidth="223.0" text="Contraseña:" textFill="DODGERBLUE">
                                  <font>
                                     <Font name="Segoe UI Black" size="22.0" />
                                  </font>
@@ -103,50 +112,40 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" style="-fx-border-color: white;" GridPane.columnIndex="1">
                            <children>
-                              <TextField fx:id="textFieldNickname" prefHeight="25.0" prefWidth="259.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
-                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
+                              <TextField fx:id="textFieldNickname" onMouseClicked="#informar_user" prefHeight="25.0" prefWidth="259.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
+                              <Text fx:id="text_nickname" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="El apodo no se puede editar" wrappingWidth="237.13671875" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" style="-fx-border-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <children>
                               <TextField fx:id="textFieldNombre" prefHeight="25.0" prefWidth="260.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
-                              <StackPane prefHeight="150.0" prefWidth="200.0">
-                                 <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
-                                 </children>
-                              </StackPane>
+                              <Text fx:id="msg_nombre" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Introduce tu  nuevo nombre" wrappingWidth="237.13671875" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" style="-fx-border-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <children>
                               <TextField fx:id="textFieldApellido" prefHeight="25.0" prefWidth="260.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
-                              <StackPane prefHeight="150.0" prefWidth="200.0">
-                                 <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
-                                 </children>
-                              </StackPane>
+                              <Text fx:id="msg_apellido" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Introduce tu  nuevo apellido" wrappingWidth="237.13671875" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" style="-fx-border-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <children>
                               <TextField fx:id="textFieldCorreo" prefHeight="25.0" prefWidth="260.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
-                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                              <StackPane alignment="CENTER_LEFT" prefHeight="103.0" prefWidth="328.0">
                                  <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
+                                    <Text fx:id="msg_ini_email" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Introduce tu  nuevo correo electronico" wrappingWidth="243.93087148666382" />
+                                    <Text fx:id="msg_err_email" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo electronico incorrecto, recuerda la forma --&gt; Nombre@dominio.org" wrappingWidth="258.2157745361328" />
                                  </children>
                               </StackPane>
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" style="-fx-border-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <children>
-                              <TextField fx:id="textFieldPassword" prefHeight="25.0" prefWidth="260.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
-                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                              <TextField fx:id="textFieldPassword" prefHeight="32.0" prefWidth="404.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
+                              <StackPane alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="470.0">
                                  <children>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="EL nickNmae no se puede editar" wrappingWidth="237.13671875" />
+                                    <Text fx:id="msg_ini_pssw" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Introduce tu nueva contraseña" />
+                                    <Text fx:id="msg_err_pssw" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña incorrecta (Letras y numeros, min 6 caracteres)" />
                                  </children>
                               </StackPane>
                            </children>
@@ -162,19 +161,19 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="76.0" prefWidth="480.0">
                      <children>
-                        <Button fx:id="botonCancel" mnemonicParsing="false" onAction="#cancelEdit" prefHeight="55.0" prefWidth="183.0" style="-fx-border-color: red;" styleClass="boton_desenfocado_perfil" stylesheets="@Estilos_Perfil.css" text="CANCEL">
+                        <Button fx:id="botonCancel" mnemonicParsing="false" onAction="#cancelEdit" prefHeight="55.0" prefWidth="183.0" style="-fx-border-color: red;" styleClass="boton_desenfocado_perfil" stylesheets="@Estilos_Perfil.css" text="CANCELAR">
                            <font>
                               <Font size="21.0" />
                            </font>
                         </Button>
                      </children>
                   </HBox>
-                  <Button fx:id="botonSave" mnemonicParsing="false" onMouseClicked="#guardarCambios_click" onMouseEntered="#guardarCambios_entered" onMouseExited="#guardarCambios_salir" prefHeight="50.0" prefWidth="183.0" styleClass="boton_desenfocado_perfil" stylesheets="@Estilos_Perfil.css" text="SAVE">
+                  <Button fx:id="botonSave" mnemonicParsing="false" onMouseClicked="#guardarCambios_click" onMouseEntered="#guardarCambios_entered" onMouseExited="#guardarCambios_salir" prefHeight="50.0" prefWidth="183.0" styleClass="boton_desenfocado_perfil" stylesheets="@Estilos_Perfil.css" text="GUARDAR">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Button>
-                  <Button fx:id="botonEdit" mnemonicParsing="false" onMouseEntered="#edit_entered" onMouseExited="#edit_exited" prefHeight="50.0" prefWidth="183.0" styleClass="boton_desenfocado_perfil" stylesheets="@Estilos_Perfil.css" text="EDIT">
+                  <Button fx:id="botonEdit" mnemonicParsing="false" onMouseEntered="#edit_entered" onMouseExited="#edit_exited" prefHeight="50.0" prefWidth="183.0" styleClass="boton_desenfocado_perfil" stylesheets="@Estilos_Perfil.css" text="EDITAR">
                      <font>
                         <Font name="Segoe UI Emoji" size="21.0" />
                      </font>
@@ -187,6 +186,42 @@
                   <Insets right="50.0" />
                </padding>
             </HBox>
+            <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="48.8">
+                           <image>
+                              <Image url="@../../Iconos_Estilo/asteroide.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="-133.2">
+                           <image>
+                              <Image url="@../../Iconos_Estilo/asteroide.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Text fill="#bbc32b" strokeType="OUTSIDE" strokeWidth="0.0" text="Ahorra y llega más allá" textAlignment="CENTER" underline="true" wrappingWidth="266.13671875">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="256.0" prefWidth="469.0">
+                     <children>
+                        <ImageView fitHeight="188.0" fitWidth="166.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Iconos_Estilo/astronauta_saturno.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
          </children>
       </GridPane>
    </children>

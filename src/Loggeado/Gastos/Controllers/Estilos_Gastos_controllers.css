@@ -1,0 +1,105 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+
+.estilos_datapicker {
+    -fx-base: black; /* Fondo negro */
+    -fx-control-inner-background: black; /* Fondo interior negro */
+    -fx-text-inner-color: white; /* Texto en blanco */
+    -fx-highlight-fill: black; /* Resaltado negro */
+    -fx-highlight-text-fill: white; /* Texto en resaltado blanco */
+    -fx-background-color: black; /* Fondo negro */
+    -fx-border-color: #1E90FF; /* Color del borde azul */
+    -fx-border-width: 1px; /* Ancho del borde */
+    -fx-border-radius: 3px; /* Radio del borde */
+}
+
+.estilos_datapicker .date-picker-popup > * {
+    -fx-background-color: black; /* Fondo negro para el popup */
+    -fx-border-color: white; /* Color del borde blanco */
+}
+
+.estilos_datapicker .date-picker-popup > .month-year-pane > .label {
+    -fx-text-fill: white; /* Texto blanco para el mes y año */
+}
+
+.estilos_datapicker .date-picker-popup > .calendar-grid {
+    -fx-border-color: white; /* Color del borde blanco */
+}
+
+.negrobackground{
+    -fx-background-color:#000000
+}
+
+.azul_estilo{
+    -fx-background-color:#1E90FF
+}
+
+.blanco_puro{
+    -fx-background-color:#ffffff
+}
+
+.boton_enfocado_subir_imagen{
+    -fx-background-color:#1B77E0;
+    -fx-background-radius: 20; 
+    -fx-text-fill: #ffffff;
+}
+.boton_desenfocado_subir_imagen{
+    -fx-background-color:#1E90FF;
+    -fx-background-radius: 20;
+    -fx-text-fill: #ffffff;    
+}
+
+.textfield_registro{
+    -fx-background-color: #000000; 
+    -fx-border-color: #1E90FF;
+    -fx-background-radius: 5px; 
+    -fx-border-radius: 5px; 
+    -fx-padding: 5px; 
+    -fx-border-width: 2px;
+    -fx-text-fill: #ffffff;
+}
+
+.textarea_registro {
+    -fx-background-color: transparent; /* Hacer transparente el fondo del TextArea */
+    -fx-border-color: #1E90FF;
+    -fx-background-radius: 5px; 
+    -fx-border-radius: 5px; 
+    -fx-padding: 5px; 
+    -fx-border-width: 2px;
+    -fx-text-fill: #ffffff;    
+}
+
+.boton_desenfocado_registro{
+    -fx-background-color:#000000;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20; 
+    -fx-border-color: #1E90FF; 
+    -fx-border-width: 2px; 
+}
+
+.boton_enfocado_registro{
+    
+    -fx-background-color:#1E90FF;
+    -fx-background-radius: 20;
+    -fx-text-fill: #ffffff;
+}
+  
+.label_titulos{
+    -fx-text-fill: #1E90FF
+}
+
+.label_subtitulos{
+    -fx-text-fill: #ffffff
+}
+
+.hbox_titulo {
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+    -fx-padding: 10px;
+    -fx-border-color: #000000;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75), 10, 0.5, 0.0, 0.0); /* Sombra */
+}

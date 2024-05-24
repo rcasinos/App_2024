@@ -105,13 +105,14 @@ public class Registro_Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+//------------------------------------------------------------------------------------------------
         //Iniciamos los atributos booleanos
         validName = new SimpleBooleanProperty(false);
         validEmail = new SimpleBooleanProperty(false);
         validNickname = new SimpleBooleanProperty(false);
         validPassword = new SimpleBooleanProperty(false);
         validPicture = new SimpleBooleanProperty(false);
+//------------------------------------------------------------------------------------------------
 
         // Mensajes de error a falso de primeras
         msg_nick_use.setVisible(false);
@@ -119,6 +120,7 @@ public class Registro_Controller implements Initializable {
         msg_ini_nickname.setVisible(false);
         msg_ini_pssw.setVisible(false);
         msg_err_pssw.setVisible(false);
+//------------------------------------------------------------------------------------------------
 
         // Evento para manejar el clic en el campo de texto de apodo
         apodo_field.setOnMouseClicked(event -> {
@@ -129,7 +131,8 @@ public class Registro_Controller implements Initializable {
             }
         });
 
-        // Evento para manejar el cambio de foco del campo de texto de apodo
+ //------------------------------------------------------------------------------------------------
+       // Evento para manejar el cambio de foco del campo de texto de apodo
         apodo_field.focusedProperty().addListener((observable, oldValue, newValue) -> {
             // Verificar si el campo de texto ha perdido el foco
             if (!newValue) {
@@ -137,6 +140,7 @@ public class Registro_Controller implements Initializable {
                 msg_ini_nickname.setVisible(false);
             }
         });
+//------------------------------------------------------------------------------------------------
 
         // Envoltura a APODO para checkear su vericidad
         apodo_field.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
@@ -180,6 +184,7 @@ public class Registro_Controller implements Initializable {
                 validNickname.setValue(false);
             }
         });
+//------------------------------------------------------------------------------------------------
 
         // Evento para manejar el clic en el campo de texto de apodo
         contrasena_field.setOnMouseClicked(event -> {
@@ -189,6 +194,7 @@ public class Registro_Controller implements Initializable {
                 msg_ini_pssw.setVisible(true);
             }
         });
+//------------------------------------------------------------------------------------------------
 
         // Evento para manejar el cambio de foco del campo de texto de apodo
         contrasena_field.focusedProperty().addListener((observable, oldValue, newValue) -> {
@@ -198,6 +204,7 @@ public class Registro_Controller implements Initializable {
                 msg_ini_pssw.setVisible(false);
             }
         });
+//------------------------------------------------------------------------------------------------
 
         // Envoltura a CONTRASENA para checkear su vericidad
         contrasena_field.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -219,6 +226,7 @@ public class Registro_Controller implements Initializable {
                 validPassword.setValue(true);
             }
         });
+//------------------------------------------------------------------------------------------------
 
         // Evento para manejar el clic en el campo de texto de apodo
         email_field.setOnMouseClicked(event -> {
@@ -228,6 +236,7 @@ public class Registro_Controller implements Initializable {
                 msg_ini_email.setVisible(true);
             }
         });
+//------------------------------------------------------------------------------------------------
 
         // Evento para manejar el cambio de foco del campo de texto de apodo
         email_field.focusedProperty().addListener((observable, oldValue, newValue) -> {
@@ -237,6 +246,7 @@ public class Registro_Controller implements Initializable {
                 msg_ini_email.setVisible(false);
             }
         });
+//------------------------------------------------------------------------------------------------
 
         //Envoltura a EMAIL para checkear su vericidad
         email_field.textProperty().addListener(new ChangeListener<String>() {
@@ -258,6 +268,7 @@ public class Registro_Controller implements Initializable {
                 }
             }
         });
+//------------------------------------------------------------------------------------------------
 
         // Envoltura/Listener para verificar el estado de los campos de nombre y apellido
         ChangeListener<String> nameSurnameListener = (observable, oldValue, newValue) -> {
@@ -272,6 +283,7 @@ public class Registro_Controller implements Initializable {
                 validName.setValue(false);
             }
         };
+//------------------------------------------------------------------------------------------------
 
         // Asignar el listener a los campos de nombre y apellido
         nombre_field.textProperty().addListener(nameSurnameListener);
@@ -297,6 +309,7 @@ public class Registro_Controller implements Initializable {
         BooleanBinding formValid = validName.and(validNickname).and(validEmail).and(validPassword);
         boton_registro.disableProperty().bind(formValid.not());
     }
+//------------------------------------------------------------------------------------------------
 
     @FXML
     private void subir_foto_desenfoque(MouseEvent event) {
@@ -368,7 +381,7 @@ public class Registro_Controller implements Initializable {
             if (registrationSuccessful) {
                 System.out.println("Usuario registrado exitosamente.");
                 // Cargar el FXML de la ventana emergente
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Vista_Logg.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Inicio_de_Sesion/Vista_Inicio_Sesion.fxml"));
                 Parent root = loader.load();
 
                 // Crear una nueva escena y un nuevo escenario para la ventana emergente
