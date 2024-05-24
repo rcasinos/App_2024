@@ -144,8 +144,9 @@
                               <TextField fx:id="textFieldPassword" prefHeight="32.0" prefWidth="404.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
                               <StackPane alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="470.0">
                                  <children>
-                                    <Text fx:id="msg_ini_pssw" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Introduce tu nueva contraseña" />
-                                    <Text fx:id="msg_err_pssw" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña incorrecta (Letras y numeros, min 6 caracteres)" />
+                                    <Text fx:id="msg_ini_pssw" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Introduce tu nueva contraseña" visible="false" />
+                                    <Text fx:id="msg_err_pssw" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña incorrecta (Letras y numeros, min 6 caracteres)" visible="false" />
+                                    <Button fx:id="alertButton" mnemonicParsing="false" prefHeight="23.0" prefWidth="59.0" styleClass="boton_desenfocado_perfil" stylesheets="@Estilos_Perfil.css" text="Editar" />
                                  </children>
                               </StackPane>
                            </children>
