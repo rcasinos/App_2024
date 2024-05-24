@@ -14,7 +14,7 @@
 
 <HBox alignment="CENTER" styleClass="negrobackground" stylesheets="@Estilos_loggeado.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Loggeado.Logg_Controller">
    <children>
-      <GridPane gridLinesVisible="true" prefHeight="1000.0" prefWidth="1800.0" styleClass="negrobackground" stylesheets="@Estilos_loggeado.css">
+      <GridPane prefHeight="1000.0" prefWidth="1800.0" styleClass="negrobackground" stylesheets="@Estilos_loggeado.css">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" prefWidth="327.3333339691162" />
           <ColumnConstraints hgrow="SOMETIMES" prefWidth="1436.3333435058594" />
@@ -25,7 +25,7 @@
           <RowConstraints vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <GridPane gridLinesVisible="true" GridPane.rowIndex="1">
+            <GridPane GridPane.rowIndex="1">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
                 <ColumnConstraints hgrow="ALWAYS" />
@@ -97,7 +97,7 @@
                   </HBox>
                </children>
             </GridPane>
-            <GridPane gridLinesVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
                 <ColumnConstraints hgrow="SOMETIMES" />
