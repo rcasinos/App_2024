@@ -3,6 +3,7 @@ package Loggeado.Perfil;
 import java.awt.event.FocusEvent;
 import java.io.File;
 import java.io.IOException;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.animation.KeyFrame;
@@ -11,9 +12,13 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -87,10 +92,14 @@ public class Mi_Perfil_Controller {
     private Text msg_ini_pssw;
     @FXML
     private Text msg_err_pssw;
+    @FXML
+    private Text fecha_de_registro;
+    @FXML
+    private Button alertButton;
 
     // Método para inicializar los componentes
     public void initialize() {
-    
+     alertButton.setOnAction(event -> mostrarAlerta(textFieldPassword));
     //----------------------------------------------------------------- 
     //Ocultamos los mensajes de error de contraseña y de correo 
          msg_err_email.setVisible(false);
@@ -254,7 +263,7 @@ public class Mi_Perfil_Controller {
             textFieldNombre.setText(user.getName());
             textFieldApellido.setText(user.getSurname());
             textFieldCorreo.setText(user.getEmail());
-            textFieldPassword.setText("Falta por implementar"); // No llenar el campo de password por seguridad
+            textFieldPassword.setText(user.getPassword()); // No llenar el campo de password por seguridad
         } else {
             System.out.println("El usuario logueado es nulo.");
         }
@@ -451,6 +460,64 @@ public class Mi_Perfil_Controller {
             timeline.setCycleCount(1); // Solo ejecutar una vez
             timeline.play();
         
+    }
+    
+    
+    
+     private void mostrarAlerta(TextField textField) {
+         //Modificar la alerta, hacerla de un estilo chulo, a parte hay que cambiar 
+         //que sea un passwordfield
+         //que el boton de editar se habilite cuando des a editar el perfil
+         // que al cambiar la contraseña se cambie en el paswordfield
+         // espero deseo y rezo para poder poner el checkpassword dentro de la alerta para q no deje poner
+         // una contraseña random
+         // con esto y un bizcocho, nos vemos mañna a las ocho
+         
+         
+         
+         
+        // Crear la alerta
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Opciones");
+        alert.setHeaderText("Elige una opción");
+        alert.setContentText("Selecciona una de las opciones:");
+
+        // Crear los botones de opciones
+        ButtonType buttonTypeMostrar = new ButtonType("Mostrar Texto");
+        ButtonType buttonTypeNuevaContraseña = new ButtonType("Nueva Contraseña");
+       // ButtonType buttonTypeCancelar = new ButtonType( ButtonType.CLOSE);
+
+        // Agregar los botones a la alerta
+        alert.getButtonTypes().setAll(buttonTypeMostrar, buttonTypeNuevaContraseña /*buttonTypeCancelar*/);
+
+        // Manejar la selección del usuario
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == buttonTypeMostrar) {
+            // Mostrar el texto del TextField
+            Alert infoAlert = new Alert(AlertType.INFORMATION);
+            infoAlert.setTitle("Texto del TextField");
+            infoAlert.setHeaderText(null);
+            infoAlert.setContentText("El texto es: " + textField.getText());
+            infoAlert.showAndWait();
+        } else if (result.isPresent() && result.get() == buttonTypeNuevaContraseña) {
+            // Pedir al usuario que ingrese una nueva contraseña
+            TextInputDialog dialog = new TextInputDialog();
+            dialog.setTitle("Nueva Contraseña");
+            dialog.setHeaderText("Ingresa una nueva contraseña");
+            dialog.setContentText("Contraseña:");
+
+            // Obtener la nueva contraseña
+            Optional<String> newPassword = dialog.showAndWait();
+            newPassword.ifPresent(password -> {
+                Alert infoAlert = new Alert(AlertType.INFORMATION);
+                infoAlert.setTitle("Contraseña Actualizada");
+                infoAlert.setHeaderText(null);
+                infoAlert.setContentText("Nueva contraseña establecida.");
+                infoAlert.showAndWait();
+                // Aquí puedes manejar la nueva contraseña según sea necesario
+                System.out.println("Nueva contraseña: " + password);
+            });
+        }
     }
 
 }

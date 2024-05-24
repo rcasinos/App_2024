@@ -66,15 +66,12 @@ public class Logg_Controller implements Initializable {
     private Label boton_analiticas;
     @FXML
     private Label boton_exportar;
-    @FXML
     private Label boton_configuracion;
     @FXML
     private Pane panel_principal;
     @FXML
     private Label boton_cerrar_sesion;
-    @FXML
     private ImageView imageUSer;
-    @FXML
     private Label nameUser;
     
    
@@ -368,7 +365,6 @@ public class Logg_Controller implements Initializable {
     }    
 //----------------------------------------------------------------------------------------------------------
 
-    @FXML
     private void configuracion_desenfoque(MouseEvent event) {
         
         //Modificamos el estilo del boton al entrar en el
@@ -376,7 +372,6 @@ public class Logg_Controller implements Initializable {
         boton_configuracion.getStyleClass().add("label_desenfocado_azul");
     }
 
-    @FXML
     private void configuracion_enfoque(MouseEvent event) {
         
         //Modificamos el estilo del boton al entrar en el
@@ -385,7 +380,6 @@ public class Logg_Controller implements Initializable {
     }
 //----------------------------------------------------------------------------------------------------------
 
-    @FXML
     private void configuracion_click(MouseEvent event) {
         
         //Quitamos el seleccionado del labelSeleccionado
