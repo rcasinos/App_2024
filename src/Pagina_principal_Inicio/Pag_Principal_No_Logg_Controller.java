@@ -1,5 +1,6 @@
 package Pagina_principal_Inicio;
         
+import java.io.IOException;
 import javafx.geometry.Rectangle2D;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -30,6 +31,8 @@ public class Pag_Principal_No_Logg_Controller implements Initializable {
     private Button boton_crear_cuenta;
     @FXML
     public Button boton_inicio_sesion;
+    @FXML
+    private Label info_label;
 
     //=========================================================
     // you must initialize here all related with the object 
@@ -155,6 +158,62 @@ public class Pag_Principal_No_Logg_Controller implements Initializable {
 
         // Restaurar la opacidad de la ventana principal cuando se cierre la ventana emergente
         primaryStage.getScene().getRoot().setEffect(null);
+    }
+
+    @FXML
+    private void informacion_click(MouseEvent event) {
+        
+        try {
+        // Cargar el FXML de la ventana de información
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Informacion.fxml"));
+        Parent root = loader.load();
+
+        // Crear una nueva escena y un nuevo escenario para la ventana emergente
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+
+        // Configurar el escenario
+        stage.setTitle("Información sobre la Aplicación");
+        stage.setMaximized(false); // Puedes ajustar esto según tus necesidades
+        stage.centerOnScreen();
+        
+        // Se bloquea la ventana desde donde se lanza la nueva ventana
+        stage.initModality(Modality.APPLICATION_MODAL);
+
+        // Obtenemos la ventana como objeto para aplicarle opciones
+        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        
+        //Creamos un efecto de desenfoque
+        BoxBlur blur = new BoxBlur(10, 10, 1);
+
+        //Aplicamos el efecto de desenfoque
+        primaryStage.getScene().getRoot().setEffect(blur);
+
+        // Mostrar la ventana emergente
+        stage.show();
+        
+        // Restaurar la opacidad de la ventana principal cuando se cierre la ventana emergente
+        primaryStage.getScene().getRoot().setEffect(null);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    }
+
+    @FXML
+    private void info_exited(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar a el
+        info_label.getStyleClass().remove("info_enfocado");
+        info_label.getStyleClass().add("info_desenfocado");
+    }
+
+    @FXML
+    private void info_entered(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar a el
+        info_label.getStyleClass().remove("info_desenfocado");
+        info_label.getStyleClass().add("info_enfocado");
     }
 
     

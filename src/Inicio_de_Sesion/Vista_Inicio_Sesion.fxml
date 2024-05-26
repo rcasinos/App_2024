@@ -82,13 +82,13 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="100.0" prefWidth="634.0" spacing="5.0" GridPane.columnIndex="1">
                      <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre / Nickname">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nickname">
                            <font>
                               <Font name="Segoe UI Emoji" size="14.0" />
                            </font>
                         </Text>
                         <TextField fx:id="Nombre_field" focusTraversable="false" prefHeight="26.0" prefWidth="360.0" styleClass="textfield_inicio_sesion" stylesheets="@Estilos_Inicio_Sesion.css" />
-                        <Text fx:id="msg_ini_nick" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe tu Usuario / Nickname" />
+                        <Text fx:id="msg_ini_nick" fill="DODGERBLUE" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe tu Usuario / Nickname" />
                      </children>
                   </VBox>
                   <VBox alignment="TOP_CENTER" spacing="15.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -105,12 +105,12 @@
                                     <Font name="Segoe UI Emoji" size="14.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="msg_user_login" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Falta el nombre de usuario">
+                              <Text fx:id="msg_user_login" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Campos vacios, Rellenalos">
                                  <font>
                                     <Font name="Segoe UI Emoji" size="14.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="msg_psw_login" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Falta la contraseña">
+                              <Text fx:id="msg_psw_login" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Campos vacios, Rellenalos">
                                  <font>
                                     <Font name="Segoe UI Emoji" size="14.0" />
                                  </font>
@@ -151,7 +151,7 @@
                               </ImageView>
                            </children>
                         </StackPane>
-                        <Text fx:id="msg_ini_pssw" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe tu contraseña" />
+                        <Text fx:id="msg_ini_pssw" fill="DODGERBLUE" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe tu contraseña" />
                      </children>
                   </VBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -174,17 +174,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
-                     <children>
-                        <Button fx:id="boton_olvido_contrasena" mnemonicParsing="false" onMouseClicked="#contrasena_click" onMouseEntered="#contrasena_enfoque" onMouseExited="#contrasena_desenfoque" prefHeight="45.0" prefWidth="360.0" styleClass="boton_desenfocado_contrasena" stylesheets="@Estilos_Inicio_Sesion.css" text="¿Olvidaste tu contraseña?">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Button>
-                        <Label fx:id="dummy" />
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="12.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="12.0" GridPane.columnIndex="1">
                      <children>
                         <Label prefHeight="20.0" prefWidth="148.0" styleClass="label_gris" stylesheets="@Estilos_Inicio_Sesion.css" text="¿No tienes una cuenta?">
                            <font>

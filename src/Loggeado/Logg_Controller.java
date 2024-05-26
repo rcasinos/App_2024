@@ -38,9 +38,13 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Screen;
 import model.Acount;
 import model.AcountDAOException;
@@ -306,30 +310,42 @@ public class Logg_Controller implements Initializable {
         
         //Seleccionamos el labelactual como el seleccionado
         labelSeleccionado = boton_exportar;
+        
+        // Crear una alerta de confirmación
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Confirmación de Exportación");
+        alert.setHeaderText("Confirmar Exportación de Resumen");
+        alert.setContentText("¿Estás seguro de que deseas exportar un resumen de tus gastos a PDF?");
 
-        try {
-                acc = Acount.getInstance();
-                this.user = acc.getLoggedUser();
-                String fechaHoy = new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date());
-                String absPathOfImage = getClass().getResource("../Iconos_estilo/Union_Letras_logo.png").toExternalForm();
-                System.out.println(absPathOfImage);
-                String html = "<!DOCTYPE html><html lang='en'><head><meta charset='utf-8' /><meta name='viewport' content='width=device-width, initial-scale=1' /><title>ROCKETEER</title><link rel='icon' href='./images/favicon.png' type='image/x-icon' /><style>body{font-family:'Helvetica Neue','Helvetica',Helvetica,Arial,sans-serif;text-align:center;color:#000;background-color:#fff;}body h1,body h2,body h3{font-weight:300;margin-bottom:0;padding-bottom:0;}body h1{color:#4a90e2;}body h2{color:#3379ca;}body h3{margin-top:10px;margin-bottom:20px;font-style:italic;}body a{color:#06f;}.header-title{font-size:50px;font-weight:bold;color:#095bb8;margin:20px 0;}.invoice-box{max-width:800px;margin:auto;padding:30px;border:1px solid #1336a7;box-shadow:0 0 10px rgba(0,0,0,.15);font-size:16px;line-height:24px;color:#000;background-color:#aed5fa;}.invoice-box table{width:100%;line-height:inherit;text-align:left;border-collapse:collapse;}.invoice-box table td{padding:5px;vertical-align:top;}.invoice-box table tr td:nth-child(3),.a{text-align:right;}.invoice-box table tr.top table td{padding-bottom:20px;}.invoice-box table tr.top table td.title{font-size:45px;line-height:45px;color:#000;}.invoice-box table tr.information table td{padding-bottom:40px;}.invoice-box table tr.heading td{background:hsl(0,0%,99%);border-bottom:1px solid #006deb;font-weight:bold;color:#006deb;}.invoice-box table tr.details td{padding-bottom:20px;}.invoice-box table tr.item td{border-bottom:1px solid #eee;}.invoice-box table tr.item.last td{border-bottom:none;}.invoice-box table tr.total td:nth-child(2){border-top:2px solid #eee;font-weight:bold;color:#000;}}@media only screen and (max-width:600px){.invoice-box table tr.top table td{width:100%;display:block;text-align:center;}.invoice-box table tr.information table td{width:100%;display:block;text-align:center;}}</style></head><body><div class='header-title'>ROCKETEER</div><div class='invoice-box'><table><tr class='top'><td colspan='3'><table><tr><td class='title'><img style='height:100px;' src='" + absPathOfImage + "' alt='Company logo' style='width:100%;max-width:300px' /></td><td><h2>👽 EXPENSE SUMMARY 👽</h2></td></tr></table></td></tr><tr class='information'><td colspan='3'><table><tr><td>Name 📕 : "+this.user.getName()+"<br />Surname 📗 : "+this.user.getSurname()+"<br /></td><td>Email 📙 : "+this.user.getEmail()+"<br />Today's Date 📘 : "+fechaHoy+"<br /></td></tr></table></td></tr><tr class='heading'><td>Expense 🚀</td><td>Cost 💵</td><td float='right'>Units ✏️</td></tr>";
-                
-                
-                List<Charge> l = this.acc.getUserCharges();
-                float i = 0;
-                for (Charge c : l) {
-                    i += c.getCost()*c.getUnits();
-                    html += "<tr class='item'><td>" + c.getName() + "</td><td>" + c.getCost() + " €</td><td float='right'>"+c.getUnits()+"</td></tr>";
+        // Mostrar la alerta y esperar la respuesta del usuario
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            try {
+                    acc = Acount.getInstance();
+                    this.user = acc.getLoggedUser();
+                    String fechaHoy = new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date());
+                    String absPathOfImage = getClass().getResource("../Iconos_estilo/Union_Letras_logo.png").toExternalForm();
+                    System.out.println(absPathOfImage);
+                    String html = "<!DOCTYPE html><html lang='en'><head><meta charset='utf-8' /><meta name='viewport' content='width=device-width, initial-scale=1' /><title>ROCKETEER</title><link rel='icon' href='./images/favicon.png' type='image/x-icon' /><style>body{font-family:'Helvetica Neue','Helvetica',Helvetica,Arial,sans-serif;text-align:center;color:#000;background-color:#fff;}body h1,body h2,body h3{font-weight:300;margin-bottom:0;padding-bottom:0;}body h1{color:#4a90e2;}body h2{color:#3379ca;}body h3{margin-top:10px;margin-bottom:20px;font-style:italic;}body a{color:#06f;}.header-title{font-size:50px;font-weight:bold;color:#095bb8;margin:20px 0;}.invoice-box{max-width:800px;margin:auto;padding:30px;border:1px solid #1336a7;box-shadow:0 0 10px rgba(0,0,0,.15);font-size:16px;line-height:24px;color:#000;background-color:#aed5fa;}.invoice-box table{width:100%;line-height:inherit;text-align:left;border-collapse:collapse;}.invoice-box table td{padding:5px;vertical-align:top;}.invoice-box table tr td:nth-child(3),.a{text-align:right;}.invoice-box table tr.top table td{padding-bottom:20px;}.invoice-box table tr.top table td.title{font-size:45px;line-height:45px;color:#000;}.invoice-box table tr.information table td{padding-bottom:40px;}.invoice-box table tr.heading td{background:hsl(0,0%,99%);border-bottom:1px solid #006deb;font-weight:bold;color:#006deb;}.invoice-box table tr.details td{padding-bottom:20px;}.invoice-box table tr.item td{border-bottom:1px solid #eee;}.invoice-box table tr.item.last td{border-bottom:none;}.invoice-box table tr.total td:nth-child(2){border-top:2px solid #eee;font-weight:bold;color:#000;}}@media only screen and (max-width:600px){.invoice-box table tr.top table td{width:100%;display:block;text-align:center;}.invoice-box table tr.information table td{width:100%;display:block;text-align:center;}}</style></head><body><div class='header-title'>ROCKETEER</div><div class='invoice-box'><table><tr class='top'><td colspan='3'><table><tr><td class='title'><img style='height:100px;' src='" + absPathOfImage + "' alt='Company logo' style='width:100%;max-width:300px' /></td><td><h2>👽 EXPENSE SUMMARY 👽</h2></td></tr></table></td></tr><tr class='information'><td colspan='3'><table><tr><td>Name 📕 : "+this.user.getName()+"<br />Surname 📗 : "+this.user.getSurname()+"<br /></td><td>Email 📙 : "+this.user.getEmail()+"<br />Today's Date 📘 : "+fechaHoy+"<br /></td></tr></table></td></tr><tr class='heading'><td>Expense 🚀</td><td>Cost 💵</td><td float='right'>Units ✏️</td></tr>";
+
+
+                    List<Charge> l = this.acc.getUserCharges();
+                    float i = 0;
+                    for (Charge c : l) {
+                        i += c.getCost()*c.getUnits();
+                        html += "<tr class='item'><td>" + c.getName() + "</td><td>" + c.getCost() + " €</td><td float='right'>"+c.getUnits()+"</td></tr>";
+                    }
+                    // Two decimal
+                    html += "<tr class='total'><td></td> <td></td><td style='text-align: end'><b>Total: "+ String.format("%.2f", i) + " €</b></td></tr></table></div></body></html>";
+                    exportHTMLToPDF(html);
+
                 }
-                // Two decimal
-                html += "<tr class='total'><td></td> <td></td><td style='text-align: end'><b>Total: "+ String.format("%.2f", i) + " €</b></td></tr></table></div></body></html>";
-                exportHTMLToPDF(html);
-
-            }
-            catch (AcountDAOException ex) {
-                ex.printStackTrace();
-            }
+                catch (AcountDAOException ex) {
+                    ex.printStackTrace();
+                }
+        }else{
+            System.out.println("Exportación cancelada");
+        }
     }
  
 //-------------------------------------------------------------------------------
@@ -440,39 +456,53 @@ public class Logg_Controller implements Initializable {
     @FXML
     private void cerrar_sesion_click(MouseEvent event) throws IOException {
         
-        //Quitamos el seleccionado del labelSeleccionado
-        if(labelSeleccionado != null){
-        labelSeleccionado.getStyleClass().remove("label_seleccionado_azul");
-        labelSeleccionado.getStyleClass().add("label_desenfocado_azul");
+        // Crear una alerta de confirmación
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Confirmación de Cerrar Sesión");
+        alert.setHeaderText("Confirmar Cierre de Sesión");
+        alert.setContentText("¿Estás seguro de que deseas cerrar sesión?");
+
+        // Mostrar la alerta y esperar la respuesta del usuario
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            // El usuario confirmó, proceder con el cierre de sesión
+            // Quitamos el seleccionado del labelSeleccionado
+            if (labelSeleccionado != null) {
+                labelSeleccionado.getStyleClass().remove("label_seleccionado_azul");
+                labelSeleccionado.getStyleClass().add("label_desenfocado_azul");
+            }
+
+            // Quitamos el estilo enfocado y metemos el click
+            boton_cerrar_sesion.getStyleClass().remove("label_enfocado_azul");
+            boton_cerrar_sesion.getStyleClass().add("label_seleccionado_azul");
+
+            // Seleccionamos el label actual como el seleccionado
+            labelSeleccionado = boton_cerrar_sesion;
+
+            // Cargar el FXML de la ventana emergente
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pagina_principal_Inicio/Vista_Pag_Principal_No_Logg.fxml"));
+            Parent root = loader.load();
+
+            // Crear una nueva escena y un nuevo escenario para la ventana emergente
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+
+            // Obtenemos la ventana como objeto para aplicarle opciones
+            Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Cerrar la pestaña de inicio
+            primaryStage.close();
+
+            stage.setMaximized(true);
+            stage.centerOnScreen();
+
+            // Mostrar la ventana emergente
+            stage.show();
+        } else {
+            // El usuario canceló, no hacer nada
+            System.out.println("Cierre de sesión cancelado");
         }
-        
-        //Quitamos el estilo enfocado y metemos el click
-        boton_cerrar_sesion.getStyleClass().remove("label_enfocado_azul");
-        boton_cerrar_sesion.getStyleClass().add("label_seleccionado_azul");
-        
-        //Seleccionamos el labelactual como el seleccionado
-        labelSeleccionado = boton_cerrar_sesion;
-        
-        // Cargar el FXML de la ventana emergente
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pagina_principal_Inicio/Vista_Pag_Principal_No_Logg.fxml"));
-                Parent root = loader.load();
-
-                // Crear una nueva escena y un nuevo escenario para la ventana emergente
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-
-                // Obtenemos la ventana como objeto para aplicarle opciones
-                Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-                //cierro pestaña de inicio
-                primaryStage.close();
-
-                stage.setMaximized(true);
-                stage.centerOnScreen();
-
-                // Mostrar la ventana emergente
-                stage.show();
     }
 
 }

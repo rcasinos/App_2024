@@ -31,7 +31,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2">
                <children>
-                  <Label styleClass="label_titulos" stylesheets="@../Estilos_Gastos.css" text="My Category">
+                  <Label styleClass="label_titulos" stylesheets="@../Estilos_Gastos.css" text="Mi Categoria">
                      <font>
                         <Font name="Segoe UI Black" size="27.0" />
                      </font>
@@ -40,13 +40,13 @@
             </HBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" GridPane.columnSpan="2" GridPane.rowIndex="1">
                <children>
-                  <Label styleClass="label_subtitulos" stylesheets="@../Estilos_Gastos.css" text="Name:">
+                  <Label styleClass="label_subtitulos" stylesheets="@../Estilos_Gastos.css" text="Nombre:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
                   <TextField fx:id="categoryName" styleClass="textfield_registro" stylesheets="@Estilos_Gastos_controllers.css" />
-                  <Label styleClass="label_subtitulos" stylesheets="@../Estilos_Gastos.css" text="Description:">
+                  <Label styleClass="label_subtitulos" stylesheets="@../Estilos_Gastos.css" text="Descripcion:">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -66,14 +66,14 @@
                               <Font size="16.0" />
                            </font>
                         </Button>
-                        <Button fx:id="edit_button" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#edit_expense" onMouseEntered="#edit_entered" onMouseExited="#edit_exited" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@../Estilos_Gastos.css" text="Edit">
+                        <Button fx:id="edit_button" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#edit_expense" onMouseEntered="#edit_entered" onMouseExited="#edit_exited" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@../Estilos_Gastos.css" text="Editar">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Button>
                      </children>
                   </StackPane>
-                  <Button fx:id="remove_button" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#remove_expense_click" onMouseEntered="#remove_exp_entered" onMouseExited="#remove_exp_exited" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@../Estilos_Gastos.css" text="Remove">
+                  <Button fx:id="remove_button" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#remove_expense_click" onMouseEntered="#remove_exp_entered" onMouseExited="#remove_exp_exited" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@../Estilos_Gastos.css" text="Eliminar">
                      <font>
                         <Font size="16.0" />
                      </font>

@@ -351,4 +351,18 @@ public class Vista_AnaliticasController implements Initializable {
         bar_chart_mes.setLegendSide(Side.BOTTOM);
     }
     //---------------------------------------------------------------------------------------------------------------------------    
+
+    @FXML
+    private void filter_exited(MouseEvent event) {
+        //Modificamos el estilo del boton al entrar en el
+        Filter_button.getStyleClass().remove("boton_enfocado_subir_imagen");
+        Filter_button.getStyleClass().add("boton_desenfocado_subir_imagen");        
+    }
+
+    @FXML
+    private void filter_entered(MouseEvent event) {
+        //Modificamos el estilo del boton al entrar en el
+        Filter_button.getStyleClass().remove("boton_desenfocado_subir_imagen");
+        Filter_button.getStyleClass().add("boton_enfocado_subir_imagen");        
+    }
 }

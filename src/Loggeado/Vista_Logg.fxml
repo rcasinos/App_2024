@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <HBox alignment="CENTER" styleClass="negrobackground" stylesheets="@Estilos_loggeado.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Loggeado.Logg_Controller">
    <children>
@@ -32,21 +31,21 @@
                 <ColumnConstraints hgrow="ALWAYS" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="200.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="556.6666259765625" minHeight="10.0" prefHeight="556.6666259765625" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="287.3333740234375" minHeight="243.3333740234375" prefHeight="243.3333740234375" vgrow="ALWAYS" />
+                <RowConstraints prefHeight="200.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="556.6666259765625" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" vgrow="ALWAYS" />
               </rowConstraints>
                <children>
                   <VBox alignment="TOP_CENTER" prefHeight="235.0" prefWidth="408.0" GridPane.columnIndex="1">
                      <children>
-                        <ImageView fitHeight="234.0" fitWidth="387.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="251.0" fitWidth="347.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Iconos_Estilo/Logo%20en%20letras.png" />
+                              <Image url="@../Iconos_Estilo/Union_Letras_logo.png" />
                            </image>
                         </ImageView>
                      </children>
                   </VBox>
-                  <VBox prefHeight="536.0" prefWidth="277.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <VBox prefHeight="779.0" prefWidth="346.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
                         <Label fx:id="boton_mi_perfil" onMouseClicked="#mi_perfil_click" onMouseEntered="#mi_perfil_enfoque" onMouseExited="#mi_perfil_desenfoque" styleClass="label_desenfocado_azul" stylesheets="@Estilos_loggeado.css" text="Mi Perfil">
                            <font>
@@ -78,11 +77,6 @@
                         <Insets left="20.0" top="100.0" />
                      </padding>
                   </VBox>
-                  <HBox alignment="CENTER_LEFT" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
-                  </HBox>
                </children>
             </GridPane>
             <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -98,57 +92,39 @@
                <children>
                   <Pane fx:id="panel_principal" styleClass="negrobackground" stylesheets="@Estilos_loggeado.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
-                        <HBox layoutX="2.0" layoutY="1.0" prefHeight="887.0" prefWidth="1452.0">
+                        <GridPane prefHeight="888.0" prefWidth="1455.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="ALWAYS" maxWidth="512.3333740234375" minWidth="10.0" prefWidth="3.666656494140625" />
+                              <ColumnConstraints hgrow="ALWAYS" maxWidth="1171.3333435058594" minWidth="10.0" prefWidth="1098.6666259765625" />
+                              <ColumnConstraints hgrow="ALWAYS" maxWidth="372.3333740234375" minWidth="0.0" prefWidth="212.3333740234375" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints fillHeight="false" maxHeight="179.6666717529297" minHeight="10.0" prefHeight="71.00000762939453" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="711.9999923706055" minHeight="10.0" prefHeight="642.6666259765625" vgrow="SOMETIMES" />
+                              <RowConstraints fillHeight="false" maxHeight="174.3333740234375" minHeight="0.0" prefHeight="174.3333740234375" vgrow="SOMETIMES" />
+                           </rowConstraints>
                            <children>
-                              <VBox alignment="BOTTOM_LEFT" prefHeight="887.0" prefWidth="533.0">
+                              <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <children>
-                                    <HBox prefHeight="439.0" prefWidth="533.0">
-                                       <children>
-                                          <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../Iconos_Estilo/brillante.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </HBox>
-                                    <VBox prefHeight="200.0" prefWidth="100.0" />
-                                    <ImageView fitHeight="260.0" fitWidth="268.0" pickOnBounds="true" preserveRatio="true">
+                                    <Label prefHeight="60.0" prefWidth="476.0" styleClass="label_subtitulos" stylesheets="@Gastos/Estilos_Gastos.css" text="BIENVENIDO VIAJERO">
+                                       <font>
+                                          <Font name="Segoe UI Black" size="42.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="291.0" fitWidth="294.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../Iconos_Estilo/astronauta_pescando.png" />
+                                          <Image url="@../Iconos_App/200w.gif" />
                                        </image>
                                     </ImageView>
-                                 </children>
-                              </VBox>
-                              <VBox alignment="TOP_CENTER" prefHeight="887.0" prefWidth="616.0">
-                                 <children>
-                                    <ImageView fitHeight="285.0" fitWidth="615.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="168.0" fitWidth="251.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../Iconos_Estilo/espacio-exterior.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Text fill="#fafa46" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido " textAlignment="CENTER" wrappingWidth="556.8033638000488">
-                                       <font>
-                                          <Font name="Segoe UI Black" size="43.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fill="#fafa46" strokeType="OUTSIDE" strokeWidth="0.0" text="a tu  espacio de ahorro" textAlignment="CENTER" wrappingWidth="526.1367378234863">
-                                       <font>
-                                          <Font name="Segoe UI Black" size="43.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </VBox>
-                              <VBox alignment="TOP_RIGHT" prefHeight="887.0" prefWidth="295.0">
-                                 <children>
-                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../Iconos_Estilo/brillante.png" />
+                                          <Image url="@../Iconos_App/e4af6dac33a5311.gif" />
                                        </image>
                                     </ImageView>
                                  </children>
                               </VBox>
                            </children>
-                        </HBox>
+                        </GridPane>
                      </children></Pane>
                </children>
             </GridPane>

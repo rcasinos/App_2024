@@ -32,7 +32,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2">
                <children>
-                  <Label styleClass="label_titulos" stylesheets="@../Estilos_Gastos.css" text="My Expense">
+                  <Label styleClass="label_titulos" stylesheets="@../Estilos_Gastos.css" text="Mi Gasto">
                      <font>
                         <Font name="Segoe UI Black" size="27.0" />
                      </font>
@@ -41,7 +41,7 @@
             </HBox>
             <VBox alignment="BOTTOM_LEFT" prefHeight="194.0" prefWidth="376.0" spacing="10.0" GridPane.rowIndex="1">
                <children>
-                  <Label styleClass="label_subtitulos" stylesheets="@../Estilos_Gastos.css" text="Name:">
+                  <Label styleClass="label_subtitulos" stylesheets="@../Estilos_Gastos.css" text="Nombre:">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -54,13 +54,13 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <Label styleClass="label_subtitulos" stylesheets="@../Estilos_Gastos.css" text="Description:">
+                  <Label styleClass="label_subtitulos" stylesheets="@../Estilos_Gastos.css" text="Descripcion:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
                   <TextField fx:id="text_fiel_description" styleClass="textfield_registro" stylesheets="@Estilos_Gastos_controllers.css" />
-                  <Label styleClass="label_subtitulos" stylesheets="@../Estilos_Gastos.css" text="Units:">
+                  <Label styleClass="label_subtitulos" stylesheets="@../Estilos_Gastos.css" text="Unidades">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -73,13 +73,13 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.rowIndex="2">
                <children>
-                  <Label styleClass="label_subtitulos" stylesheets="@../Estilos_Gastos.css" text="Category">
+                  <Label styleClass="label_subtitulos" stylesheets="@../Estilos_Gastos.css" text="Categoria">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
                   <ChoiceBox fx:id="choice_box_category" onMouseClicked="#visualize_categories" prefHeight="31.0" prefWidth="340.0" stylesheets="@Estilos_Gastos_controllers.css" />
-                  <Label styleClass="label_subtitulos" stylesheets="@../Estilos_Gastos.css" text="Cost:">
+                  <Label styleClass="label_subtitulos" stylesheets="@../Estilos_Gastos.css" text="Coste:">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -99,12 +99,12 @@
                   </ImageView>
                   <VBox alignment="CENTER" prefHeight="189.0" prefWidth="168.0" spacing="10.0">
                      <children>
-                        <Button fx:id="remove_img_button" mnemonicParsing="false" onMouseClicked="#remove_img_click" onMouseEntered="#remove_img_entered" onMouseExited="#remove_img_exited" prefHeight="35.0" prefWidth="123.0" styleClass="boton_desenfocado_registro" stylesheets="@../Estilos_Gastos.css" text="Remove">
+                        <Button fx:id="remove_img_button" mnemonicParsing="false" onMouseClicked="#remove_img_click" onMouseEntered="#remove_img_entered" onMouseExited="#remove_img_exited" prefHeight="32.0" prefWidth="123.0" styleClass="boton_desenfocado_registro" stylesheets="@../Estilos_Gastos.css" text="Eliminar">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Button>
-                        <Button fx:id="change_photo_button" mnemonicParsing="false" onMouseClicked="#change_button_click" onMouseEntered="#change_photo_entered" onMouseExited="#change_photo_exited" styleClass="boton_desenfocado_registro" stylesheets="@../Estilos_Gastos.css" text="Change Ticket">
+                        <Button fx:id="change_photo_button" mnemonicParsing="false" onMouseClicked="#change_button_click" onMouseEntered="#change_photo_entered" onMouseExited="#change_photo_exited" prefWidth="125.0" styleClass="boton_desenfocado_registro" stylesheets="@../Estilos_Gastos.css" text="Cambiar">
                            <font>
                               <Font name="Segoe UI Emoji" size="16.0" />
                            </font>
@@ -125,19 +125,19 @@
                               <Font size="16.0" />
                            </font>
                         </Button>
-                        <Button fx:id="edit_button" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#edit_expense" onMouseEntered="#edit_entered" onMouseExited="#edit_exited" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@../Estilos_Gastos.css" text="Edit">
+                        <Button fx:id="edit_button" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#edit_expense" onMouseEntered="#edit_entered" onMouseExited="#edit_exited" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@../Estilos_Gastos.css" text="Editar">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Button>
                      </children>
                   </StackPane>
-                  <Button fx:id="remove_button" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#remove_expense_click" onMouseEntered="#remove_exp_entered" onMouseExited="#remove_exp_exited" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@../Estilos_Gastos.css" text="Remove">
+                  <Button fx:id="remove_button" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#remove_expense_click" onMouseEntered="#remove_exp_entered" onMouseExited="#remove_exp_exited" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@../Estilos_Gastos.css" text="Eliminar">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="cancel_button" mnemonicParsing="false" onAction="#cancelButtonPressed" onMouseEntered="#cancel_entered" onMouseExited="#cancel_exited" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_registro" stylesheets="@../Estilos_Gastos.css" text="Cancel">
+                  <Button fx:id="cancel_button" mnemonicParsing="false" onAction="#cancelButtonPressed" onMouseEntered="#cancel_entered" onMouseExited="#cancel_exited" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_cancelar" stylesheets="@Estilos_Gastos_controllers.css" text="Cancel">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -149,7 +149,7 @@
             </HBox>
             <VBox alignment="BOTTOM_LEFT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Label styleClass="label_subtitulos" stylesheets="@../Estilos_Gastos.css" text="Date">
+                  <Label styleClass="label_subtitulos" stylesheets="@../Estilos_Gastos.css" text="Fecha:">
                      <font>
                         <Font size="24.0" />
                      </font>

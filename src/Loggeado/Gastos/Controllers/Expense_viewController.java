@@ -115,15 +115,15 @@ public class Expense_viewController implements Initializable {
     private void remove_img_exited(MouseEvent event) {
                 
         //Modificamos el estilo del boton al entrar en el
-        remove_img_button.getStyleClass().remove("boton_enfocado_subir_imagen");
-        remove_img_button.getStyleClass().add("boton_desenfocado_subir_imagen"); 
+        remove_img_button.getStyleClass().remove("boton_enfocado_registro");
+        remove_img_button.getStyleClass().add("boton_desenfocado_registro"); 
     }
 //---------------------------------------------------------------------------------------------------- 
     @FXML
     private void remove_img_entered(MouseEvent event) {
         //Modificamos el estilo del boton al entrar en el
-        remove_img_button.getStyleClass().remove("boton_desenfocado_subir_imagen");
-        remove_img_button.getStyleClass().add("boton_enfocado_subir_imagen"); 
+        remove_img_button.getStyleClass().remove("boton_desenfocado_registro");
+        remove_img_button.getStyleClass().add("boton_enfocado_registro"); 
     }
 //---------------------------------------------------------------------------------------------------- 
     @FXML
@@ -137,8 +137,8 @@ public class Expense_viewController implements Initializable {
     private void change_photo_exited(MouseEvent event) {
                 
         //Modificamos el estilo del boton al entrar en el
-        change_photo_button.getStyleClass().remove("boton_enfocado_subir_imagen");
-        change_photo_button.getStyleClass().add("boton_desenfocado_subir_imagen"); 
+        change_photo_button.getStyleClass().remove("boton_enfocado_registro");
+        change_photo_button.getStyleClass().add("boton_desenfocado_registro"); 
     }
 //---------------------------------------------------------------------------------------------------- 
     @FXML
@@ -163,16 +163,16 @@ public class Expense_viewController implements Initializable {
     private void save_exited(MouseEvent event) {
                 
         //Modificamos el estilo del boton al entrar en el
-        save_button.getStyleClass().remove("boton_enfocado_registro");
-        save_button.getStyleClass().add("boton_desenfocado_registro"); 
+        save_button.getStyleClass().remove("boton_enfocado_subir_imagen");
+        save_button.getStyleClass().add("boton_desenfocado_subir_imagen"); 
     }
 //---------------------------------------------------------------------------------------------------- 
     @FXML
     private void save_entered(MouseEvent event) {
          
         //Modificamos el estilo del boton al entrar en el
-        save_button.getStyleClass().remove("boton_desenfocado_registro");
-        save_button.getStyleClass().add("boton_enfocado_registro"); 
+        save_button.getStyleClass().remove("boton_desenfocado_subir_imagen");
+        save_button.getStyleClass().add("boton_enfocado_subir_imagen"); 
     }
 //---------------------------------------------------------------------------------------------------- 
     @FXML
@@ -210,16 +210,16 @@ public class Expense_viewController implements Initializable {
     private void edit_exited(MouseEvent event) {
                 
         //Modificamos el estilo del boton al entrar en el
-        edit_button.getStyleClass().remove("boton_enfocado_registro");
-        edit_button.getStyleClass().add("boton_desenfocado_registro"); 
+        edit_button.getStyleClass().remove("boton_enfocado_subir_imagen");
+        edit_button.getStyleClass().add("boton_desenfocado_subir_imagen"); 
     }
 //---------------------------------------------------------------------------------------------------- 
     @FXML
     private void edit_entered(MouseEvent event) {
         
         //Modificamos el estilo del boton al entrar en el
-        edit_button.getStyleClass().remove("boton_desenfocado_registro");
-        edit_button.getStyleClass().add("boton_enfocado_registro"); 
+        edit_button.getStyleClass().remove("boton_desenfocado_subir_imagen");
+        edit_button.getStyleClass().add("boton_enfocado_subir_imagen"); 
     }
 //---------------------------------------------------------------------------------------------------- 
     @FXML
@@ -285,16 +285,16 @@ public class Expense_viewController implements Initializable {
     private void cancel_exited(MouseEvent event) {
                 
         //Modificamos el estilo del boton al entrar en el
-        cancel_button.getStyleClass().remove("boton_enfocado_registro");
-        cancel_button.getStyleClass().add(".boton_desenfocado_registro"); 
+        cancel_button.getStyleClass().remove("boton_enfocado_cancelar");
+        cancel_button.getStyleClass().add("boton_desenfocado_cancelar"); 
     }
 //---------------------------------------------------------------------------------------------------- 
     @FXML
     private void cancel_entered(MouseEvent event) {
                 
         //Modificamos el estilo del boton al entrar en el
-        cancel_button.getStyleClass().remove("boton_enfocado_registro");
-        cancel_button.getStyleClass().add(".boton_desenfocado_registro"); 
+        cancel_button.getStyleClass().remove("boton_desenfocado_cancelar");
+        cancel_button.getStyleClass().add("boton_enfocado_cancelar"); 
     }
 //---------------------------------------------------------------------------------------------------- 
     @FXML
@@ -376,8 +376,8 @@ public class Expense_viewController implements Initializable {
     private void change_photo_entered(MouseEvent event) {
         
         //Modificamos el estilo del boton al entrar en el
-        change_photo_button.getStyleClass().remove("boton_enfocado_registro");
-        change_photo_button.getStyleClass().add(".boton_desenfocado_registro");
+        change_photo_button.getStyleClass().remove("boton_desenfocado_registro");
+        change_photo_button.getStyleClass().add("boton_enfocado_registro");
     }
 
     @FXML

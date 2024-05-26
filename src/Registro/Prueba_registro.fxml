@@ -94,7 +94,7 @@
                         <TextField fx:id="apodo_field" focusTraversable="false" prefHeight="31.0" prefWidth="314.0" promptText="No puede contener espacios" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
                         <StackPane alignment="TOP_LEFT" prefHeight="28.0" prefWidth="470.0">
                            <children>
-                              <Text fx:id="msg_ini_nickname" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe tu apodo" visible="false" />
+                              <Text fx:id="msg_ini_nickname" fill="DODGERBLUE" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe tu apodo" visible="false" />
                               <Text fx:id="msg_nick_use" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="El apodo ya está en uso" visible="false" />
                               <Text fx:id="msg_nick_spaces" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Apodo incorrecto, prueba a quitar espacios " visible="false" />
                            </children>
@@ -111,7 +111,7 @@
                         <TextField fx:id="contrasena_field" focusTraversable="false" prefHeight="31.0" prefWidth="314.0" promptText="Solo letras y numeros (Min 6 caracteres)" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
                         <StackPane alignment="TOP_LEFT" prefHeight="24.0" prefWidth="470.0">
                            <children>
-                              <Text fx:id="msg_ini_pssw" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe tu contraseña " />
+                              <Text fx:id="msg_ini_pssw" fill="DODGERBLUE" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe tu contraseña " />
                               <Text fx:id="msg_err_pssw" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña incorrecta (Letras y numeros, min 6 caracteres)" visible="false" />
                            </children>
                         </StackPane>
@@ -151,7 +151,7 @@
                                  </font>
                               </Text>
                               <TextField fx:id="nombre_field" focusTraversable="false" prefHeight="31.0" prefWidth="314.0" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
-                              <Text fx:id="nombre_txt" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Como te llamas?" visible="false" />
+                              <Text fx:id="nombre_txt" fill="DODGERBLUE" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Como te llamas?" visible="false" />
                            </children>
                            <GridPane.margin>
                               <Insets />
@@ -168,7 +168,7 @@
                                  </font>
                               </Text>
                               <TextField fx:id="apellido_field" focusTraversable="false" prefHeight="31.0" prefWidth="314.0" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
-                              <Text fx:id="apellido_txt" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Cual es su apellido?" visible="false" />
+                              <Text fx:id="apellido_txt" fill="DODGERBLUE" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Cual es su apellido?" visible="false" />
                            </children>
                            <padding>
                               <Insets left="2.0" />
@@ -200,7 +200,7 @@
                         <TextField fx:id="email_field" focusTraversable="false" prefHeight="31.0" prefWidth="314.0" promptText="Nombre@dominio.org" styleClass="textfield_registro" stylesheets="@Estilos_registro.css" />
                         <StackPane alignment="TOP_LEFT" prefHeight="27.0" prefWidth="470.0">
                            <children>
-                              <Text fx:id="msg_ini_email" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe tu correo electronico" visible="false" />
+                              <Text fx:id="msg_ini_email" fill="DODGERBLUE" strokeType="OUTSIDE" strokeWidth="0.0" text="Escribe tu correo electronico" visible="false" />
                               <Text fx:id="msg_err_email" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo electronico incorrecto, recuerda la forma --&gt; Nombre@dominio.org" visible="false" />
                            </children>
                         </StackPane>
