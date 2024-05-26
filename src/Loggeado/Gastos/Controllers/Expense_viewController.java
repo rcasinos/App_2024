@@ -18,14 +18,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Acount;
@@ -50,8 +53,6 @@ public class Expense_viewController implements Initializable {
     @FXML
     private TextField text_fiel_cost;
     @FXML
-    private MenuButton category_pciker;
-    @FXML
     private TextField text_field_units;
     @FXML
     private ImageView ticket_image;
@@ -75,6 +76,11 @@ public class Expense_viewController implements Initializable {
         
     private Charge charge;
     private Acount acc;
+    private Category catTmp;
+    @FXML
+    private StackPane stack_pane;
+    @FXML
+    private ChoiceBox<String> choice_box_category;
 //---------------------------------------------------------------------------------------------------- 
     /**
      * Initializes the controller class.
@@ -85,12 +91,23 @@ public class Expense_viewController implements Initializable {
         //Obtenemos el charge que ha sido clickado
         charge = SharedData.getInstance().getActiveCharge();
         
+        // Update interface
         text_field_name.setText(charge.getName());
+        text_field_units.setText(String.valueOf(charge.getUnits()));
         text_fiel_cost.setText(String.valueOf(charge.getCost()));
         text_fiel_description.setText(charge.getDescription());
-        text_field_units.setText(String.valueOf(charge.getUnits()));
-        //ticket_image.setId(charge.getId());
-        //category_pciker.setText(charge.getCategory());
+        data_expense.setValue(charge.getDate());
+        choice_box_category.setValue(charge.getCategory().getName());
+        ticket_image.setImage(charge.getImageScan());
+        
+        //Iniciamos en que no se puedan editar
+        text_field_name.setEditable(false);
+        text_field_units.setEditable(false);
+        text_fiel_description.setEditable(false);
+        text_fiel_cost.setEditable(false);
+        //Las dos raras
+        choice_box_category.setDisable(true);
+        data_expense.setEditable(false);
         
     }    
 //----------------------------------------------------------------------------------------------------     
@@ -111,6 +128,9 @@ public class Expense_viewController implements Initializable {
 //---------------------------------------------------------------------------------------------------- 
     @FXML
     private void remove_img_click(MouseEvent event) {
+        
+        Image newImage = new Image(getClass().getResource("/Iconos_App/ticket.jpg").toExternalForm());
+        ticket_image.setImage(newImage);   
     }
 //---------------------------------------------------------------------------------------------------- 
     @FXML
@@ -158,30 +178,33 @@ public class Expense_viewController implements Initializable {
     @FXML
     private void save_change_expense_click(MouseEvent event) throws AcountDAOException, IOException { 
         
-        boolean validExpense = validateNumericField(text_fiel_cost);
-        boolean validUnits = validateNumericField(text_field_units);
+        try {
+                    // Get all categories
+                    this.acc = Acount.getInstance();
+                    List<Category> l = acc.getUserCategories();
+                    for(Category c : l) {
+                        if (c.getName().equals(choice_box_category.getValue())) {
+                            catTmp = c;
+                        }
+                    }
 
-        if (validExpense && validUnits) {
-                       
-               try {
-                    acc = Acount.getInstance();
-                    charge.setName(text_field_name.getText());
-                    charge.setCost(Double.parseDouble(text_fiel_cost.getText()));
-                    charge.setUnits(Integer.parseInt(text_field_units.getText()));
-                    charge.setDescription(text_fiel_description.getText());
-                    charge.setDate(data_expense.getValue());
-                    //charge.setCategory(category_pciker.));
-                    charge.setImageScan(ticket_image.getImage());
-                    
-                    //acc.updateCharge(charge);
-               }catch (AcountDAOException ex) {
-                     
-               }  
-                             
-        } else {
-            System.out.println("Failed to add an expense");
-        }  
+                    // Remove this
+                    acc.removeCharge(charge);
+
+                    // Register the new one
+                    acc.registerCharge(
+                            text_field_name.getText(), 
+                            text_fiel_description.getText(),
+                            Double.parseDouble(text_fiel_cost.getText()), 
+                            Integer.parseInt(text_field_units.getText()), 
+                            ticket_image.getImage(),
+                            data_expense.getValue(), catTmp);
+
+                } catch (AcountDAOException ex) {
+                    ex.printStackTrace();
+                }
     }
+    
 //---------------------------------------------------------------------------------------------------- 
     @FXML
     private void edit_exited(MouseEvent event) {
@@ -201,6 +224,23 @@ public class Expense_viewController implements Initializable {
 //---------------------------------------------------------------------------------------------------- 
     @FXML
     private void edit_expense(MouseEvent event) {
+        
+        if (edit_button.isVisible()) {
+            edit_button.setVisible(false);
+            save_button.setVisible(true);
+        } else {
+            edit_button.setVisible(true);
+            save_button.setVisible(false);
+        }
+
+        text_field_name.setEditable(true);
+        text_field_units.setEditable(true);
+        text_fiel_description.setEditable(true);
+        text_fiel_cost.setEditable(true);
+        //Las dos raras
+        choice_box_category.setDisable(false);
+        data_expense.setEditable(true);
+       
     }
 //---------------------------------------------------------------------------------------------------- 
     @FXML
@@ -301,28 +341,35 @@ public class Expense_viewController implements Initializable {
 //-----------------------------------------------------------------------------------   
     @FXML
     private void visualize_categories(MouseEvent event) throws AcountDAOException, IOException {
-                
-        //obtenemos las categorias del usuario que esta logeado
+        
+        // Obtener las categorías del usuario que está logeado
         List<Category> loggedUserCategories = Acount.getInstance().getUserCategories();
-        
+
         // Limpiar los items existentes
-        category_pciker.getItems().clear();
-        
+        choice_box_category.getItems().clear();
+
+        // Agregar las categorías al ChoiceBox
         for (Category category : loggedUserCategories) {
-            MenuItem menuItem = new MenuItem(category.getName());
-            menuItem.setOnAction(e -> {
-                category_pciker.setText(category.getName()); 
-                expenseCategory = category;
-            });
-            category_pciker.getItems().add(menuItem);
+            choice_box_category.getItems().add(category.getName());
         }
-        
-        //añadimos la opcion de nueva categoria
-        MenuItem addNewCategoryItem = new MenuItem("New Category");
-        System.out.println("Se esta creando una categoria");
-        addNewCategoryItem.setOnAction(e -> handleAddCategory());
-        category_pciker.getItems().add(addNewCategoryItem); 
-        
+
+        // Añadir la opción de nueva categoría
+        choice_box_category.getItems().add("New Category");
+
+        // Manejar la selección del ChoiceBox
+        choice_box_category.setOnAction(e -> {
+            String selected = choice_box_category.getSelectionModel().getSelectedItem();
+            if ("New Category".equals(selected)) {
+                handleAddCategory();
+            } else {
+                for (Category category : loggedUserCategories) {
+                    if (category.getName().equals(selected)) {
+                        expenseCategory = category;
+                        break;
+                    }
+                }
+            }
+        });
     }
 
     @FXML
@@ -332,4 +379,25 @@ public class Expense_viewController implements Initializable {
         change_photo_button.getStyleClass().remove("boton_enfocado_registro");
         change_photo_button.getStyleClass().add(".boton_desenfocado_registro");
     }
+
+    @FXML
+    private void stack_pane_click(KeyEvent event) {
+        
+        if (edit_button.isVisible()) {
+            edit_button.setVisible(false);
+            save_button.setVisible(true);
+        } else {
+            edit_button.setVisible(true);
+            save_button.setVisible(false);
+        }
+
+        text_field_name.setEditable(true);
+        text_field_units.setEditable(true);
+        text_fiel_description.setEditable(true);
+        text_fiel_cost.setEditable(true);
+        //Las dos raras
+        choice_box_category.setDisable(false);
+        data_expense.setEditable(true);
+    }
+    
 }

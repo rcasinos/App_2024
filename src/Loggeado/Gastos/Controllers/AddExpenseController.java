@@ -17,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuButton;
@@ -51,8 +52,6 @@ public class AddExpenseController implements Initializable {
     @FXML
     private TextField text_fiel_cost;
     @FXML
-    private MenuButton category_pciker;
-    @FXML
     private TextField text_field_units;
     @FXML
     private ImageView ticket_image;
@@ -66,6 +65,8 @@ public class AddExpenseController implements Initializable {
     private Button save_button;
     @FXML
     private DatePicker data_expense;
+    @FXML
+    private ChoiceBox<String> choice_box_category;
 
     /**
      * Initializes the controller class.
@@ -118,26 +119,34 @@ public class AddExpenseController implements Initializable {
     @FXML
     private void visualize_categories(MouseEvent event) throws AcountDAOException, IOException {
         
-        //obtenemos las categorias del usuario que esta logeado
+        // Obtener las categorías del usuario que está logeado
         List<Category> loggedUserCategories = Acount.getInstance().getUserCategories();
-        
+
         // Limpiar los items existentes
-        category_pciker.getItems().clear();
-        
+        choice_box_category.getItems().clear();
+
+        // Agregar las categorías al ChoiceBox
         for (Category category : loggedUserCategories) {
-            MenuItem menuItem = new MenuItem(category.getName());
-            menuItem.setOnAction(e -> {
-                category_pciker.setText(category.getName()); 
-                expenseCategory = category;
-            });
-            category_pciker.getItems().add(menuItem);
+            choice_box_category.getItems().add(category.getName());
         }
-        
-        //añadimos la opcion de nueva categoria
-        MenuItem addNewCategoryItem = new MenuItem("New Category");
-        System.out.println("Se esta creando una categoria");
-        addNewCategoryItem.setOnAction(e -> handleAddCategory());
-        category_pciker.getItems().add(addNewCategoryItem);  
+
+        // Añadir la opción de nueva categoría
+        choice_box_category.getItems().add("New Category");
+
+        // Manejar la selección del ChoiceBox
+        choice_box_category.setOnAction(e -> {
+            String selected = choice_box_category.getSelectionModel().getSelectedItem();
+            if ("New Category".equals(selected)) {
+                handleAddCategory();
+            } else {
+                for (Category category : loggedUserCategories) {
+                    if (category.getName().equals(selected)) {
+                        expenseCategory = category;
+                        break;
+                    }
+                }
+            }
+        });  
     }
     
 //-----------------------------------------------------------------------------------    
@@ -178,11 +187,13 @@ public class AddExpenseController implements Initializable {
         boolean validUnits = validateNumericField(text_field_units);
 
         if (validExpense && validUnits) {
+                       
             String expenseName = text_field_name.getText();
             String expenseDescription = text_fiel_description.getText();
             double expenseAmount = Double.parseDouble(text_fiel_cost.getText()); 
             int expenseUnits = Integer.parseInt(text_field_units.getText());
 
+            
             // Obtener la fecha seleccionada en el DatePicker
             LocalDate selectedDate = data_expense.getValue();
             LocalDate expenseDate = (selectedDate != null) ? selectedDate : LocalDate.now();
@@ -208,6 +219,9 @@ public class AddExpenseController implements Initializable {
 
     @FXML
     private void remove_img_click(MouseEvent event) {
+        
+        Image newImage = new Image(getClass().getResource("/Iconos_App/ticket.jpg").toExternalForm());
+        ticket_image.setImage(newImage);     
     }
 
     @FXML

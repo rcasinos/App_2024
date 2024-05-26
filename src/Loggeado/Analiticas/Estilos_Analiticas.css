@@ -59,3 +59,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-color:#1E90FF;
     -fx-background-radius: 20;    
 }
+
+.vboxes{
+    -fx-background-color: #000000; 
+    -fx-border-color: #1E90FF;
+    -fx-background-radius: 5px; 
+    -fx-border-radius: 5px; 
+    -fx-padding: 5px; 
+    -fx-border-width: 2px;
+    -fx-text-fill: #ffffff;
+}
