@@ -3,6 +3,8 @@ package Loggeado.Perfil;
 import java.awt.event.FocusEvent;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -93,12 +95,24 @@ public class Mi_Perfil_Controller {
     @FXML
     private Text msg_err_pssw;
     @FXML
-    private Text fecha_de_registro;
+    private Label fecha_de_registro;
     @FXML
     private Button alertButton;
-
+    
+    private Acount acc;
     // Método para inicializar los componentes
-    public void initialize() {
+    public void initialize() throws AcountDAOException, IOException {
+        
+        //Mostramos la fecha en que se registro la persona
+        Acount acc = Acount.getInstance();
+        User user = acc.getLoggedUser();
+        
+        LocalDate registerDate = user.getRegisterDate();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy"); // Puedes cambiar el patrón al formato deseado
+        String formattedDate = registerDate.format(formatter);
+        
+        fecha_de_registro.setText(formattedDate);
+    //-------------------------------------------------------------------------   
      alertButton.setOnAction(event -> mostrarAlerta(textFieldPassword));
     //----------------------------------------------------------------- 
     //Ocultamos los mensajes de error de contraseña y de correo 
@@ -351,29 +365,51 @@ public class Mi_Perfil_Controller {
 
     @FXML
     private void change_picture_exited(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        butom_Image.getStyleClass().remove("boton_enfocado_perfil");
+        butom_Image.getStyleClass().add("boton_desenfocado_perfil");        
     }
 
     @FXML
     private void change_picture_entered(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        butom_Image.getStyleClass().remove("boton_desenfocado_perfil");
+        butom_Image.getStyleClass().add("boton_enfocado_perfil");        
     }
 
     @FXML
     private void edit_exited(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        botonEdit.getStyleClass().remove("boton_enfocado_perfil");
+        botonEdit.getStyleClass().add("boton_desenfocado_perfil");        
     }
 
     @FXML
     private void edit_entered(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        botonEdit.getStyleClass().remove("boton_desenfocado_perfil");
+        botonEdit.getStyleClass().add("boton_enfocado_perfil");        
     }
 
     @FXML
     private void guardarCambios_salir(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        botonSave.getStyleClass().remove("boton_enfocado_perfil");
+        botonSave.getStyleClass().add("boton_desenfocado_perfil");        
     }
 
     @FXML
     private void guardarCambios_entered(MouseEvent event) {
         
-        
-        
+        //Modificamos el estilo del boton al entrar en el
+        botonSave.getStyleClass().remove("boton_desenfocado_perfil");
+        botonSave.getStyleClass().add("boton_enfocado_perfil");        
+              
     }
 
     @FXML
@@ -518,6 +554,38 @@ public class Mi_Perfil_Controller {
                 System.out.println("Nueva contraseña: " + password);
             });
         }
+    }
+
+    @FXML
+    private void edit_pass_exited(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        alertButton.getStyleClass().remove("boton_enfocado_perfil");
+        alertButton.getStyleClass().add("boton_desenfocado_perfil");           
+    }
+
+    @FXML
+    private void edit_pass_entered(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        alertButton.getStyleClass().remove("boton_desenfocado_perfil");
+        alertButton.getStyleClass().add("boton_enfocado_perfil");           
+    }
+
+    @FXML
+    private void cancel_exited(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        botonCancel.getStyleClass().remove("boton_enfocado_cancelar");
+        botonCancel.getStyleClass().add("boton_desenfocado_cancelar");           
+    }
+
+    @FXML
+    private void cancel_entered(MouseEvent event) {
+         
+        //Modificamos el estilo del boton al entrar en el
+        botonCancel.getStyleClass().remove("boton_desenfocado_cancelar");
+        botonCancel.getStyleClass().add("boton_enfocado_cancelar");          
     }
 
 }

@@ -99,12 +99,12 @@
                   </ImageView>
                   <VBox alignment="CENTER" prefHeight="189.0" prefWidth="168.0" spacing="10.0">
                      <children>
-                        <Button fx:id="remove_img_button" mnemonicParsing="false" onMouseClicked="#remove_img_click" onMouseEntered="#remove_img_entered" onMouseExited="#remove_img_exited" prefHeight="35.0" prefWidth="123.0" styleClass="boton_desenfocado_registro" stylesheets="@../Estilos_Gastos.css" text="Remove">
+                        <Button fx:id="remove_img_button" mnemonicParsing="false" onMouseClicked="#remove_img_click" onMouseEntered="#remove_img_entered" onMouseExited="#remove_img_exited" prefHeight="32.0" prefWidth="123.0" styleClass="boton_desenfocado_registro" stylesheets="@../Estilos_Gastos.css" text="Remove">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Button>
-                        <Button fx:id="change_photo_button" mnemonicParsing="false" onMouseClicked="#change_button_click" onMouseEntered="#change_photo_entered" onMouseExited="#change_photo_exited" styleClass="boton_desenfocado_registro" stylesheets="@../Estilos_Gastos.css" text="Change Ticket">
+                        <Button fx:id="change_photo_button" mnemonicParsing="false" onMouseClicked="#change_button_click" onMouseEntered="#change_photo_entered" onMouseExited="#change_photo_exited" prefWidth="125.0" styleClass="boton_desenfocado_registro" stylesheets="@../Estilos_Gastos.css" text="Change ">
                            <font>
                               <Font name="Segoe UI Emoji" size="16.0" />
                            </font>
@@ -137,7 +137,7 @@
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="cancel_button" mnemonicParsing="false" onAction="#cancelButtonPressed" onMouseEntered="#cancel_entered" onMouseExited="#cancel_exited" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_registro" stylesheets="@../Estilos_Gastos.css" text="Cancel">
+                  <Button fx:id="cancel_button" mnemonicParsing="false" onAction="#cancelButtonPressed" onMouseEntered="#cancel_entered" onMouseExited="#cancel_exited" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_cancelar" stylesheets="@Estilos_Gastos_controllers.css" text="Cancel">
                      <font>
                         <Font size="16.0" />
                      </font>

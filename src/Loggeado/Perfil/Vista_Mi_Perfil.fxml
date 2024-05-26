@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -15,44 +16,53 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox alignment="CENTER" prefHeight="889.0" prefWidth="1386.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Loggeado.Perfil.Mi_Perfil_Controller">
+<HBox alignment="CENTER" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Loggeado.Perfil.Mi_Perfil_Controller">
    <children>
       <GridPane prefHeight="889.0" prefWidth="1454.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1155.333251953125" minWidth="924.6666259765625" prefWidth="985.9999389648438" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1454.0" minWidth="10.0" prefWidth="468.00006103515625" />
+          <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="288.33331298828125" minHeight="66.66667938232422" prefHeight="184.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="670.3333206176758" minHeight="300.66668701171875" prefHeight="625.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="180.0" vgrow="SOMETIMES" />
+          <RowConstraints vgrow="SOMETIMES" />
           <RowConstraints maxHeight="95.0" minHeight="6.0" prefHeight="73.66668701171875" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1">
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" style="-fx-border-color: #1E90FF; -fx-border-radius: 20; -fx-border-width: 2;" GridPane.columnIndex="1">
                <children>
                   <ImageView fx:id="imagenPerfil" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true">
                      <image>
                         <Image url="@../../Iconos_Estilo/astronauta_image_perfil.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="butom_Image" mnemonicParsing="false" onMouseClicked="#change_picture_click" onMouseEntered="#change_picture_entered" onMouseExited="#change_picture_exited" prefHeight="41.0" prefWidth="96.0" styleClass="boton_desenfocado_perfil" stylesheets="@Estilos_Perfil.css" text="Cambiar" textFill="WHITE" />
+                  <Button fx:id="butom_Image" mnemonicParsing="false" onMouseClicked="#change_picture_click" onMouseEntered="#change_picture_entered" onMouseExited="#change_picture_exited" prefHeight="41.0" prefWidth="96.0" styleClass="boton_desenfocado_perfil" stylesheets="@Estilos_Perfil.css" text="Cambiar" />
                   <HBox alignment="CENTER_RIGHT" prefHeight="186.0" prefWidth="693.0">
                      <children>
-                        <Text fx:id="fecha_de_registro" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrado desde:" wrappingWidth="239.13670349121094">
+                        <Label style="-fx-text-fill: #1E90FF;" text="Registrado desde: ">
                            <font>
-                              <Font size="14.0" />
-                           </font></Text>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="fecha_de_registro" style="-fx-text-fill: #ffffff;" stylesheets="@Estilos_Perfil.css" text="----------">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
                      </children>
                   </HBox>
                </children>
                <padding>
                   <Insets left="40.0" />
                </padding>
+               <GridPane.margin>
+                  <Insets left="50.0" />
+               </GridPane.margin>
             </HBox>
-            <HBox GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <HBox alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <GridPane>
+                  <GridPane style="-fx-border-color: #1E90FF; -fx-border-radius: 20; -fx-border-width: 2;">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="720.3333740234375" minWidth="10.0" prefWidth="272.3333435058594" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="10.0" prefWidth="1181.6666564941406" />
@@ -65,7 +75,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <HBox alignment="CENTER" style="-fx-border-color: #ffffff;">
+                        <HBox alignment="CENTER">
                            <children>
                               <Label fx:id="labelNickname" alignment="CENTER" prefHeight="49.0" prefWidth="223.0" stylesheets="@Estilos_Perfil.css" text="Apodo:" textFill="DODGERBLUE">
                                  <font>
@@ -73,8 +83,11 @@
                                  </font>
                               </Label>
                            </children>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
                         </HBox>
-                        <HBox alignment="CENTER" style="-fx-border-color: white;" GridPane.rowIndex="1">
+                        <HBox alignment="CENTER" GridPane.rowIndex="1">
                            <children>
                               <Label fx:id="labelNombre" alignment="CENTER" prefHeight="49.0" prefWidth="223.0" text="Nombre:" textFill="DODGERBLUE">
                                  <font>
@@ -82,8 +95,11 @@
                                  </font>
                               </Label>
                            </children>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
                         </HBox>
-                        <HBox alignment="CENTER" style="-fx-border-color: white;" GridPane.rowIndex="2">
+                        <HBox alignment="CENTER" GridPane.rowIndex="2">
                            <children>
                               <Label fx:id="labelApellido" alignment="CENTER" prefHeight="49.0" prefWidth="223.0" text="Apellido:" textFill="DODGERBLUE">
                                  <font>
@@ -91,8 +107,11 @@
                                  </font>
                               </Label>
                            </children>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
                         </HBox>
-                        <HBox alignment="CENTER" style="-fx-border-color: white;" GridPane.rowIndex="3">
+                        <HBox alignment="CENTER" GridPane.rowIndex="3">
                            <children>
                               <Label fx:id="labelCorreo" alignment="CENTER" prefHeight="49.0" prefWidth="223.0" text="Correo:" textFill="DODGERBLUE">
                                  <font>
@@ -100,8 +119,11 @@
                                  </font>
                               </Label>
                            </children>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
                         </HBox>
-                        <HBox alignment="CENTER" style="-fx-border-color: white;" GridPane.rowIndex="4">
+                        <HBox alignment="CENTER" GridPane.rowIndex="4">
                            <children>
                               <Label fx:id="labelPassword" alignment="CENTER" prefHeight="49.0" prefWidth="223.0" text="Contraseña:" textFill="DODGERBLUE">
                                  <font>
@@ -109,26 +131,29 @@
                                  </font>
                               </Label>
                            </children>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" style="-fx-border-color: white;" GridPane.columnIndex="1">
+                        <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="1">
                            <children>
                               <TextField fx:id="textFieldNickname" onMouseClicked="#informar_user" prefHeight="25.0" prefWidth="259.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
                               <Text fx:id="text_nickname" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="El apodo no se puede editar" wrappingWidth="237.13671875" />
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" style="-fx-border-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <children>
                               <TextField fx:id="textFieldNombre" prefHeight="25.0" prefWidth="260.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
                               <Text fx:id="msg_nombre" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Introduce tu  nuevo nombre" wrappingWidth="237.13671875" />
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" style="-fx-border-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <children>
                               <TextField fx:id="textFieldApellido" prefHeight="25.0" prefWidth="260.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
                               <Text fx:id="msg_apellido" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Introduce tu  nuevo apellido" wrappingWidth="237.13671875" />
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" style="-fx-border-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <children>
                               <TextField fx:id="textFieldCorreo" prefHeight="25.0" prefWidth="260.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
                               <StackPane alignment="CENTER_LEFT" prefHeight="103.0" prefWidth="328.0">
@@ -139,14 +164,14 @@
                               </StackPane>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" style="-fx-border-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <children>
-                              <TextField fx:id="textFieldPassword" prefHeight="32.0" prefWidth="404.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
+                              <PasswordField fx:id="textFieldPassword" prefHeight="31.0" prefWidth="406.0" styleClass="textfield_estilos" stylesheets="@Estilos_Perfil.css" />
                               <StackPane alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="470.0">
                                  <children>
                                     <Text fx:id="msg_ini_pssw" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Introduce tu nueva contraseña" visible="false" />
                                     <Text fx:id="msg_err_pssw" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña incorrecta (Letras y numeros, min 6 caracteres)" visible="false" />
-                                    <Button fx:id="alertButton" mnemonicParsing="false" prefHeight="23.0" prefWidth="59.0" styleClass="boton_desenfocado_perfil" stylesheets="@Estilos_Perfil.css" text="Editar" />
+                                    <Button fx:id="alertButton" mnemonicParsing="false" onMouseEntered="#edit_pass_entered" onMouseExited="#edit_pass_exited" prefHeight="23.0" prefWidth="59.0" styleClass="boton_desenfocado_perfil" stylesheets="@Estilos_Perfil.css" text="Editar" />
                                  </children>
                               </StackPane>
                            </children>
@@ -158,11 +183,11 @@
                   <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
                </GridPane.margin>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="76.0" prefWidth="480.0">
                      <children>
-                        <Button fx:id="botonCancel" mnemonicParsing="false" onAction="#cancelEdit" prefHeight="55.0" prefWidth="183.0" style="-fx-border-color: red;" styleClass="boton_desenfocado_perfil" stylesheets="@Estilos_Perfil.css" text="CANCELAR">
+                        <Button fx:id="botonCancel" mnemonicParsing="false" onAction="#cancelEdit" onMouseEntered="#cancel_entered" onMouseExited="#cancel_exited" prefHeight="55.0" prefWidth="183.0" style="-fx-border-color: red;" styleClass="boton_desenfocado_perfil" stylesheets="@Estilos_Perfil.css" text="CANCELAR">
                            <font>
                               <Font size="21.0" />
                            </font>
@@ -184,45 +209,10 @@
                   <Insets />
                </opaqueInsets>
                <padding>
-                  <Insets right="50.0" />
+                  <Insets left="50.0" />
                </padding>
             </HBox>
-            <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="48.8">
-                           <image>
-                              <Image url="@../../Iconos_Estilo/asteroide.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" rotate="-133.2">
-                           <image>
-                              <Image url="@../../Iconos_Estilo/asteroide.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Text fill="#bbc32b" strokeType="OUTSIDE" strokeWidth="0.0" text="Ahorra y llega más allá" textAlignment="CENTER" underline="true" wrappingWidth="266.13671875">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="256.0" prefWidth="469.0">
-                     <children>
-                        <ImageView fitHeight="188.0" fitWidth="166.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../Iconos_Estilo/astronauta_saturno.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
+            <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </children>

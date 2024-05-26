@@ -41,12 +41,11 @@
             </HBox>
             <VBox alignment="CENTER" prefHeight="527.0" prefWidth="324.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Button fx:id="add_button" mnemonicParsing="false" onAction="#add_category" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@../Estilos_Gastos.css" text="Add" />
-                  <Button fx:id="remove_button" mnemonicParsing="false" onAction="#remove_category" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@../Estilos_Gastos.css" text="Remove" />
-                  <Button fx:id="edit_button" mnemonicParsing="false" onAction="#edit_category" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@../Estilos_Gastos.css" text="Edit" />
+                  <Button fx:id="add_button" mnemonicParsing="false" onAction="#add_category" onMouseEntered="#add_entered" onMouseExited="#add_exited" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@../Estilos_Gastos.css" text="Add" />
+                  <Button fx:id="remove_button" mnemonicParsing="false" onAction="#remove_category" onMouseEntered="#remove_entered" onMouseExited="#remove_exited" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@../Estilos_Gastos.css" text="Remove" />
                   <VBox alignment="BOTTOM_CENTER" prefHeight="296.0" prefWidth="181.0">
                      <children>
-                        <Button fx:id="cancel_button" mnemonicParsing="false" onAction="#cancelButtonPressed" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@../Estilos_Gastos.css" text="Cancelar" />
+                        <Button fx:id="cancel_button" mnemonicParsing="false" onAction="#cancelButtonPressed" onMouseEntered="#cancel_entered" onMouseExited="#cancel_exited" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_registro" stylesheets="@../Estilos_Gastos.css" text="Cancelar" />
                      </children>
                   </VBox>
                </children>

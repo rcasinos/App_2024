@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import model.Acount;
 import model.AcountDAOException;
@@ -33,8 +34,6 @@ public class View_CategoryController implements Initializable {
 
     @FXML
     private HBox hbox_panel;
-    @FXML
-    private Button edit_button;
     @FXML
     private Button remove_button;
     @FXML
@@ -67,7 +66,6 @@ public class View_CategoryController implements Initializable {
                 System.out.println("Active Category: " + ActiveCategory.getName());
 
                 remove_button.setDisable(false);
-                edit_button.setDisable(false);
 
             } else {
                 disableActive();
@@ -88,12 +86,8 @@ public class View_CategoryController implements Initializable {
                 }
             }*/
         });       
-    }    
-//-----------------------------------------------------------------------    
-    @FXML
-    private void edit_category(ActionEvent event) {
+    }       
 
-    }
 //-----------------------------------------------------------------------
     @FXML
     private void remove_category(ActionEvent event) throws IOException {
@@ -141,7 +135,6 @@ public class View_CategoryController implements Initializable {
     }
 //-----------------------------------------------------------------------     
     public void disableActive() {
-        edit_button.setDisable(true);
         remove_button.setDisable(true);
     }    
 //----------------------------------------------------------------------- 
@@ -161,6 +154,54 @@ public class View_CategoryController implements Initializable {
         }
     }
 //-----------------------------------------------------------------------     
+
+    @FXML
+    private void add_exited(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        add_button.getStyleClass().remove("boton_enfocado_subir_imagen");
+        add_button.getStyleClass().add("boton_desenfocado_subir_imagen"); 
+    }
+
+    @FXML
+    private void add_entered(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        add_button.getStyleClass().remove("boton_desenfocado_subir_imagen");
+        add_button.getStyleClass().add("boton_enfocado_subir_imagen");         
+    }
+
+    @FXML
+    private void remove_exited(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        remove_button.getStyleClass().remove("boton_enfocado_subir_imagen");
+        remove_button.getStyleClass().add("boton_desenfocado_subir_imagen");         
+    }
+
+    @FXML
+    private void remove_entered(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        remove_button.getStyleClass().remove("boton_desenfocado_subir_imagen");
+        remove_button.getStyleClass().add("boton_enfocado_subir_imagen");        
+    }
+    
+    @FXML
+    private void cancel_exited(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        cancel_button.getStyleClass().remove("boton_enfocado_registro");
+        cancel_button.getStyleClass().add("boton_desenfocado_registro");         
+    }
+
+    @FXML
+    private void cancel_entered(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        cancel_button.getStyleClass().remove("boton_desenfocado_registro");
+        cancel_button.getStyleClass().add("boton_enfocado_registro");         
+    }
     
 }
     

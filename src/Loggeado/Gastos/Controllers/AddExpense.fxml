@@ -115,13 +115,10 @@
                   <Insets bottom="20.0" left="2.0" right="2.0" top="2.0" />
                </GridPane.margin>
             </HBox>
-            <HBox alignment="TOP_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <HBox alignment="TOP_RIGHT" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
-                  <Button fx:id="save_button" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#save_change_expense_click" prefHeight="50.0" prefWidth="106.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@../Estilos_Gastos.css" text="Add">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Button>
+                  <Button fx:id="cancel_button" mnemonicParsing="false" onAction="#cancelButtonPressed" onMouseEntered="#cancel_entered" onMouseExited="#cancel_exited" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_registro" stylesheets="@../Estilos_Gastos.css" text="Cancelar" />
+                  <Button fx:id="save_button" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#save_change_expense_click" onMouseEntered="#add_entered" onMouseExited="#add_exited" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@../Estilos_Gastos.css" text="Add" />
                </children>
                <GridPane.margin>
                   <Insets right="20.0" top="5.0" />

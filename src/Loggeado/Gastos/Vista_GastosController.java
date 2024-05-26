@@ -401,7 +401,7 @@ public class Vista_GastosController implements Initializable {
  //----------------------------------------------------------------------------------------------------   
 
     @FXML
-    private void reset_pagina(MouseEvent event) {
+    public void reset_pagina(MouseEvent event) {
         
      try {
                 // Cargar el archivo FXML

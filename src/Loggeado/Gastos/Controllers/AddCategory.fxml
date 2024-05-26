@@ -58,11 +58,11 @@
             </VBox>
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnSpan="2" GridPane.rowIndex="3">
                <children>
-                  <Button fx:id="cancel_button" mnemonicParsing="false" onAction="#cancelButtonPressed" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@../Estilos_Gastos.css" text="Cancel">
+                  <Button fx:id="cancel_button" mnemonicParsing="false" onAction="#cancelButtonPressed" onMouseEntered="#cancel_entered" onMouseExited="#cancel_exited" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_registro" stylesheets="@../Estilos_Gastos.css" text="Cancel">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
-                  <Button fx:id="saveChangesButton" mnemonicParsing="false" onAction="#createCategory" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@../Estilos_Gastos.css" text="Add">
+                  <Button fx:id="saveChangesButton" mnemonicParsing="false" onAction="#createCategory" onMouseEntered="#add_entered" onMouseExited="#add_exited" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@../Estilos_Gastos.css" text="Add">
                      <font>
                         <Font size="16.0" />
                      </font></Button>

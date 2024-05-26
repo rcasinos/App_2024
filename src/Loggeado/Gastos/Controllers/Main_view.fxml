@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <HBox fx:id="hbox_panel" styleClass="negrobackground" stylesheets="@Estilos_Gastos_controllers.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
@@ -17,19 +21,41 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <HBox alignment="CENTER" GridPane.columnIndex="1">
+            <VBox alignment="CENTER" prefHeight="747.0" prefWidth="812.0" spacing="10.0" GridPane.columnIndex="1">
                <children>
-                  <Label styleClass="label_titulos" stylesheets="@Estilos_Gastos_controllers.css" text="Bienvenido al Apartado de Gastos">
+                  <HBox alignment="CENTER" prefHeight="49.0" prefWidth="808.0" style="-fx-border-color: #1E90FF; -fx-border-radius: 20; -fx-border-width: 2;" stylesheets="@../Estilos_Gastos.css">
+                     <children>
+                        <Label styleClass="label_titulos" stylesheets="@Estilos_Gastos_controllers.css" text="Bienvenido a tus gastos">
+                           <font>
+                              <Font name="Segoe UI Black" size="33.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="40.0" right="40.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <ImageView fitHeight="166.0" fitWidth="187.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Iconos_Estilo/Logo%20definitivo%20app.png" />
+                     </image>
+                  </ImageView>
+                  <Label styleClass="label_subtitulos" stylesheets="@Estilos_Gastos_controllers.css" text="!Tienes funcionalidades debajo y para ver un gasto dale doble click en la tabla¡">
                      <font>
-                        <Font size="33.0" />
+                        <Font name="Segoe UI Emoji" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label styleClass="label_subtitulos" stylesheets="@Estilos_Gastos_controllers.css" text="Para actualizar la tabla dale al icono de arriba">
+                     <font>
+                        <Font name="Segoe UI Emoji" size="12.0" />
                      </font>
                   </Label>
                </children>
-            </HBox>
+            </VBox>
          </children>
       </GridPane>
    </children>

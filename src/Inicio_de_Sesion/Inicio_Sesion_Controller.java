@@ -32,6 +32,8 @@ import javafx.stage.Stage;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -91,9 +93,7 @@ public class Inicio_Sesion_Controller implements Initializable{
     // you must initialize here all related with the object 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        // Establecer el foco en el nodo "dummy" al inicio
-        dummy.requestFocus();       
+          
         
         //Ponemos los msg en invisibles primero
         msg_ini_pssw.setVisible(false);
@@ -169,19 +169,17 @@ public class Inicio_Sesion_Controller implements Initializable{
         
         String u = Nombre_field.getText();
         String p1 = contrasena_p_field.getText();
-     
+
         Acount acc = null;
         boolean valido = false;
 
-        if(u != null && p1 != null && !u.equals("") && !p1.equals(""))  {
-            // Hay valor
+        if (u != null && p1 != null && !u.equals("") && !p1.equals("")) {
             try {
                 System.out.println("1");
                 acc = Acount.getInstance();
-                System.out.println("2");                
+                System.out.println("2");
                 valido = acc.logInUserByCredentials(u, p1);
                 System.out.println("3");
-                
             } catch (AcountDAOException | IOException e) {
                 // Manejar excepciones
                 e.printStackTrace();
@@ -201,8 +199,15 @@ public class Inicio_Sesion_Controller implements Initializable{
             }            
             return;
         }
-        
+
         if (valido) {
+            // Mostrar alerta de notificación de inicio de sesión exitoso
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Inicio de Sesión Exitoso");
+            alert.setHeaderText(null);
+            alert.setContentText("Has iniciado sesión correctamente.");
+            alert.showAndWait();
+
             // Si todo esta Bien:
             // Cargar el FXML de la ventana emergente
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Vista_Logg.fxml"));
@@ -216,7 +221,7 @@ public class Inicio_Sesion_Controller implements Initializable{
             // Obtenemos la ventana como objeto para aplicarle opciones
             Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-            //cierro pestaña de inicio
+            // Cerrar la pestaña de inicio
             primaryStage.close();
 
             stage.setMaximized(true);
@@ -225,7 +230,7 @@ public class Inicio_Sesion_Controller implements Initializable{
             // Mostrar la ventana emergente
             stage.show();
 
-        }else {
+        } else {
             System.out.println("No es valido?");
             msg_err_login.setVisible(true);
             msg_user_login.setVisible(false);
