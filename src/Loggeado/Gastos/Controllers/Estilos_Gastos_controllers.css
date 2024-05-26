@@ -103,3 +103,46 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-border-width: 1px;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75), 10, 0.5, 0.0, 0.0); /* Sombra */
 }
+.menu-button {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-border-color: #1E90FF; /* Azul claro */
+    -fx-border-width: 1px;
+}
+
+.menu-button:hover {
+    -fx-background-color: #1E90FF; /* Azul claro */
+}
+
+.menu-button .popup-menu {
+    -fx-padding: 0; /* Elimina el relleno del menú desplegable */
+    -fx-margin: 0; /* Elimina el margen del menú desplegable */
+}
+
+.menu-button .menu-item {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-border-color: #1E90FF; /* Azul claro */
+    -fx-border-width: 1px;
+    -fx-padding: 10px; /* Espacio alrededor del texto */
+}
+
+.menu-button .menu-item:hover {
+    -fx-background-color: #1E90FF; /* Azul claro */
+}
+
+.menu-button .label {
+    -fx-text-fill: white; /* Texto en blanco en el botón */
+}
+
+
+
+
+
+
+
+
+
+
+
+
