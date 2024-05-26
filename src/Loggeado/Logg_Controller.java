@@ -30,29 +30,21 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.User;
 
-/*
-import com.itextpdf.io.font.constants.StandardFonts;
-import com.itextpdf.kernel.colors.ColorConstants;
-import com.itextpdf.kernel.font.PdfFont;
-import com.itextpdf.kernel.font.PdfFontFactory;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.Cell;
-import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.element.Table;
-import com.itextpdf.layout.property.TextAlignment;
-import com.itextpdf.layout.property.UnitValue;
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-*/
-
+import com.itextpdf.html2pdf.HtmlConverter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.geometry.Rectangle2D;
+import javafx.stage.Screen;
+import model.Acount;
+import model.AcountDAOException;
+import model.Charge;
 
 /**
  *
@@ -62,6 +54,9 @@ public class Logg_Controller implements Initializable {
     
     // Array de labels
     private Label labelSeleccionado = null;
+    
+    private User user;
+    private Acount acc;
 
     @FXML
     private Label boton_mi_perfil;
@@ -71,15 +66,12 @@ public class Logg_Controller implements Initializable {
     private Label boton_analiticas;
     @FXML
     private Label boton_exportar;
-    @FXML
     private Label boton_configuracion;
     @FXML
     private Pane panel_principal;
     @FXML
     private Label boton_cerrar_sesion;
-    @FXML
     private ImageView imageUSer;
-    @FXML
     private Label nameUser;
     
    
@@ -91,7 +83,8 @@ public class Logg_Controller implements Initializable {
         
         
     }   
-    
+    //----------------------------------------------------------------------------------------------------------
+
     private void populateUserDetails(User user) {
       
             nameUser.setText(user.getNickName());
@@ -106,6 +99,7 @@ public class Logg_Controller implements Initializable {
         boton_mi_perfil.getStyleClass().remove("label_enfocado_azul");
         boton_mi_perfil.getStyleClass().add("label_desenfocado_azul");
     }
+//----------------------------------------------------------------------------------------------------------
 
     @FXML
     private void mi_perfil_enfoque(MouseEvent event) {
@@ -139,7 +133,7 @@ public class Logg_Controller implements Initializable {
             //Verificar si el nodo raiz es de tipo Region
             if (ventana instanceof Region){
                 Region region = (Region) ventana;
-                
+               
                 //Vincular tamaño nueva ventana con el tamaño panel principal
                 region.prefWidthProperty().bind(panel_principal.widthProperty());
                 region.prefHeightProperty().bind(panel_principal.heightProperty());
@@ -156,6 +150,7 @@ public class Logg_Controller implements Initializable {
             e.printStackTrace();
         }
     }
+//----------------------------------------------------------------------------------------------------------
 
     @FXML
     private void gastos_desenfoque(MouseEvent event) {
@@ -172,9 +167,9 @@ public class Logg_Controller implements Initializable {
         boton_gastos.getStyleClass().remove("label_desenfocado_azul");
         boton_gastos.getStyleClass().add("label_enfocado_azul");
     }
-
+//----------------------------------------------------------------------------------------------------------
     @FXML
-    private void gastos_click(MouseEvent event) {
+    private void gastos_click(MouseEvent event) throws AcountDAOException {
         
         //Quitamos el seleccionado del labelSeleccionado
         if(labelSeleccionado != null){
@@ -215,6 +210,7 @@ public class Logg_Controller implements Initializable {
             e.printStackTrace();
         }
     }
+//----------------------------------------------------------------------------------------------------------
 
     @FXML
     private void analiticas_desenfoque(MouseEvent event) {
@@ -231,6 +227,7 @@ public class Logg_Controller implements Initializable {
         boton_analiticas.getStyleClass().remove("label_desenfocado_azul");
         boton_analiticas.getStyleClass().add("label_enfocado_azul");
     }
+//----------------------------------------------------------------------------------------------------------
 
     @FXML
     private void analiticas_click(MouseEvent event) {
@@ -275,6 +272,7 @@ public class Logg_Controller implements Initializable {
             e.printStackTrace();
         }
     }
+//----------------------------------------------------------------------------------------------------------
 
     @FXML
     private void exportar_desenfoque(MouseEvent event) {
@@ -291,9 +289,10 @@ public class Logg_Controller implements Initializable {
         boton_exportar.getStyleClass().remove("label_desenfocado_azul");
         boton_exportar.getStyleClass().add("label_enfocado_azul");
     }
+//----------------------------------------------------------------------------------------------------------
 
     @FXML
-    private void exportar_click(MouseEvent event) {
+    private void exportar_click(MouseEvent event) throws IOException {
         
         //Quitamos el seleccionado del labelSeleccionado
         if(labelSeleccionado != null){
@@ -308,109 +307,59 @@ public class Logg_Controller implements Initializable {
         //Seleccionamos el labelactual como el seleccionado
         labelSeleccionado = boton_exportar;
 
-        /*
-        // Crear un FileChooser para que el usuario pueda seleccionar dónde guardar el PDF
+        try {
+                acc = Acount.getInstance();
+                this.user = acc.getLoggedUser();
+                String fechaHoy = new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date());
+                String absPathOfImage = getClass().getResource("../Iconos_estilo/Union_Letras_logo.png").toExternalForm();
+                System.out.println(absPathOfImage);
+                String html = "<!DOCTYPE html><html lang='en'><head><meta charset='utf-8' /><meta name='viewport' content='width=device-width, initial-scale=1' /><title>ROCKETEER</title><link rel='icon' href='./images/favicon.png' type='image/x-icon' /><style>body{font-family:'Helvetica Neue','Helvetica',Helvetica,Arial,sans-serif;text-align:center;color:#000;background-color:#fff;}body h1,body h2,body h3{font-weight:300;margin-bottom:0;padding-bottom:0;}body h1{color:#4a90e2;}body h2{color:#3379ca;}body h3{margin-top:10px;margin-bottom:20px;font-style:italic;}body a{color:#06f;}.header-title{font-size:50px;font-weight:bold;color:#095bb8;margin:20px 0;}.invoice-box{max-width:800px;margin:auto;padding:30px;border:1px solid #1336a7;box-shadow:0 0 10px rgba(0,0,0,.15);font-size:16px;line-height:24px;color:#000;background-color:#aed5fa;}.invoice-box table{width:100%;line-height:inherit;text-align:left;border-collapse:collapse;}.invoice-box table td{padding:5px;vertical-align:top;}.invoice-box table tr td:nth-child(3),.a{text-align:right;}.invoice-box table tr.top table td{padding-bottom:20px;}.invoice-box table tr.top table td.title{font-size:45px;line-height:45px;color:#000;}.invoice-box table tr.information table td{padding-bottom:40px;}.invoice-box table tr.heading td{background:hsl(0,0%,99%);border-bottom:1px solid #006deb;font-weight:bold;color:#006deb;}.invoice-box table tr.details td{padding-bottom:20px;}.invoice-box table tr.item td{border-bottom:1px solid #eee;}.invoice-box table tr.item.last td{border-bottom:none;}.invoice-box table tr.total td:nth-child(2){border-top:2px solid #eee;font-weight:bold;color:#000;}}@media only screen and (max-width:600px){.invoice-box table tr.top table td{width:100%;display:block;text-align:center;}.invoice-box table tr.information table td{width:100%;display:block;text-align:center;}}</style></head><body><div class='header-title'>ROCKETEER</div><div class='invoice-box'><table><tr class='top'><td colspan='3'><table><tr><td class='title'><img style='height:100px;' src='" + absPathOfImage + "' alt='Company logo' style='width:100%;max-width:300px' /></td><td><h2>👽 EXPENSE SUMMARY 👽</h2></td></tr></table></td></tr><tr class='information'><td colspan='3'><table><tr><td>Name 📕 : "+this.user.getName()+"<br />Surname 📗 : "+this.user.getSurname()+"<br /></td><td>Email 📙 : "+this.user.getEmail()+"<br />Today's Date 📘 : "+fechaHoy+"<br /></td></tr></table></td></tr><tr class='heading'><td>Expense 🚀</td><td>Cost 💵</td><td float='right'>Units ✏️</td></tr>";
+                
+                
+                List<Charge> l = this.acc.getUserCharges();
+                float i = 0;
+                for (Charge c : l) {
+                    i += c.getCost()*c.getUnits();
+                    html += "<tr class='item'><td>" + c.getName() + "</td><td>" + c.getCost() + " €</td><td float='right'>"+c.getUnits()+"</td></tr>";
+                }
+                // Two decimal
+                html += "<tr class='total'><td></td> <td></td><td style='text-align: end'><b>Total: "+ String.format("%.2f", i) + " €</b></td></tr></table></div></body></html>";
+                exportHTMLToPDF(html);
+
+            }
+            catch (AcountDAOException ex) {
+                ex.printStackTrace();
+            }
+    }
+ 
+//-------------------------------------------------------------------------------
+    public static void exportHTMLToPDF(String html) {
+        if (html == null || html.isEmpty()) {
+            System.out.println("No hay contenido que exportar a PDF.");
+            return;
+        }
+
+        System.out.println("Eligiendo archivo...");
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Guardar PDF");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
-        File file = fileChooser.showSaveDialog(new Stage());
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivos PDF", "*.pdf"));
+        Stage st2 = new Stage();
+        File file = fileChooser.showSaveDialog(st2);
 
         if (file != null) {
-            try {
-                // Crear el documento PDF
-                PdfWriter writer = new PdfWriter(file);
-                PdfDocument pdf = new PdfDocument(writer);
-                Document document = new Document(pdf);
-
-                // Crear una fuente
-                PdfFont font = PdfFontFactory.createFont(StandardFonts.HELVETICA);
-                PdfFont bold = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
-
-                // Título de la App y Resumen de Gastos
-                String appName = "Nombre de la App";
-                String year = "2024"; // Ejemplo
-                String usuario = "Usuario Loggeado"; // Ejemplo
-                double totalGasto = 1200.0; // Ejemplo
-
-                Paragraph appTitle = new Paragraph(appName)
-                        .setFont(bold)
-                        .setFontSize(20)
-                        .setTextAlignment(TextAlignment.CENTER)
-                        .setMarginBottom(10);
-                document.add(appTitle);
-
-                Paragraph title = new Paragraph("Resumen de gastos " + year)
-                        .setFont(bold)
-                        .setFontSize(18)
-                        .setTextAlignment(TextAlignment.CENTER)
-                        .setMarginBottom(20);
-                document.add(title);
-
-                Paragraph summary = new Paragraph("El usuario " + usuario + " ha gastado $" + totalGasto + " en total")
-                        .setFont(font)
-                        .setFontSize(14)
-                        .setTextAlignment(TextAlignment.LEFT)
-                        .setMarginBottom(20);
-                document.add(summary);
-
-                // Tabla de Gasto Mensual
-                float[] monthlyColumnWidths = {1, 2};
-                Table monthlyTable = new Table(UnitValue.createPercentArray(monthlyColumnWidths));
-                monthlyTable.setWidth(UnitValue.createPercentValue(100));
-
-                // Encabezados de la tabla mensual
-                monthlyTable.addHeaderCell(new Cell().add(new Paragraph("Mes").setFont(bold).setFontSize(12).setTextAlignment(TextAlignment.CENTER)));
-                monthlyTable.addHeaderCell(new Cell().add(new Paragraph("Total Gastos").setFont(bold).setFontSize(12).setTextAlignment(TextAlignment.CENTER)));
-
-                // Añadir filas con datos mensuales
-                for (int i = 1; i <= 12; i++) {
-                    monthlyTable.addCell(new Cell().add(new Paragraph(String.valueOf(i)).setFont(font).setFontSize(12).setTextAlignment(TextAlignment.CENTER)));
-                    monthlyTable.addCell(new Cell().add(new Paragraph("$" + (i * 100)).setFont(font).setFontSize(12).setTextAlignment(TextAlignment.RIGHT)));
-                }
-                document.add(monthlyTable);
-
-                // Variación de Gastos por Categoría
-                Map<String, Double> categoriaGastos = new HashMap<>();
-                categoriaGastos.put("Alimentación", 300.0);
-                categoriaGastos.put("Transporte", 200.0);
-                categoriaGastos.put("Entretenimiento", 400.0);
-                categoriaGastos.put("Salud", 300.0);
-
-                Paragraph categoryTitle = new Paragraph("Variación de gastos por categoría")
-                        .setFont(bold)
-                        .setFontSize(16)
-                        .setTextAlignment(TextAlignment.LEFT)
-                        .setMarginTop(20)
-                        .setMarginBottom(10);
-                document.add(categoryTitle);
-
-                float[] categoryColumnWidths = {3, 2};
-                Table categoryTable = new Table(UnitValue.createPercentArray(categoryColumnWidths));
-                categoryTable.setWidth(UnitValue.createPercentValue(100));
-
-                // Encabezados de la tabla de categorías
-                categoryTable.addHeaderCell(new Cell().add(new Paragraph("Categoría").setFont(bold).setFontSize(12).setTextAlignment(TextAlignment.CENTER)));
-                categoryTable.addHeaderCell(new Cell().add(new Paragraph("Total Gastos").setFont(bold).setFontSize(12).setTextAlignment(TextAlignment.CENTER)));
-
-                // Añadir filas con datos de categorías
-                for (Map.Entry<String, Double> entry : categoriaGastos.entrySet()) {
-                    categoryTable.addCell(new Cell().add(new Paragraph(entry.getKey()).setFont(font).setFontSize(12).setTextAlignment(TextAlignment.LEFT)));
-                    categoryTable.addCell(new Cell().add(new Paragraph("$" + entry.getValue()).setFont(font).setFontSize(12).setTextAlignment(TextAlignment.RIGHT)));
-                }
-                document.add(categoryTable);
-
-                // Cerrar el documento
-                document.close();
-
-                System.out.println("PDF exportado con éxito a: " + file.getAbsolutePath());
+            System.out.println("¡Archivo seleccionado!");
+            try (FileOutputStream fos = new FileOutputStream(file)) {
+                HtmlConverter.convertToPdf(html, fos);
+                
+                System.out.println("PDF creado con éxito.");
+            } catch (FileNotFoundException e) {
+                System.out.println("Error al crear el archivo PDF: " + e.getMessage());
             } catch (IOException e) {
-                e.printStackTrace();
-                System.out.println("Error al exportar el PDF.");
+                System.out.println("Error al crear el archivo PDF: " + e.getMessage());
             }
-        } */
-    }
+        }
+    }    
+//----------------------------------------------------------------------------------------------------------
 
-    @FXML
     private void configuracion_desenfoque(MouseEvent event) {
         
         //Modificamos el estilo del boton al entrar en el
@@ -418,15 +367,14 @@ public class Logg_Controller implements Initializable {
         boton_configuracion.getStyleClass().add("label_desenfocado_azul");
     }
 
-    @FXML
     private void configuracion_enfoque(MouseEvent event) {
         
         //Modificamos el estilo del boton al entrar en el
         boton_configuracion.getStyleClass().remove("label_desenfocado_azul");
         boton_configuracion.getStyleClass().add("label_enfocado_azul");
     }
+//----------------------------------------------------------------------------------------------------------
 
-    @FXML
     private void configuracion_click(MouseEvent event) {
         
         //Quitamos el seleccionado del labelSeleccionado
@@ -468,6 +416,7 @@ public class Logg_Controller implements Initializable {
             e.printStackTrace();
         }
     }
+//----------------------------------------------------------------------------------------------------------
 
     @FXML
     private void cerrar_sesion_desenfoque(MouseEvent event) {
@@ -477,6 +426,7 @@ public class Logg_Controller implements Initializable {
         boton_cerrar_sesion.getStyleClass().add("label_desenfocado_azul");
     }
 
+
     @FXML
     private void cerrar_sesion_enfoque(MouseEvent event) {
         
@@ -485,6 +435,7 @@ public class Logg_Controller implements Initializable {
         boton_cerrar_sesion.getStyleClass().add("label_enfocado_azul");
         
     }
+//----------------------------------------------------------------------------------------------------------
 
     @FXML
     private void cerrar_sesion_click(MouseEvent event) throws IOException {
@@ -525,3 +476,4 @@ public class Logg_Controller implements Initializable {
     }
 
 }
+//----------------------------------------------------------------------------------------------------------

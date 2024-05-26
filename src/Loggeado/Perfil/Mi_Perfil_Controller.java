@@ -1,21 +1,32 @@
 package Loggeado.Perfil;
 
+import java.awt.event.FocusEvent;
 import java.io.File;
 import java.io.IOException;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import model.Acount;
 import model.AcountDAOException;
 import model.User;
@@ -67,10 +78,86 @@ public class Mi_Perfil_Controller {
     private Button butom_Image;
     @FXML
     private Button botonCancel;
+    @FXML
+    private Text text_nickname;
+    @FXML
+    private Text msg_nombre;
+    @FXML
+    private Text msg_apellido;
+    @FXML
+    private Text msg_ini_email;
+    @FXML
+    private Text msg_err_email;
+    @FXML
+    private Text msg_ini_pssw;
+    @FXML
+    private Text msg_err_pssw;
+    @FXML
+    private Text fecha_de_registro;
+    @FXML
+    private Button alertButton;
 
     // Método para inicializar los componentes
     public void initialize() {
-     //--------------------------------------------------------------------------------     
+     alertButton.setOnAction(event -> mostrarAlerta(textFieldPassword));
+    //----------------------------------------------------------------- 
+    //Ocultamos los mensajes de error de contraseña y de correo 
+         msg_err_email.setVisible(false);
+         msg_ini_email.setVisible(false);
+         //---------------------------------
+         msg_ini_pssw.setVisible(false);
+         msg_err_pssw.setVisible(false);
+ //--------------------------------------------------------------------------
+          textFieldCorreo.textProperty().addListener(new ChangeListener<String>() {
+
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!User.checkEmail(newValue)) {
+                    System.out.println("Apodo no valido");
+                    msg_err_email.setVisible(true);
+                    msg_ini_email.setVisible(false);
+                    //validEmail.setValue(false);
+                } else {
+                    msg_err_email.setVisible(false);
+                    msg_ini_email.setVisible(false);
+                   // validEmail.setValue(true);
+
+                }
+            }
+        });
+ //---------------------------------------------------------------------------
+  textFieldCorreo.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                informar_correo();
+            }
+        });
+ 
+ 
+ 
+ // Envoltura a CONTRASENA para checkear su vericidad
+         textFieldPassword.textProperty().addListener((observable, oldValue, newValue) -> {
+
+            System.out.println("Nueva contrasena ingresada: " + newValue); // Debug
+
+            if (!User.checkPassword(newValue)) {
+                System.out.println("Contrasena incorrecta, avisando a mensaje de error");
+                msg_ini_pssw.setVisible(false);
+                msg_err_pssw.setVisible(true);
+                
+               // validPassword.setValue(false);
+
+            } else {
+                System.out.println("Contrasena correcta");
+                msg_ini_pssw.setVisible(false);
+                msg_err_pssw.setVisible(false);
+               // validPassword.setValue(true);
+            }
+        });
+        
+     //--------------------------------------------------------------------------------  
+     msg_nombre.setVisible(false);
+     text_nickname.setVisible(false);
+     msg_apellido.setVisible(false);
     //Ocultamos el boton de save los cambios ya que no hay cambios hechos
     // ademas este estará deshabilitado hasta que s ehayan realizado cambios en alguno de los campos
     // del perfil    
@@ -101,13 +188,31 @@ public class Mi_Perfil_Controller {
       botonEdit.setVisible(true);
           
         });
-          //--------------------------------------------------------------------------------
-
+ //--------------------------------------------------------------------------------
+       textFieldNombre.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                informar_nombre();
+            }
+        });
+       
+       textFieldApellido.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                informar_apellido();
+            }
+        });
+      
+          
+     //--------------------------------------------------------------------------------
+      
+          
+          
      
      //listener que se encarga de mostrar los demas botones y habilitarlos
      botonEdit.setOnMouseClicked(event -> {
             //botonEdit.requestFocus();
-              setEditableFields(true);
+            
+             
+                 setEditableFields(true);
                 //mostramos el boton save pero no esta habilitado
                 botonSave.setVisible(true);
                 botonSave.setDisable(true);
@@ -137,7 +242,6 @@ public class Mi_Perfil_Controller {
      
         
     //-------------------------------------------------------------------------------- 
-        makeImageViewCircular();
         try {
             // Inicializa la imagen del usuario cuando la escena se carga
             imagenPerfil.setImage(getLoggedUserImage());
@@ -152,20 +256,6 @@ public class Mi_Perfil_Controller {
         setEditableFields(false);
     }
  //-------------------------------------------------------------------------------- 
-    // Método para hacer circular la imagen de perfil
-    private void makeImageViewCircular() {
-        imagenPerfil.setPreserveRatio(true);
-        imagenPerfil.setFitWidth(150);
-        imagenPerfil.setFitHeight(150);
-
-        Circle clip = new Circle();
-        clip.radiusProperty().bind(imagenPerfil.fitWidthProperty().divide(2));
-        clip.centerXProperty().bind(imagenPerfil.fitWidthProperty().divide(2));
-        clip.centerYProperty().bind(imagenPerfil.fitHeightProperty().divide(2));
-
-        imagenPerfil.setClip(clip);
-    }
- //-------------------------------------------------------------------------------- 
     // Método para llenar los detalles del usuario en los campos de texto
     private void populateUserDetails(User user) {
         if (user != null) {
@@ -173,7 +263,7 @@ public class Mi_Perfil_Controller {
             textFieldNombre.setText(user.getName());
             textFieldApellido.setText(user.getSurname());
             textFieldCorreo.setText(user.getEmail());
-            textFieldPassword.setText("Falta por implementar"); // No llenar el campo de password por seguridad
+            textFieldPassword.setText(user.getPassword()); // No llenar el campo de password por seguridad
         } else {
             System.out.println("El usuario logueado es nulo.");
         }
@@ -326,6 +416,108 @@ public class Mi_Perfil_Controller {
         populateUserDetails(loggedUser);
       
         
+    }
+
+    @FXML
+    private void informar_user(MouseEvent event) {
+        
+        text_nickname.setVisible(true);
+        
+         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5),e -> text_nickname.setVisible(false)));
+            timeline.setCycleCount(1); // Solo ejecutar una vez
+            timeline.play();
+       
+    }
+//--------------------------------------------------------------------------------------------------------------------
+   
+    private void informar_nombre() {
+        
+        
+        msg_nombre.setVisible(true);
+        
+         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3),e -> msg_nombre.setVisible(false)));
+            timeline.setCycleCount(1); // Solo ejecutar una vez
+            timeline.play();
+    }
+
+   // tengo que cambiar esto porque n ova como quiero que vaya
+    
+    private void informar_apellido() {
+        
+        
+        msg_apellido.setVisible(true);
+        
+         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3),e -> msg_apellido.setVisible(false)));
+            timeline.setCycleCount(1); // Solo ejecutar una vez
+            timeline.play();
+    }
+    
+    private void informar_correo(){
+        
+         msg_ini_email.setVisible(true);
+        
+         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3),e -> msg_ini_email.setVisible(false)));
+            timeline.setCycleCount(1); // Solo ejecutar una vez
+            timeline.play();
+        
+    }
+    
+    
+    
+     private void mostrarAlerta(TextField textField) {
+         //Modificar la alerta, hacerla de un estilo chulo, a parte hay que cambiar 
+         //que sea un passwordfield
+         //que el boton de editar se habilite cuando des a editar el perfil
+         // que al cambiar la contraseña se cambie en el paswordfield
+         // espero deseo y rezo para poder poner el checkpassword dentro de la alerta para q no deje poner
+         // una contraseña random
+         // con esto y un bizcocho, nos vemos mañna a las ocho
+         
+         
+         
+         
+        // Crear la alerta
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Opciones");
+        alert.setHeaderText("Elige una opción");
+        alert.setContentText("Selecciona una de las opciones:");
+
+        // Crear los botones de opciones
+        ButtonType buttonTypeMostrar = new ButtonType("Mostrar Texto");
+        ButtonType buttonTypeNuevaContraseña = new ButtonType("Nueva Contraseña");
+       // ButtonType buttonTypeCancelar = new ButtonType( ButtonType.CLOSE);
+
+        // Agregar los botones a la alerta
+        alert.getButtonTypes().setAll(buttonTypeMostrar, buttonTypeNuevaContraseña /*buttonTypeCancelar*/);
+
+        // Manejar la selección del usuario
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == buttonTypeMostrar) {
+            // Mostrar el texto del TextField
+            Alert infoAlert = new Alert(AlertType.INFORMATION);
+            infoAlert.setTitle("Texto del TextField");
+            infoAlert.setHeaderText(null);
+            infoAlert.setContentText("El texto es: " + textField.getText());
+            infoAlert.showAndWait();
+        } else if (result.isPresent() && result.get() == buttonTypeNuevaContraseña) {
+            // Pedir al usuario que ingrese una nueva contraseña
+            TextInputDialog dialog = new TextInputDialog();
+            dialog.setTitle("Nueva Contraseña");
+            dialog.setHeaderText("Ingresa una nueva contraseña");
+            dialog.setContentText("Contraseña:");
+
+            // Obtener la nueva contraseña
+            Optional<String> newPassword = dialog.showAndWait();
+            newPassword.ifPresent(password -> {
+                Alert infoAlert = new Alert(AlertType.INFORMATION);
+                infoAlert.setTitle("Contraseña Actualizada");
+                infoAlert.setHeaderText(null);
+                infoAlert.setContentText("Nueva contraseña establecida.");
+                infoAlert.showAndWait();
+                // Aquí puedes manejar la nueva contraseña según sea necesario
+                System.out.println("Nueva contraseña: " + password);
+            });
+        }
     }
 
 }

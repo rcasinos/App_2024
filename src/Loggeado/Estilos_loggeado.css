@@ -46,3 +46,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-font-size: 23;
     -fx-font-family: "Segoe UI Black";
 }
+
+.grid_pane_izq{
+    -fx-background-color: black;
+    -fx-background-radius: 10;
+    -fx-effec: dropshadow(gaussian,rgba(0,0,0,0.75),10,0,0,5);
+    -fx-padding: 10;
+    -fx-border-radius:10;
+    -fx-border-color: rgba(255,255,255,0.5);
+}
