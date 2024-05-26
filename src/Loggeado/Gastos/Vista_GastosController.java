@@ -62,14 +62,9 @@ public class Vista_GastosController implements Initializable {
     private Button add_expense_button;
     @FXML
     private Button create_category_button;
-    @FXML
     private Button view_all_expenses;
     @FXML
     private Button view_all_categories_button;
-    @FXML
-    private Button edit_expense_button;
-    @FXML
-    private Button remove_exp_button;
     @FXML
     private HBox hbox_panel;
     
@@ -77,14 +72,18 @@ public class Vista_GastosController implements Initializable {
     private User loggedUser;
     private Acount acc;
     private Category expenseCategory;
+    
     @FXML
     private Button butom_reset;
     
-     private Pane panel_principal;
+    private Pane panel_principal;
     private VBox vbox_pane;
+    
     @FXML
     private HBox hbox_panel_principal;
 
+    Charge ActiveCharge;
+    private List<Charge> userCharges;
     /**
      * Initializes the controller class.
      * @param url
@@ -93,8 +92,49 @@ public class Vista_GastosController implements Initializable {
 //----------------------------------------------------------------------------------------------------    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-  //-----------------------------------------------------------------------------------
-   // Configurar la acción del botón
+        
+        //Cuando le damos doble click se nos abre la edicion del gasto
+        expenses_tableview.setOnMouseClicked(e -> {
+            int index = expenses_tableview.getSelectionModel().getSelectedIndex();
+            System.out.println("Index: " + index);
+            try {
+                loadUserCharges();
+            } catch (AcountDAOException ex) {
+                Logger.getLogger(Vista_GastosController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Vista_GastosController.class.getName()).log(Level.SEVERE, null, ex);
+            }           
+            if (index >= 0) {
+                ActiveCharge = userCharges.get(index);
+                System.out.println("Active Expense: " + ActiveCharge.getName());
+
+                //remove_button.setDisable(false);
+                //edit_button.setDisable(false);
+
+            } else {
+                //disableActive();
+            }            
+            if (e.getClickCount() == 2) {
+                if (index >= 0) {
+                    ActiveCharge = userCharges.get(index);
+                    // Asigna el Charge a SharedData
+                    SharedData.getInstance().setActiveCharge(ActiveCharge);
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Loggeado/Gastos/Controllers/Expense_View.fxml"));
+                        Parent homeRoot = loader.load();
+                        hbox_panel.getChildren().clear();
+                        hbox_panel.getChildren().add(homeRoot);
+                        
+                        //Enviar el gasto seleccionado a Expense_View
+                        //homeRoot.setCategory(ActiveCharge);
+                        
+                        ActiveCharge = null;
+                    } catch ( IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        });  
       
 
         
@@ -112,8 +152,9 @@ public class Vista_GastosController implements Initializable {
             loadUserCharges();
         } catch (AcountDAOException | IOException ex) {
             ex.printStackTrace();
-        }       
+        } 
         
+//----------------------------------------------------------------------------------------------------         
         // Crear una animación de cambio de color
         Timeline colorTransition = new Timeline(
             new KeyFrame(Duration.seconds(0), 
@@ -144,7 +185,7 @@ public class Vista_GastosController implements Initializable {
     
 //----------------------------------------------------------------------------------------------------    
     private void loadUserCharges() throws AcountDAOException, IOException {
-        List<Charge> userCharges = Acount.getInstance().getUserCharges();
+        userCharges = Acount.getInstance().getUserCharges();
         chargeList = FXCollections.observableArrayList(userCharges);
         SharedData.getInstance().getCharges().setAll(userCharges);
         expenses_tableview.setItems(chargeList);
@@ -250,20 +291,17 @@ public class Vista_GastosController implements Initializable {
             }        
     }
 //----------------------------------------------------------------------------------------------------
-    @FXML
     private void view_expense_exited(MouseEvent event) {
         
         view_all_expenses.getStyleClass().remove("boton_enfocado_registro");
         view_all_expenses.getStyleClass().add("boton_desenfocado_registro"); 
     }
 //----------------------------------------------------------------------------------------------------
-    @FXML
     private void view_expense_entered(MouseEvent event) {
         view_all_expenses.getStyleClass().remove("boton_desenfocado_registro");
         view_all_expenses.getStyleClass().add("boton_enfocado_registro");
     }
 //----------------------------------------------------------------------------------------------------
-    @FXML
     private void view_expense_click(MouseEvent event) {
         
     //CAMBIO DE ESCENA 
@@ -335,44 +373,7 @@ public class Vista_GastosController implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }         
-    }
-//----------------------------------------------------------------------------------------------------
-    @FXML
-    private void edit_expense_exited(MouseEvent event) {
-        //Modificamos el estilo del boton al entrar en el
-        edit_expense_button.getStyleClass().remove("boton_enfocado_subir_imagen");
-        edit_expense_button.getStyleClass().add("boton_desenfocado_subir_imagen");
-    }
-//----------------------------------------------------------------------------------------------------
-    @FXML
-    private void edit_expense_entered(MouseEvent event) {
-        //Modificamos el estilo del boton al entrar en el
-        edit_expense_button.getStyleClass().remove("boton_desenfocado_subir_imagen");
-        edit_expense_button.getStyleClass().add("boton_enfocado_subir_imagen");
-    }
-//----------------------------------------------------------------------------------------------------
-    @FXML
-    private void edit_exp_click(MouseEvent event) {
-    }
-//----------------------------------------------------------------------------------------------------
-    @FXML
-    private void remove_exp_exited(MouseEvent event) {
-        
-        //Modificamos el estilo del boton al entrar en el
-        remove_exp_button.getStyleClass().remove("boton_enfocado_subir_imagen");
-        remove_exp_button.getStyleClass().add("boton_desenfocado_subir_imagen");
-    }
-//----------------------------------------------------------------------------------------------------
-    @FXML
-    private void remove_exp_entered(MouseEvent event) {
-        //Modificamos el estilo del boton al entrar en el
-        remove_exp_button.getStyleClass().remove("boton_desenfocado_subir_imagen");
-        remove_exp_button.getStyleClass().add("boton_enfocado_subir_imagen");
-    }
-//----------------------------------------------------------------------------------------------------
-    @FXML
-    private void remove_exp_click(MouseEvent event) {
-    }
+}
  //----------------------------------------------------------------------------------------------------   
 
     @FXML

@@ -74,26 +74,6 @@ public class AddExpenseController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        
-        // Restringir el DatePicker para permitir solo fechas a partir del día actual
-        data_expense.setDayCellFactory(new Callback<DatePicker, DateCell>() {
-            @Override
-            public DateCell call(DatePicker param) {
-                return new DateCell() {
-                    @Override
-                    public void updateItem(LocalDate item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (item.isBefore(LocalDate.now())) {
-                            setDisable(true);
-                            setStyle("-fx-background-color: #ffc0cb;"); // Color de fondo para fechas deshabilitadas
-                        }
-                    }
-                };
-            }
-        });
-
-        
-
         // Convertidor de cadena para formatear la fecha
         String pattern = "yyyy-MM-dd";
         data_expense.setConverter(new StringConverter<LocalDate>() {
@@ -118,10 +98,6 @@ public class AddExpenseController implements Initializable {
             }
         });
         
-        
-        
-        
-        // TODO
     }    
 //-----------------------------------------------------------------------------------
     // metodo para validar los campos que solo admitan numeros
@@ -202,7 +178,6 @@ public class AddExpenseController implements Initializable {
         boolean validUnits = validateNumericField(text_field_units);
 
         if (validExpense && validUnits) {
-            System.out.println("1");
             String expenseName = text_field_name.getText();
             String expenseDescription = text_fiel_description.getText();
             double expenseAmount = Double.parseDouble(text_fiel_cost.getText()); 
@@ -213,9 +188,9 @@ public class AddExpenseController implements Initializable {
             LocalDate expenseDate = (selectedDate != null) ? selectedDate : LocalDate.now();
 
             Image expenseTicket = ticket_image.getImage();
-            System.out.println("2");
+            
             boolean isCorrectAdded = Acount.getInstance().registerCharge(expenseName, expenseDescription, expenseAmount, expenseUnits, expenseTicket, expenseDate, expenseCategory);
-            System.out.println("3");
+
         } else {
             System.out.println("Failed to add an expense");
         }        

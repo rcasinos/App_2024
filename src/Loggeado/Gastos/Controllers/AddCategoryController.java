@@ -53,7 +53,7 @@ public class AddCategoryController implements Initializable {
     @FXML
     private void cancelButtonPressed(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("AddExpense.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Main_view.fxml"));
             Parent homeRoot = loader.load();
             hbox_panel.getChildren().clear();
             hbox_panel.getChildren().add(homeRoot);
@@ -85,7 +85,7 @@ public class AddCategoryController implements Initializable {
         }
     //---------------------------------------------------
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("AddExpense.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("View_Category.fxml"));
             Parent homeRoot = loader.load();
             hbox_panel.getChildren().clear();
             hbox_panel.getChildren().add(homeRoot);
