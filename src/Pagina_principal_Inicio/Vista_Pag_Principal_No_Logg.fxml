@@ -94,6 +94,9 @@
                            </font>
                         </Text>
                      </children>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
                   </HBox>
                </children>
             </GridPane>
@@ -126,7 +129,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Separator prefHeight="6.0" prefWidth="135.0" styleClass="separadores" stylesheets="@Estilos_pag_princp_no_logg.css" />
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="     O     " HBox.hgrow="ALWAYS">

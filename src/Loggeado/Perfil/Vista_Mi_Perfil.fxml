@@ -214,6 +214,9 @@
             </HBox>
             <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
          </children>
+         <HBox.margin>
+            <Insets right="10.0" />
+         </HBox.margin>
       </GridPane>
    </children>
 </HBox>

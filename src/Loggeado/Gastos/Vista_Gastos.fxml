@@ -28,9 +28,9 @@
           <RowConstraints prefHeight="50.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.rowIndex="1">
+            <VBox spacing="20.0" GridPane.rowIndex="1">
                <children>
-                  <StackPane alignment="CENTER_LEFT">
+                  <StackPane alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="682.0">
                      <children>
                         <HBox fx:id="hbox_titulo" prefHeight="100.0" prefWidth="200.0" styleClass="hbox_titulo" stylesheets="@Estilos_Gastos.css" />
                         <Label styleClass="label_titulos" stylesheets="@Estilos_Gastos.css" text=" Recent Expenses:">
@@ -40,7 +40,7 @@
                         </Label>
                      </children>
                   </StackPane>
-                  <TableView fx:id="expenses_tableview" prefHeight="743.0" prefWidth="727.0" style="-fx-background-color: #FFFFFF;" stylesheets="@Estilos_Gastos.css">
+                  <TableView fx:id="expenses_tableview" prefHeight="648.0" prefWidth="682.0" style="-fx-background-color: #FFFFFF;" stylesheets="@Estilos_Gastos.css">
                     <columns>
                       <TableColumn fx:id="category_column" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="174.0" text="Category" />
                       <TableColumn fx:id="name_column" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="203.33334350585938" text="Name" />
