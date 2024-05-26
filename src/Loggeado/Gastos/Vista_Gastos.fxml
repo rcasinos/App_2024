@@ -33,7 +33,7 @@
                   <StackPane alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="682.0">
                      <children>
                         <HBox fx:id="hbox_titulo" prefHeight="100.0" prefWidth="200.0" styleClass="hbox_titulo" stylesheets="@Estilos_Gastos.css" />
-                        <Label styleClass="label_titulos" stylesheets="@Estilos_Gastos.css" text=" Recent Expenses:">
+                        <Label styleClass="label_titulos" stylesheets="@Estilos_Gastos.css" text="Ultimos Gastos:">
                            <font>
                               <Font name="Segoe UI Black" size="29.0" />
                            </font>
@@ -42,10 +42,10 @@
                   </StackPane>
                   <TableView fx:id="expenses_tableview" prefHeight="648.0" prefWidth="682.0" style="-fx-background-color: #FFFFFF;" stylesheets="@Estilos_Gastos.css">
                     <columns>
-                      <TableColumn fx:id="category_column" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="174.0" text="Category" />
-                      <TableColumn fx:id="name_column" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="203.33334350585938" text="Name" />
-                        <TableColumn fx:id="cost_column" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="132.0" text="Cost" />
-                        <TableColumn fx:id="date_column" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="171.0" text="Date" />
+                      <TableColumn fx:id="category_column" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="174.0" text="Categoria" />
+                      <TableColumn fx:id="name_column" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="203.33334350585938" text="Nombre" />
+                        <TableColumn fx:id="cost_column" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="132.0" text="Coste" />
+                        <TableColumn fx:id="date_column" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="171.0" text="Fecha" />
                     </columns>
                   </TableView>
                </children>
@@ -55,19 +55,19 @@
             </VBox>
             <HBox prefHeight="65.0" prefWidth="712.0" spacing="15.0" GridPane.rowIndex="2">
                <children>
-                  <Button fx:id="add_expense_button" mnemonicParsing="false" onMouseClicked="#add_expense_click" onMouseEntered="#add_expense_entered" onMouseExited="#add_expense_exited" prefHeight="44.0" prefWidth="179.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@Estilos_Gastos.css" text="Add Expense">
+                  <Button fx:id="add_expense_button" mnemonicParsing="false" onMouseClicked="#add_expense_click" onMouseEntered="#add_expense_entered" onMouseExited="#add_expense_exited" prefHeight="44.0" prefWidth="179.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@Estilos_Gastos.css" text="Añadir Gasto">
                      <font>
                         <Font name="Segoe UI Emoji" size="19.0" />
                      </font>
                   </Button>
-                  <Button fx:id="create_category_button" mnemonicParsing="false" onMouseClicked="#create_category_click" onMouseEntered="#create_category_entered" onMouseExited="#create_category_exited" prefHeight="44.0" prefWidth="182.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@Estilos_Gastos.css" text="Create Category">
+                  <Button fx:id="create_category_button" mnemonicParsing="false" onMouseClicked="#create_category_click" onMouseEntered="#create_category_entered" onMouseExited="#create_category_exited" prefHeight="44.0" prefWidth="182.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@Estilos_Gastos.css" text="Crear Categoria">
                      <font>
                         <Font name="Segoe UI Emoji" size="19.0" />
                      </font>
                   </Button>
                   <HBox alignment="TOP_RIGHT" prefHeight="53.0" prefWidth="305.0" spacing="5.0">
                      <children>
-                        <Button fx:id="view_all_categories_button" mnemonicParsing="false" onMouseClicked="#view_all_categories" onMouseEntered="#view_category_entered" onMouseExited="#view_category_exited" prefHeight="37.0" prefWidth="173.0" styleClass="boton_desenfocado_registro" stylesheets="@Estilos_Gastos.css" text="View Categories">
+                        <Button fx:id="view_all_categories_button" mnemonicParsing="false" onMouseClicked="#view_all_categories" onMouseEntered="#view_category_entered" onMouseExited="#view_category_exited" prefHeight="37.0" prefWidth="173.0" styleClass="boton_desenfocado_registro" stylesheets="@Estilos_Gastos.css" text="Ver Categorias">
                            <font>
                               <Font name="Segoe UI Emoji" size="16.0" />
                            </font>

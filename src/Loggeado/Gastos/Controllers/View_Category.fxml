@@ -29,7 +29,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="168.0" prefWidth="703.0" GridPane.columnSpan="2">
                <children>
-                  <Label styleClass="label_titulos" stylesheets="@../Estilos_Gastos.css" text="View Categories">
+                  <Label styleClass="label_titulos" stylesheets="@../Estilos_Gastos.css" text="Mis Categorias">
                      <font>
                         <Font name="Segoe UI Black" size="27.0" />
                      </font>
@@ -41,8 +41,8 @@
             </HBox>
             <VBox alignment="CENTER" prefHeight="527.0" prefWidth="324.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Button fx:id="add_button" mnemonicParsing="false" onAction="#add_category" onMouseEntered="#add_entered" onMouseExited="#add_exited" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@../Estilos_Gastos.css" text="Add" />
-                  <Button fx:id="remove_button" mnemonicParsing="false" onAction="#remove_category" onMouseEntered="#remove_entered" onMouseExited="#remove_exited" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@../Estilos_Gastos.css" text="Remove" />
+                  <Button fx:id="add_button" mnemonicParsing="false" onAction="#add_category" onMouseEntered="#add_entered" onMouseExited="#add_exited" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@../Estilos_Gastos.css" text="Añadir" />
+                  <Button fx:id="remove_button" mnemonicParsing="false" onAction="#remove_category" onMouseEntered="#remove_entered" onMouseExited="#remove_exited" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@../Estilos_Gastos.css" text="Eliminar" />
                   <VBox alignment="BOTTOM_CENTER" prefHeight="296.0" prefWidth="181.0">
                      <children>
                         <Button fx:id="cancel_button" mnemonicParsing="false" onAction="#cancelButtonPressed" onMouseEntered="#cancel_entered" onMouseExited="#cancel_exited" prefHeight="41.0" prefWidth="128.0" styleClass="boton_desenfocado_registro" stylesheets="@../Estilos_Gastos.css" text="Cancelar" />

@@ -187,21 +187,21 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="76.0" prefWidth="480.0">
                      <children>
-                        <Button fx:id="botonCancel" mnemonicParsing="false" onAction="#cancelEdit" onMouseEntered="#cancel_entered" onMouseExited="#cancel_exited" prefHeight="55.0" prefWidth="183.0" style="-fx-border-color: red;" styleClass="boton_desenfocado_perfil" stylesheets="@Estilos_Perfil.css" text="CANCELAR">
+                        <Button fx:id="botonCancel" mnemonicParsing="false" onAction="#cancelEdit" onMouseEntered="#cancel_entered" onMouseExited="#cancel_exited" prefHeight="55.0" prefWidth="183.0" style="-fx-border-color: red;" styleClass="boton_desenfocado_perfil" stylesheets="@Estilos_Perfil.css" text="Cancelar">
                            <font>
-                              <Font size="21.0" />
+                              <Font size="17.0" />
                            </font>
                         </Button>
                      </children>
                   </HBox>
-                  <Button fx:id="botonSave" mnemonicParsing="false" onMouseClicked="#guardarCambios_click" onMouseEntered="#guardarCambios_entered" onMouseExited="#guardarCambios_salir" prefHeight="50.0" prefWidth="183.0" styleClass="boton_desenfocado_perfil" stylesheets="@Estilos_Perfil.css" text="GUARDAR">
+                  <Button fx:id="botonSave" mnemonicParsing="false" onMouseClicked="#guardarCambios_click" onMouseEntered="#guardarCambios_entered" onMouseExited="#guardarCambios_salir" prefHeight="50.0" prefWidth="183.0" styleClass="boton_desenfocado_perfil" stylesheets="@Estilos_Perfil.css" text="Guardar">
                      <font>
-                        <Font size="21.0" />
+                        <Font size="17.0" />
                      </font>
                   </Button>
-                  <Button fx:id="botonEdit" mnemonicParsing="false" onMouseEntered="#edit_entered" onMouseExited="#edit_exited" prefHeight="50.0" prefWidth="183.0" styleClass="boton_desenfocado_perfil" stylesheets="@Estilos_Perfil.css" text="EDITAR">
+                  <Button fx:id="botonEdit" mnemonicParsing="false" onMouseEntered="#edit_entered" onMouseExited="#edit_exited" prefHeight="50.0" prefWidth="183.0" styleClass="boton_desenfocado_perfil" stylesheets="@Estilos_Perfil.css" text="Editar">
                      <font>
-                        <Font name="Segoe UI Emoji" size="21.0" />
+                        <Font name="Segoe UI Emoji" size="17.0" />
                      </font>
                   </Button>
                </children>

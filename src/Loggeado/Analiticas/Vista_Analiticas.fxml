@@ -226,7 +226,7 @@
                         </Label>
                      </children>
                   </GridPane>
-                  <Button fx:id="Filter_button" mnemonicParsing="false" onMouseClicked="#compare_months" onMouseEntered="#filter_entered" onMouseExited="#filter_exited" prefHeight="45.0" prefWidth="162.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@Estilos_Analiticas.css" text="Filter" textFill="WHITE">
+                  <Button fx:id="Filter_button" mnemonicParsing="false" onMouseClicked="#compare_months" onMouseEntered="#filter_entered" onMouseExited="#filter_exited" prefHeight="45.0" prefWidth="162.0" styleClass="boton_desenfocado_subir_imagen" stylesheets="@Estilos_Analiticas.css" text="Filtrar" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
