@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="negrobackground" stylesheets="@Estilos_pag_princp_no_logg.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextArea editable="false" focusTraversable="false" layoutX="14.0" layoutY="14.0" prefHeight="372.0" prefWidth="573.0" stylesheets="@Estilos_pag_princp_no_logg.css" text="Información sobre la Aplicación Rocketter&#10;--------------------------------------------&#10;Estimado Usuario,Nos complace presentarte Rocketter, una aplicación desarrollada con el objetivo de facilitar la gestión y el análisis de tus gastos personales y empresariales. &#10;Con Rocketter, puedes registrar tus gastos, visualizar datos analíticos detallados, exportar informes y gestionar tu perfil de manera eficiente.&#10;-------------------------------------------&#10;Desarrolladores:&#10;Rocketter ha sido desarrollada por dos estudiantes de Ingeniería Informática de la Universidad Politécnica de Valencia (UPV):&#10;-Bernardo José Lozano&#10;-Roberto Casinos&#10;-------------------------------------------&#10;Sobre Nosotros:&#10;-------------------------------------------&#10;Como estudiantes apasionados por la tecnología y la programación, hemos creado Rocketter con la intención de aplicar nuestros conocimientos en el desarrollo de una herramienta útil y práctica para la gestión financiera. Nuestro objetivo es ofrecer una solución que no solo sea funcional, sino también intuitiva y fácil de usar." wrapText="true">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextArea>
+   </children>
+</Pane>

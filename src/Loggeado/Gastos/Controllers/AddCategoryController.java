@@ -94,6 +94,38 @@ public class AddCategoryController implements Initializable {
         }
 
     }
+
+    @FXML
+    private void cancel_exited(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        cancel_button.getStyleClass().remove("boton_enfocado_registro");
+        cancel_button.getStyleClass().add("boton_desenfocado_registro");          
+    }
+
+    @FXML
+    private void cancel_entered(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        cancel_button.getStyleClass().remove("boton_desenfocado_registro");
+        cancel_button.getStyleClass().add("boton_enfocado_registro");          
+    }
+
+    @FXML
+    private void add_exited(MouseEvent event) {
+         
+        //Modificamos el estilo del boton al entrar en el
+        saveChangesButton.getStyleClass().remove("boton_enfocado_subir_imagen");
+        saveChangesButton.getStyleClass().add("boton_desenfocado_subir_imagen");         
+    }
+
+    @FXML
+    private void add_entered(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        saveChangesButton.getStyleClass().remove("boton_desenfocado_subir_imagen");
+        saveChangesButton.getStyleClass().add("boton_enfocado_subir_imagen");          
+    }
     
  
     

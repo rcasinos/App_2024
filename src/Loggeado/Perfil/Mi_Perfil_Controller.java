@@ -3,6 +3,8 @@ package Loggeado.Perfil;
 import java.awt.event.FocusEvent;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -93,12 +95,31 @@ public class Mi_Perfil_Controller {
     @FXML
     private Text msg_err_pssw;
     @FXML
-    private Text fecha_de_registro;
+    private Label fecha_de_registro;
     @FXML
     private Button alertButton;
-
+    
+    private Acount acc;
     // Método para inicializar los componentes
-    public void initialize() {
+    public void initialize() throws AcountDAOException, IOException {
+       //Debemos ocultar el boton de edit de contraseña y deshabilitarlo hasta que no se le de al boton
+       //para poder editar el perfil
+            
+        alertButton.setVisible(false);
+        alertButton.setDisable(true);  
+        
+    //--------------------------------------------------------------------------------------------------------------    
+        
+        //Mostramos la fecha en que se registro la persona
+        Acount acc = Acount.getInstance();
+        User user = acc.getLoggedUser();
+        
+        LocalDate registerDate = user.getRegisterDate();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy"); // Puedes cambiar el patrón al formato deseado
+        String formattedDate = registerDate.format(formatter);
+        
+        fecha_de_registro.setText(formattedDate);
+    //-------------------------------------------------------------------------   
      alertButton.setOnAction(event -> mostrarAlerta(textFieldPassword));
     //----------------------------------------------------------------- 
     //Ocultamos los mensajes de error de contraseña y de correo 
@@ -139,7 +160,7 @@ public class Mi_Perfil_Controller {
 
             System.out.println("Nueva contrasena ingresada: " + newValue); // Debug
 
-            if (!User.checkPassword(newValue)) {
+            if (!validatePassword(newValue)) {
                 System.out.println("Contrasena incorrecta, avisando a mensaje de error");
                 msg_ini_pssw.setVisible(false);
                 msg_err_pssw.setVisible(true);
@@ -183,7 +204,10 @@ public class Mi_Perfil_Controller {
          butom_Image.setDisable(true);
      //boton de cancelar el edit tambien invisible y deshabilitado
          botonCancel.setVisible(false);
-        botonCancel.setDisable(true);   
+        botonCancel.setDisable(true);  
+        // boton de edit de contraseña
+       alertButton.setVisible(false);
+        alertButton.setDisable(true);
      // VOlvemos a mostrar el boton de edit
       botonEdit.setVisible(true);
           
@@ -222,7 +246,10 @@ public class Mi_Perfil_Controller {
                 //Mostramos el boton de cancelar y lo habilitamos
                  botonCancel.setVisible(true);
                  botonCancel.setDisable(false);   
-            
+                 // boton de edit de contraseña
+                 alertButton.setVisible(true);
+                 alertButton.setDisable(false);
+             
          });
     //-------------------------------------------------------------------------------- 
       
@@ -305,6 +332,8 @@ public class Mi_Perfil_Controller {
                     botonSave.setDisable(true);
                     butom_Image.setVisible(false);
                     butom_Image.setDisable(true);
+                     alertButton.setVisible(false);
+                     alertButton.setDisable(true);  
                             
                     System.out.println("Datos cambiado correctamente");
                 } catch (Exception e) {
@@ -351,29 +380,51 @@ public class Mi_Perfil_Controller {
 
     @FXML
     private void change_picture_exited(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        butom_Image.getStyleClass().remove("boton_enfocado_perfil");
+        butom_Image.getStyleClass().add("boton_desenfocado_perfil");        
     }
 
     @FXML
     private void change_picture_entered(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        butom_Image.getStyleClass().remove("boton_desenfocado_perfil");
+        butom_Image.getStyleClass().add("boton_enfocado_perfil");        
     }
 
     @FXML
     private void edit_exited(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        botonEdit.getStyleClass().remove("boton_enfocado_perfil");
+        botonEdit.getStyleClass().add("boton_desenfocado_perfil");        
     }
 
     @FXML
     private void edit_entered(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        botonEdit.getStyleClass().remove("boton_desenfocado_perfil");
+        botonEdit.getStyleClass().add("boton_enfocado_perfil");        
     }
 
     @FXML
     private void guardarCambios_salir(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        botonSave.getStyleClass().remove("boton_enfocado_perfil");
+        botonSave.getStyleClass().add("boton_desenfocado_perfil");        
     }
 
     @FXML
     private void guardarCambios_entered(MouseEvent event) {
         
-        
-        
+        //Modificamos el estilo del boton al entrar en el
+        botonSave.getStyleClass().remove("boton_desenfocado_perfil");
+        botonSave.getStyleClass().add("boton_enfocado_perfil");        
+              
     }
 
     @FXML
@@ -414,6 +465,8 @@ public class Mi_Perfil_Controller {
     private void cancelEdit(ActionEvent event) {
         
         populateUserDetails(loggedUser);
+         alertButton.setVisible(false);
+        alertButton.setDisable(true);  
       
         
     }
@@ -474,50 +527,85 @@ public class Mi_Perfil_Controller {
          // con esto y un bizcocho, nos vemos mañna a las ocho
          
          
-         
-         
-        // Crear la alerta
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Opciones");
         alert.setHeaderText("Elige una opción");
         alert.setContentText("Selecciona una de las opciones:");
 
-        // Crear los botones de opciones
         ButtonType buttonTypeMostrar = new ButtonType("Mostrar Texto");
         ButtonType buttonTypeNuevaContraseña = new ButtonType("Nueva Contraseña");
-       // ButtonType buttonTypeCancelar = new ButtonType( ButtonType.CLOSE);
 
-        // Agregar los botones a la alerta
-        alert.getButtonTypes().setAll(buttonTypeMostrar, buttonTypeNuevaContraseña /*buttonTypeCancelar*/);
+        alert.getButtonTypes().setAll(buttonTypeMostrar, buttonTypeNuevaContraseña);
 
-        // Manejar la selección del usuario
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == buttonTypeMostrar) {
-            // Mostrar el texto del TextField
             Alert infoAlert = new Alert(AlertType.INFORMATION);
             infoAlert.setTitle("Texto del TextField");
             infoAlert.setHeaderText(null);
             infoAlert.setContentText("El texto es: " + textField.getText());
             infoAlert.showAndWait();
         } else if (result.isPresent() && result.get() == buttonTypeNuevaContraseña) {
-            // Pedir al usuario que ingrese una nueva contraseña
             TextInputDialog dialog = new TextInputDialog();
             dialog.setTitle("Nueva Contraseña");
             dialog.setHeaderText("Ingresa una nueva contraseña");
             dialog.setContentText("Contraseña:");
 
-            // Obtener la nueva contraseña
             Optional<String> newPassword = dialog.showAndWait();
             newPassword.ifPresent(password -> {
-                Alert infoAlert = new Alert(AlertType.INFORMATION);
-                infoAlert.setTitle("Contraseña Actualizada");
-                infoAlert.setHeaderText(null);
-                infoAlert.setContentText("Nueva contraseña establecida.");
-                infoAlert.showAndWait();
-                // Aquí puedes manejar la nueva contraseña según sea necesario
-                System.out.println("Nueva contraseña: " + password);
+                if (validatePassword(password)) {
+                    textFieldPassword.setText(password);
+                    loggedUser.setPassword(password);
+                    System.out.println("Nueva contraseña: " + password);
+
+                    Alert infoAlert = new Alert(AlertType.INFORMATION);
+                    infoAlert.setTitle("Contraseña Actualizada");
+                    infoAlert.setHeaderText(null);
+                    infoAlert.setContentText("Nueva contraseña establecida.");
+                    infoAlert.showAndWait();
+                } else {
+                    Alert errorAlert = new Alert(AlertType.ERROR);
+                    errorAlert.setTitle("Error de Contraseña");
+                    errorAlert.setHeaderText(null);
+                    errorAlert.setContentText("La contraseña no cumple con los requisitos.");
+                    errorAlert.showAndWait();
+                }
             });
         }
     }
 
+
+
+
+    @FXML
+    private void edit_pass_exited(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        alertButton.getStyleClass().remove("boton_enfocado_perfil");
+        alertButton.getStyleClass().add("boton_desenfocado_perfil");           
+    }
+
+    @FXML
+    private void edit_pass_entered(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        alertButton.getStyleClass().remove("boton_desenfocado_perfil");
+        alertButton.getStyleClass().add("boton_enfocado_perfil");           
+    }
+
+    @FXML
+    private void cancel_exited(MouseEvent event) {
+        
+        //Modificamos el estilo del boton al entrar en el
+        botonCancel.getStyleClass().remove("boton_enfocado_cancelar");
+        botonCancel.getStyleClass().add("boton_desenfocado_cancelar");           
+    }
+
+    @FXML
+    private void cancel_entered(MouseEvent event) {
+         
+        //Modificamos el estilo del boton al entrar en el
+        botonCancel.getStyleClass().remove("boton_desenfocado_cancelar");
+        botonCancel.getStyleClass().add("boton_enfocado_cancelar");          
+    }
 }
+

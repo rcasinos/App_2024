@@ -7,6 +7,8 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -18,6 +20,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -211,7 +215,7 @@ public class Registro_Controller implements Initializable {
 
             System.out.println("Nueva contrasena ingresada: " + newValue); // Debug
 
-            if (!User.checkPassword(newValue)) {
+            if (!validatePassword(newValue)) {
                 System.out.println("Contrasena incorrecta, avisando a mensaje de error");
                 msg_ini_pssw.setVisible(false);
                 msg_err_pssw.setVisible(true);
@@ -253,7 +257,7 @@ public class Registro_Controller implements Initializable {
 
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                if (!User.checkEmail(newValue)) {
+                if (!validateEmail(newValue)) {
                     System.out.println("Apodo no valido");
                     msg_err_email.setVisible(true);
                     msg_ini_email.setVisible(false);
@@ -362,25 +366,33 @@ public class Registro_Controller implements Initializable {
 
     @FXML
     private void registro_click(MouseEvent event) throws Exception {
-        try {
+            try {
             // Obtener instancia de Acount
             Acount acount = Acount.getInstance();
 
-            //registro de variables
-            name = nombre_field.getText();
-            surname = apellido_field.getText();
-            email = email_field.getText();
-            user = apodo_field.getText();
-            pass = contrasena_field.getText();
-            img = imagen_foto_perfil.getImage();
-            fecha = LocalDate.now();
+            // Registro de variables
+            String name = nombre_field.getText();
+            String surname = apellido_field.getText();
+            String email = email_field.getText();
+            String user = apodo_field.getText();
+            String pass = contrasena_field.getText();
+            Image img = imagen_foto_perfil.getImage();
+            LocalDate fecha = LocalDate.now();
 
             // Registrar el nuevo usuario
             boolean registrationSuccessful = acount.registerUser(name, surname, email, user, pass, img, fecha);
 
             if (registrationSuccessful) {
                 System.out.println("Usuario registrado exitosamente.");
-                // Cargar el FXML de la ventana emergente
+
+                // Mostrar alerta de notificación de registro exitoso
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Registro Exitoso");
+                alert.setHeaderText(null);
+                alert.setContentText("Tu cuenta ha sido creada correctamente.");
+                alert.showAndWait();
+
+                // Cargar el FXML de la ventana de inicio de sesión
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Inicio_de_Sesion/Vista_Inicio_Sesion.fxml"));
                 Parent root = loader.load();
 
@@ -389,10 +401,10 @@ public class Registro_Controller implements Initializable {
                 Stage stage = new Stage();
                 stage.setScene(scene);
 
-                // Obtenemos la ventana como objeto para aplicarle opciones
+                // Obtener la ventana como objeto para aplicarle opciones
                 Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-                //cierro pestaña de inicio
+                // Cerrar la pestaña de registro
                 primaryStage.close();
 
                 stage.setMaximized(true);
@@ -408,5 +420,24 @@ public class Registro_Controller implements Initializable {
             // Manejar excepciones
             e.printStackTrace();
         }
+    }
+    
+    // Métodos para comprobar el formato de los datos introducidos
+    private boolean validateName(String name) {
+        return !name.trim().isEmpty() && name.matches("[a-zA-Z]+") && !name.contains(" ");
+    }
+
+    private boolean validateSurname(String surname) {
+        return !surname.trim().isEmpty() && surname.matches("[a-zA-Z]+") && !surname.contains(" ");
+    }
+
+    private boolean validateEmail(String email) {
+        Pattern pattern = Pattern.compile("^[a-zA-Z0-9_+&-]+(?:\\.[a-zA-Z0-9_+&-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$");
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    private boolean validatePassword(String password) {
+        return password.isEmpty() || password.length() >= 6;
     }
 }

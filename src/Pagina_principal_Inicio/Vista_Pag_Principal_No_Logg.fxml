@@ -94,6 +94,9 @@
                            </font>
                         </Text>
                      </children>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
                   </HBox>
                </children>
             </GridPane>
@@ -126,7 +129,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Separator prefHeight="6.0" prefWidth="135.0" styleClass="separadores" stylesheets="@Estilos_pag_princp_no_logg.css" />
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="     O     " HBox.hgrow="ALWAYS">
@@ -153,14 +156,9 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2">
                      <children>
-                        <Label text="Informacion" textFill="#807d7ded" HBox.hgrow="ALWAYS">
+                        <Label fx:id="info_label" onMouseClicked="#informacion_click" onMouseEntered="#info_entered" onMouseExited="#info_exited" prefHeight="33.0" prefWidth="209.0" stylesheets="@Estilos_pag_princp_no_logg.css" text="Informacion" textFill="#807d7ded" HBox.hgrow="ALWAYS">
                            <font>
-                              <Font name="Segoe UI" size="15.0" />
-                           </font>
-                        </Label>
-                        <Label text="Guia" textFill="#807d7ded" HBox.hgrow="ALWAYS">
-                           <font>
-                              <Font name="Segoe UI" size="15.0" />
+                              <Font name="Segoe UI" size="21.0" />
                            </font>
                         </Label>
                      </children>

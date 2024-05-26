@@ -48,3 +48,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-radius: 20;    
 }
 
+.info_desenfocado{
+    -fx-text-fill:#807d7d
+}
+
+.info_enfocado{
+    -fx-text-fill:#1E90FF
+}
